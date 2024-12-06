@@ -9,7 +9,8 @@ import java.io.IOException;
 /**
  * The main class of the EISC Uno application.
  */
-public class Main extends Application {
+public class
+Main extends Application {
 
     /**
      * The main method of the application.

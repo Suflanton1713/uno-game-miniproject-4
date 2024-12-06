@@ -1,15 +1,18 @@
 package org.example.eiscuno.model.player;
 
 import org.example.eiscuno.model.card.Card;
+import org.example.eiscuno.model.shiftobserver.listeners.ShiftEventListener;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 /**
  * Represents a player in the Uno game.
  */
-public class Player implements IPlayer {
+public class Player implements IPlayer, ShiftEventListener {
     private ArrayList<Card> cardsPlayer;
     private String typePlayer;
+
 
     /**
      * Constructs a new Player object with an empty hand of cards.
@@ -62,5 +65,11 @@ public class Player implements IPlayer {
 
     public String getTypePlayer() {
         return typePlayer;
+    }
+
+    @Override
+    public void update(String eventType) {
+        System.out.println("Player had played his actual turn, now machine continues");
+
     }
 }

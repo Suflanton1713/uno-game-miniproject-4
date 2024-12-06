@@ -3,6 +3,8 @@ package org.example.eiscuno.model.game;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.player.Player;
+import org.example.eiscuno.model.shiftobserver.ShiftEventManager;
+import org.example.eiscuno.model.shiftobserver.listeners.ShiftEventListener;
 import org.example.eiscuno.model.table.Table;
 
 /**
@@ -13,8 +15,10 @@ public class GameUno implements IGameUno {
 
     private Player humanPlayer;
     private Player machinePlayer;
+    private Thread machineThread;
     private Deck deck;
     private Table table;
+    public ShiftEventManager events;
 
     /**
      * Constructs a new GameUno instance.
@@ -29,6 +33,7 @@ public class GameUno implements IGameUno {
         this.machinePlayer = machinePlayer;
         this.deck = deck;
         this.table = table;
+        this.events = new ShiftEventManager("onturn", "offturn", "reverse", "skip");
     }
 
     /**
@@ -44,6 +49,18 @@ public class GameUno implements IGameUno {
                 machinePlayer.addCard(this.deck.takeCard());
             }
         }
+
+
+    }
+
+
+    public void setListenersForShiftEvents() {
+        events.belongToShiftEvent("onturn",humanPlayer);
+        System.out.println(machineThread);
+        System.out.println((ShiftEventListener) machineThread);
+        events.belongToShiftEvent("offturn", (ShiftEventListener) machineThread);
+
+        System.out.println(events.getListeners());
     }
 
     /**
@@ -59,6 +76,11 @@ public class GameUno implements IGameUno {
         }
     }
 
+    public void setMachineThread(Thread machineThread) {
+        System.out.println("Se setea el thread " + machineThread);
+        this.machineThread = machineThread;
+    }
+
     /**
      * Places a card on the table during the game.
      *
@@ -67,6 +89,7 @@ public class GameUno implements IGameUno {
     @Override
     public void playCard(Card card) {
         this.table.addCardOnTheTable(card);
+        events.notifyShiftEvent("onturn");
     }
 
     /**

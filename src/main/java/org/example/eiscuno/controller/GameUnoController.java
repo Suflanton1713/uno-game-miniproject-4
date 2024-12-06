@@ -50,8 +50,12 @@ public class GameUnoController {
         Thread t = new Thread(threadSingUNOMachine, "ThreadSingUNO");
         t.start();
 
-        threadPlayMachine = new ThreadPlayMachine(this.table, this.machinePlayer, this.tableImageView);
+        threadPlayMachine = new ThreadPlayMachine(this.table, this.machinePlayer, this.tableImageView, this.gameUno);
         threadPlayMachine.start();
+        gameUno.setMachineThread(threadPlayMachine);
+        gameUno.setListenersForShiftEvents();
+        System.out.println(threadPlayMachine);
+
     }
 
     /**
