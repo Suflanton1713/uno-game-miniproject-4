@@ -1,9 +1,9 @@
 package org.example.eiscuno.model.player;
 
 import org.example.eiscuno.model.card.Card;
-import org.example.eiscuno.model.shiftobserver.listeners.ShiftEventListener;
+import org.example.eiscuno.model.deck.Deck;
+import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Player implements IPlayer, ShiftEventListener {
     private ArrayList<Card> cardsPlayer;
     private String typePlayer;
+    private boolean isOnTurn;
 
 
     /**
@@ -20,6 +21,7 @@ public class Player implements IPlayer, ShiftEventListener {
     public Player(String typePlayer){
         this.cardsPlayer = new ArrayList<Card>();
         this.typePlayer = typePlayer;
+        isOnTurn = false;
     };
 
     /**
@@ -31,6 +33,7 @@ public class Player implements IPlayer, ShiftEventListener {
     public void addCard(Card card){
         cardsPlayer.add(card);
     }
+
 
     /**
      * Retrieves all cards currently held by the player.
@@ -67,9 +70,37 @@ public class Player implements IPlayer, ShiftEventListener {
         return typePlayer;
     }
 
+    public boolean isOnTurn() {
+        return isOnTurn;
+    }
+
+    public void setOnTurn(boolean onTurn) {
+        isOnTurn = onTurn;
+    }
+
+    @Override
+    public void drawsCard(Deck deck, int Amount){
+        for(int i = 0; i<Amount; i++){
+            addCard(deck.takeCard());
+        }
+    }
+
+    @Override
+    public void onTurnUpdate(String eventType) {
+        System.out.println("Player is on turn");
+        isOnTurn = true;
+
+    }
+
+    @Override
+    public void offTurnUpdate(String eventType) {
+        System.out.println("Player is not on turn");
+        isOnTurn = false;
+    }
+
     @Override
     public void update(String eventType) {
-        System.out.println("Player had played his actual turn, now machine continues");
+        System.out.println("Player has played, continues machine");
 
     }
 }

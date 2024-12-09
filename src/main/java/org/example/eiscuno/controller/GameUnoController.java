@@ -10,13 +10,15 @@ import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.machine.ThreadPlayMachine;
 import org.example.eiscuno.model.machine.ThreadSingUNOMachine;
+import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
+import org.example.eiscuno.model.observers.listeners.ShiftEventListenerAdaptor;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.table.Table;
 
 /**
  * Controller class for the Uno game.
  */
-public class GameUnoController {
+public class GameUnoController implements ShiftEventListener {
 
     @FXML
     private GridPane gridPaneCardsMachine;
@@ -44,6 +46,9 @@ public class GameUnoController {
     public void initialize() {
         initVariables();
         this.gameUno.startGame();
+        Card initialCard = deck.takeCard();
+        table.addCardOnTheTable(initialCard);
+        tableImageView.setImage(initialCard.getImage());
         printCardsHumanPlayer();
 
         threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer());
@@ -53,7 +58,8 @@ public class GameUnoController {
         threadPlayMachine = new ThreadPlayMachine(this.table, this.machinePlayer, this.tableImageView, this.gameUno);
         threadPlayMachine.start();
         gameUno.setMachineThread(threadPlayMachine);
-        gameUno.setListenersForShiftEvents();
+        gameUno.setListenersForShiftEvents(this);
+        table.setListenerForCardEvent(gameUno);
         System.out.println(threadPlayMachine);
 
     }
@@ -82,12 +88,27 @@ public class GameUnoController {
             ImageView cardImageView = card.getCard();
 
             cardImageView.setOnMouseClicked((MouseEvent event) -> {
-                // Aqui deberian verificar si pueden en la tabla jugar esa carta
-                gameUno.playCard(card);
-                tableImageView.setImage(card.getImage());
-                humanPlayer.removeCard(findPosCardsHumanPlayer(card));
-                threadPlayMachine.setHasPlayerPlayed(true);
-                printCardsHumanPlayer();
+
+
+                table.verifyCardTypeOnTable(card);
+                System.out.println(gameUno.canThrowCard());
+                if(gameUno.canThrowCard()){
+                    // Aqui deberian verificar si pueden en la tabla jugar esa carta
+                    System.out.println(card.getValue());
+                    System.out.println(card.getColor());
+                    gameUno.playCard(card);
+                    tableImageView.setImage(card.getImage());
+                    humanPlayer.removeCard(findPosCardsHumanPlayer(card));
+                    printCardsHumanPlayer();
+                }
+
+                if(threadPlayMachine.getMachinePlayer().isOnTurn()){
+                    System.out.println("La maquina ya está jugando");
+
+                    threadPlayMachine.setHasPlayerPlayed(true);
+                }
+
+
             });
 
             this.gridPaneCardsPlayer.add(cardImageView, i, 0);
@@ -153,5 +174,28 @@ public class GameUnoController {
     @FXML
     void onHandleUno(ActionEvent event) {
         // Implement logic to handle Uno event here
+    }
+
+    @Override
+    public void onTurnUpdate(String eventType) {
+
+    }
+
+    @Override
+    public void offTurnUpdate(String eventType) {
+
+    }
+
+    @Override
+    public void update(String eventType) {
+        if(machinePlayer.isOnTurn()){
+            gridPaneCardsPlayer.setDisable(true);
+            gridPaneCardsMachine.setDisable(false);
+        }else{
+            gridPaneCardsPlayer.setDisable(false);
+            gridPaneCardsMachine.setDisable(true);
+        }
+
+
     }
 }

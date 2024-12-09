@@ -4,7 +4,7 @@ import javafx.scene.image.ImageView;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.player.Player;
-import org.example.eiscuno.model.shiftobserver.listeners.ShiftEventListener;
+import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
 import org.example.eiscuno.model.table.Table;
 
 public class ThreadPlayMachine extends Thread implements ShiftEventListener {
@@ -22,8 +22,20 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
         this.gameUno = gameUno;
     }
 
+    @Override
+    public void onTurnUpdate(String eventType) {
+        System.out.println("Machine is on turn");
+        machinePlayer.setOnTurn(true);
+    }
+
+    @Override
+    public void offTurnUpdate(String eventType) {
+        System.out.println("Machine is not on turn");
+        machinePlayer.setOnTurn(false);
+    }
+
     public void update(String eventType){
-        System.out.println("Actual turn corresponds to Machine");
+        System.out.println("Machine has played, continues player");
     };
 
     public void run() {
@@ -50,5 +62,9 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
 
     public void setHasPlayerPlayed(boolean hasPlayerPlayed) {
         this.hasPlayerPlayed = hasPlayerPlayed;
+    }
+
+    public Player getMachinePlayer() {
+        return machinePlayer;
     }
 }

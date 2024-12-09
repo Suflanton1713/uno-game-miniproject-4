@@ -1,17 +1,20 @@
 package org.example.eiscuno.model.game;
 
+import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
+import org.example.eiscuno.model.observers.listeners.ShiftEventListenerAdaptor;
 import org.example.eiscuno.model.player.Player;
-import org.example.eiscuno.model.shiftobserver.ShiftEventManager;
-import org.example.eiscuno.model.shiftobserver.listeners.ShiftEventListener;
+import org.example.eiscuno.model.observers.ShiftEventManager;
+import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
+import org.example.eiscuno.model.observers.listeners.CardPlayedEventListener;
 import org.example.eiscuno.model.table.Table;
 
 /**
  * Represents a game of Uno.
  * This class manages the game logic and interactions between players, deck, and the table.
  */
-public class GameUno implements IGameUno {
+public class GameUno implements IGameUno, CardPlayedEventListener {
 
     private Player humanPlayer;
     private Player machinePlayer;
@@ -19,6 +22,7 @@ public class GameUno implements IGameUno {
     private Deck deck;
     private Table table;
     public ShiftEventManager events;
+    private boolean canThrowCard = true;
 
     /**
      * Constructs a new GameUno instance.
@@ -33,7 +37,8 @@ public class GameUno implements IGameUno {
         this.machinePlayer = machinePlayer;
         this.deck = deck;
         this.table = table;
-        this.events = new ShiftEventManager("onturn", "offturn", "reverse", "skip");
+        this.events = new ShiftEventManager("onturn", "offturn", "turnChangerController");
+
     }
 
     /**
@@ -54,11 +59,12 @@ public class GameUno implements IGameUno {
     }
 
 
-    public void setListenersForShiftEvents() {
+    public void setListenersForShiftEvents(GameUnoController controller) {
         events.belongToShiftEvent("onturn",humanPlayer);
         System.out.println(machineThread);
         System.out.println((ShiftEventListener) machineThread);
         events.belongToShiftEvent("offturn", (ShiftEventListener) machineThread);
+        events.belongToShiftEvent("turnChangerController", (ShiftEventListener) controller);
 
         System.out.println(events.getListeners());
     }
@@ -90,6 +96,7 @@ public class GameUno implements IGameUno {
     public void playCard(Card card) {
         this.table.addCardOnTheTable(card);
         events.notifyShiftEvent("onturn");
+        events.notifyShiftToController("turnChangerController");
     }
 
     /**
@@ -133,5 +140,39 @@ public class GameUno implements IGameUno {
     @Override
     public Boolean isGameOver() {
         return null;
+    }
+
+    @Override
+    public void cantPlayCardUpdate(String eventType, Card card) {
+        System.out.println("Card can't be throwed:" + card.getValue() + " " + card.getColor() );
+        canThrowCard = false;
+
+    }
+
+    @Override
+    public void canPlayCardUpdate(String eventType) {
+        System.out.println("Card can be throwed");
+        canThrowCard = true;
+
+    }
+
+    public boolean canThrowCard(){
+        return canThrowCard;
+    }
+
+    public void drawCardUpdate(String eventType, int amount){
+        System.out.println("Draw card");
+    }
+
+    public void skipTurnUpdate(String eventType){
+        System.out.println("Skip turn");
+    }
+
+    public void reverseTurnUpdate(String eventType){
+        System.out.println("Reverse card");
+    }
+
+    public void wildCardUpdate(String eventType, String color){
+        System.out.println("Wild card");
     }
 }

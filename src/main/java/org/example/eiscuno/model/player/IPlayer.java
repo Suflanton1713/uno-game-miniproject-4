@@ -1,6 +1,7 @@
 package org.example.eiscuno.model.player;
 
 import org.example.eiscuno.model.card.Card;
+import org.example.eiscuno.model.deck.Deck;
 
 import java.util.ArrayList;
 
@@ -38,4 +39,6 @@ public interface IPlayer {
      * @param index The index of the card to remove.
      */
     void removeCard(int index);
+
+    void drawsCard(Deck deck, int Amount);
 }

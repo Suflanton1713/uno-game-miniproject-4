@@ -1,9 +1,7 @@
-package org.example.eiscuno.model.shiftobserver;
+package org.example.eiscuno.model.observers;
 
-import org.example.eiscuno.model.player.Player;
-import org.example.eiscuno.model.shiftobserver.listeners.ShiftEventListener;
+import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
 
-import java.io.File;
 import java.util.*;
 
 public class ShiftEventManager {
@@ -30,22 +28,27 @@ public class ShiftEventManager {
         ShiftEventListener actualListenerOnTurn;
         List<ShiftEventListener> users = listeners.get(eventType);
         for (ShiftEventListener listener : users) {
-            listener.update(eventType);
+            listener.update("eventType");
             actualListenerOnTurn = listener;
-
             if(Objects.equals(eventType, "onturn")){
                 changeShiftListener(actualListenerOnTurn);
             }
+
         }
-
-
-
-
-
     }
+
+    public void notifyShiftToController(String eventType) {
+        List<ShiftEventListener> users = listeners.get(eventType);
+        for (ShiftEventListener listener : users) {
+            listener.update("turnShifted");
+        }
+    }
+
 
     public void changeShiftListener(ShiftEventListener listener) {
         ShiftEventListener listenerOffTurn = listeners.get("offturn").get(0);
+        listener.offTurnUpdate("loseTurn");
+        listenerOffTurn.onTurnUpdate("getsTurn");
 
         leaveShiftEvent("onturn", listener);
         belongToShiftEvent("offturn", listener);
