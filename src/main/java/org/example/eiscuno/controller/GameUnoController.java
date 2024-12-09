@@ -1,10 +1,14 @@
 package org.example.eiscuno.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.game.GameUno;
@@ -14,6 +18,9 @@ import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListenerAdaptor;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.table.Table;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller class for the Uno game.
@@ -28,6 +35,15 @@ public class GameUnoController implements ShiftEventListener {
 
     @FXML
     private ImageView tableImageView;
+
+    @FXML
+    private Button deckButton;
+
+    @FXML
+    private Pane centralPane;
+
+
+
 
     private Player humanPlayer;
     private Player machinePlayer;
@@ -80,6 +96,7 @@ public class GameUnoController implements ShiftEventListener {
      * Prints the human player's cards on the grid pane.
      */
     private void printCardsHumanPlayer() {
+        Platform.runLater(() -> {
         this.gridPaneCardsPlayer.getChildren().clear();
         Card[] currentVisibleCardsHumanPlayer = this.gameUno.getCurrentVisibleCardsHumanPlayer(this.posInitCardToShow);
 
@@ -100,19 +117,28 @@ public class GameUnoController implements ShiftEventListener {
                     tableImageView.setImage(card.getImage());
                     humanPlayer.removeCard(findPosCardsHumanPlayer(card));
                     printCardsHumanPlayer();
+
+                    if(gameUno.HasToChangeColor()){
+                        createButtonsForChangeColor();
+                    }else{
+
+                        if(threadPlayMachine.getMachinePlayer().isOnTurn()){
+                            System.out.println("La maquina ya está jugando");
+
+                            threadPlayMachine.setHasPlayerPlayed(true);
+                        }
+                    }
+
                 }
 
-                if(threadPlayMachine.getMachinePlayer().isOnTurn()){
-                    System.out.println("La maquina ya está jugando");
 
-                    threadPlayMachine.setHasPlayerPlayed(true);
-                }
 
 
             });
 
             this.gridPaneCardsPlayer.add(cardImageView, i, 0);
         }
+        });
     }
 
     /**
@@ -163,17 +189,31 @@ public class GameUnoController implements ShiftEventListener {
      */
     @FXML
     void onHandleTakeCard(ActionEvent event) {
-        // Implement logic to take a card here
+        if(machinePlayer.isOnTurn()){
+            machinePlayer.drawsCard(deck,1);
+        }else{
+            humanPlayer.drawsCard(deck,1);
+        }
+
+        printCardsHumanPlayer();
+
+        gameUno.events.notifyShiftEvent("onturn");
+        gameUno.events.notifyShiftToController("turnChangerController");
+
+        if(threadPlayMachine.getMachinePlayer().isOnTurn()){
+            System.out.println("La maquina ya está jugando");
+
+            threadPlayMachine.setHasPlayerPlayed(true);
+        }
     }
 
     /**
      * Handles the action of saying "Uno".
      *
-     * @param event the action event
      */
     @FXML
-    void onHandleUno(ActionEvent event) {
-        // Implement logic to handle Uno event here
+    void onHandleUno() {
+
     }
 
     @Override
@@ -188,14 +228,73 @@ public class GameUnoController implements ShiftEventListener {
 
     @Override
     public void update(String eventType) {
+        printCardsHumanPlayer();
         if(machinePlayer.isOnTurn()){
             gridPaneCardsPlayer.setDisable(true);
             gridPaneCardsMachine.setDisable(false);
+            deckButton.setDisable(true);
         }else{
             gridPaneCardsPlayer.setDisable(false);
             gridPaneCardsMachine.setDisable(true);
+            deckButton.setDisable(false);
         }
 
 
+    }
+
+    private void createButtonsForChangeColor(){
+
+        // Crear los botones
+        Button btnAzul = new Button("Azul");
+        Button btnRojo = new Button("Rojo");
+        Button btnAmarillo = new Button("Amarillo");
+        Button btnVerde = new Button("Verde");
+
+        // Posicionar los botones
+        btnAzul.setLayoutX(20);
+        btnAzul.setLayoutY(20);
+
+        btnRojo.setLayoutX(100);
+        btnRojo.setLayoutY(20);
+
+        btnAmarillo.setLayoutX(180);
+        btnAmarillo.setLayoutY(20);
+
+        btnVerde.setLayoutX(260);
+        btnVerde.setLayoutY(20);
+
+        // Asociar acciones a los botones
+        btnAzul.setOnAction(e -> handleChangerColorButtonClick("BLUE"));
+        btnRojo.setOnAction(e -> handleChangerColorButtonClick("RED"));
+        btnAmarillo.setOnAction(e -> handleChangerColorButtonClick("YELLOW"));
+        btnVerde.setOnAction(e -> handleChangerColorButtonClick("GREEN"));
+
+        // Agregar los botones al pane
+        centralPane.getChildren().addAll(btnAzul, btnRojo, btnAmarillo, btnVerde);
+
+
+    }
+
+    private void handleChangerColorButtonClick(String color) {
+        System.out.println("Se presionó el botón: " + color);
+        table.getCurrentCardOnTheTable().setColor(color);
+        System.out.println(table.getCurrentCardOnTheTable().getColor());
+
+        List<Node> botonesAEliminar = new ArrayList<>();
+
+        for (var nodo : centralPane.getChildren()) {
+            if (nodo instanceof Button) {
+                botonesAEliminar.add((Button) nodo);
+            }
+        }
+        centralPane.getChildren().removeAll(botonesAEliminar);
+        gameUno.setHasToChangeColor(false);
+        gameUno.events.notifyShiftEvent("onturn");
+        gameUno.events.notifyShiftToController("turnChangerController");
+        if(threadPlayMachine.getMachinePlayer().isOnTurn()){
+            System.out.println("La maquina ya está jugando");
+
+            threadPlayMachine.setHasPlayerPlayed(true);
+        }
     }
 }

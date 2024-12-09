@@ -22,7 +22,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     private Deck deck;
     private Table table;
     public ShiftEventManager events;
-    private boolean canThrowCard = true;
+    private boolean canThrowCard;
+    private boolean hasToChangeColor;
 
     /**
      * Constructs a new GameUno instance.
@@ -38,7 +39,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         this.deck = deck;
         this.table = table;
         this.events = new ShiftEventManager("onturn", "offturn", "turnChangerController");
-
+        this.hasToChangeColor = false;
+        this.canThrowCard = true;
     }
 
     /**
@@ -160,19 +162,61 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         return canThrowCard;
     }
 
+
     public void drawCardUpdate(String eventType, int amount){
-        System.out.println("Draw card");
+        System.out.println("Other player draw card");
+
+        if(amount == 4){
+            wildCardUpdate("Change color");
+        }
+
+        if(machinePlayer.isOnTurn()){
+            humanPlayer.drawsCard(deck,amount);
+
+        }else{
+            machinePlayer.drawsCard(deck,amount);
+        }
+
+        events.notifyShiftEvent("onturn");
+        events.notifyShiftToController("turnChangerController");
+
     }
 
+
+
     public void skipTurnUpdate(String eventType){
-        System.out.println("Skip turn");
+        events.notifyShiftEvent("onturn");
+        events.notifyShiftToController("turnChangerController");
+
+        if(machinePlayer.isOnTurn()){
+
+        }
     }
 
     public void reverseTurnUpdate(String eventType){
-        System.out.println("Reverse card");
+        events.notifyShiftEvent("onturn");
+        events.notifyShiftToController("turnChangerController");
     }
 
-    public void wildCardUpdate(String eventType, String color){
+    @Override
+    public void wildCardUpdate(String eventType) {
         System.out.println("Wild card");
+        hasToChangeColor = true;
+    }
+
+    public boolean HasToChangeColor() {
+        return hasToChangeColor;
+    }
+
+    public void setHasToChangeColor(boolean hadToChangeColor) {
+        this.hasToChangeColor = hadToChangeColor;
+    }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public Table getTable() {
+        return table;
     }
 }

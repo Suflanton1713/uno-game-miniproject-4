@@ -103,4 +103,13 @@ public class Player implements IPlayer, ShiftEventListener {
         System.out.println("Player has played, continues machine");
 
     }
+
+    public String getStringOfOwnCards(){
+        String result = "[";
+        for(Card card :cardsPlayer){
+            result = result + card.getValue() + card.getColor() + " ,";
+        }
+        result = result + "]";
+        return result;
+    }
 }

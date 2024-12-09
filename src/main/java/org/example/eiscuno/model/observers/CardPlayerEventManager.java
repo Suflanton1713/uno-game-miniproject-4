@@ -41,9 +41,9 @@ public class CardPlayerEventManager {
             listener.cantPlayCardUpdate(eventType, card);
         }
     }
+
     public void notifyDrawCards(String eventType, int amount) {
         System.out.println(getListeners());
-
         List<CardPlayedEventListener> users = listeners.get(eventType);
         System.out.println(users);
         for (CardPlayedEventListener listener : users) {
@@ -67,11 +67,11 @@ public class CardPlayerEventManager {
         }
     }
 
-    public void notifyWildCard(String eventType, String color) {
+    public void notifyWildCard(String eventType) {
         System.out.println(getListeners());
         List<CardPlayedEventListener> users = listeners.get(eventType);
         for (CardPlayedEventListener listener : users) {
-            listener.wildCardUpdate(eventType, color);
+            listener.wildCardUpdate(eventType);
         }
     }
 

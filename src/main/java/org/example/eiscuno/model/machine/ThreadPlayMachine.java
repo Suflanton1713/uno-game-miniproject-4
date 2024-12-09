@@ -40,6 +40,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
 
     public void run() {
         while (true){
+
             if(hasPlayerPlayed){
                 try{
                     Thread.sleep(2000);
@@ -47,17 +48,93 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                     e.printStackTrace();
                 }
                 // Aqui iria la logica de colocar la carta
-                putCardOnTheTable();
-                hasPlayerPlayed = false;
+                hasPlayerPlayed = putCardOnTheTable();
+
             }
         }
     }
 
-    private void putCardOnTheTable(){
+    private boolean putCardOnTheTable(){
+        System.out.println("Machine is choosing cards");
         int index = (int) (Math.random() * machinePlayer.getCardsPlayer().size());
         Card card = machinePlayer.getCard(index);
-        gameUno.playCard(card);
-        tableImageView.setImage(card.getImage());
+        card = chooseAllowedCard(card);
+        if(!(card == null)){
+            gameUno.playCard(card);
+            tableImageView.setImage(card.getImage());
+            machinePlayer.removeCard(machinePlayer.getCardsPlayer().indexOf(card));
+
+
+        }
+        System.out.println("Machine cards after playing " + machinePlayer.getStringOfOwnCards());
+
+        return machinePlayer.isOnTurn();
+
+    }
+
+    private Card chooseAllowedCard(Card card){
+        boolean isChoosenCardAllowed = false;
+        boolean haveDrawedACard = false;
+        int indexOfCardChoosen = machinePlayer.getCardsPlayer().indexOf(card);
+        int searchingInDeckCounter = 0;
+        int initialOwnCards = machinePlayer.getCardsPlayer().size();
+        Card returnCard = card;
+
+
+
+        do{
+            table.verifyCardTypeOnTable(returnCard);
+
+            if(searchingInDeckCounter == initialOwnCards){
+                System.out.println("Machine draws a card");
+                System.out.println(machinePlayer.getStringOfOwnCards());
+                machinePlayer.drawsCard(gameUno.getDeck(), 1);
+                returnCard = machinePlayer.getCard(machinePlayer.getCardsPlayer().size()-1);
+                table.verifyCardTypeOnTable(returnCard);
+                haveDrawedACard = true;
+            }
+
+                if(gameUno.canThrowCard()){
+                    System.out.println("Actual card can be throwed");
+                    isChoosenCardAllowed = true;
+                }else {
+
+                    if(!(searchingInDeckCounter == initialOwnCards)){
+                        System.out.println("Machine searches a card xd");
+                        System.out.println("hi");
+                        System.out.println(machinePlayer.getStringOfOwnCards());
+                        System.out.println("machine index of card choosen" + machinePlayer.getCardsPlayer().indexOf(returnCard));
+                        System.out.println("initial own cards - 1 " + (initialOwnCards - 1));
+                        if((machinePlayer.getCardsPlayer().indexOf(returnCard) == (initialOwnCards - 1))){
+                            indexOfCardChoosen = 0;
+                            searchingInDeckCounter++;
+                        } else {
+                            indexOfCardChoosen++;
+                            searchingInDeckCounter++;
+                        }
+                        System.out.println("indexOfCardChoosen" + (indexOfCardChoosen));
+                        returnCard = machinePlayer.getCardsPlayer().get((indexOfCardChoosen));
+                        System.out.println("Machine is looking at " + returnCard.getValue() + returnCard.getColor());
+
+                    }
+
+                }
+
+            System.out.println("Is choosen card allowed");
+            System.out.println(!isChoosenCardAllowed);
+
+            if(haveDrawedACard && !isChoosenCardAllowed){
+                gameUno.events.notifyShiftEvent("onturn");
+                gameUno.events.notifyShiftToController("turnChangerController");
+                returnCard = null;
+                isChoosenCardAllowed = true;
+            }
+
+            }while(!isChoosenCardAllowed);
+
+
+
+        return returnCard;
     }
 
     public void setHasPlayerPlayed(boolean hasPlayerPlayed) {

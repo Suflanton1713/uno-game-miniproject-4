@@ -87,7 +87,7 @@ public class Table{
         switch (cardAdded.getValue()){
             case "Wild":
                 System.out.println("Changing colors");
-
+                events.notifyWildCard("wild");
             case "FourWildDraw":
                 System.out.println("Taking four cards...");
                 events.notifyDrawCards("drawCards", 4);

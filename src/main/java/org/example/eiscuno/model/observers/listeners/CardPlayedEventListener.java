@@ -8,5 +8,5 @@ public interface CardPlayedEventListener {
     void drawCardUpdate(String eventType, int amount);
     void skipTurnUpdate(String eventType);
     void reverseTurnUpdate(String eventType);
-    void wildCardUpdate(String eventType, String color);
+    void wildCardUpdate(String eventType);
 }
