@@ -1,0 +1,10 @@
+#BackgroundGame{
+    -fx-background-image: url("../images/backgroundGame.jpg");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+#ButtonUno{
+    -fx-background-image: url("../images/button_uno.png");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}

@@ -11,7 +11,7 @@ import java.io.IOException;
  * Represents the main stage of the Uno game application.
  * This stage displays the game interface to the user.
  */
-public class GameUnoStage extends Stage {
+public class  GameUnoStage extends Stage {
 
     /**
      * Constructs a new instance of GameUnoStage.
@@ -28,6 +28,7 @@ public class GameUnoStage extends Stage {
             throw new IOException("Error while loading FXML file", e);
         }
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
         // Configuring the stage
         setTitle("EISC Uno"); // Sets the title of the stage
         setScene(scene); // Sets the scene for the stage
