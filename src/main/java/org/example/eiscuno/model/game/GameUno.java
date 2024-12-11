@@ -178,7 +178,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         }
 
         events.notifyShiftEvent("onturn");
-        events.notifyShiftToController("turnChangerController");
+        events.notifyShiftToContrgitoller("turnChangerController");
 
     }
 
