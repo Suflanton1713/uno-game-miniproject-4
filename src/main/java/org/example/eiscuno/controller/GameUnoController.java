@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -21,11 +22,14 @@ import org.example.eiscuno.model.table.Table;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Controller class for the Uno game.
  */
 public class GameUnoController implements ShiftEventListener {
+
+
 
     @FXML
     private GridPane gridPaneCardsMachine;
@@ -41,6 +45,11 @@ public class GameUnoController implements ShiftEventListener {
 
     @FXML
     private Pane centralPane;
+    @FXML
+    private Label winMessageLabel;
+    @FXML
+    private Button oneButton;
+
 
 
 
@@ -62,16 +71,27 @@ public class GameUnoController implements ShiftEventListener {
     public void initialize() {
         initVariables();
         this.gameUno.startGame();
+
         Card initialCard = deck.takeCard();
         table.addCardOnTheTable(initialCard);
+        if (Objects.equals(table.getCurrentCardOnTheTable().getColor(), "MULTICOLOR")) {
+            int randomNum = (int) (Math.random() * 4) ;
+            if (randomNum == 0) {table.getCurrentCardOnTheTable().setColor("RED");
+                System.out.println("El color es Rojo");}
+            else if (randomNum == 1) {table.getCurrentCardOnTheTable().setColor("BLUE");
+                System.out.println("El color es Azul");}
+            else if (randomNum == 2) {table.getCurrentCardOnTheTable().setColor("YELLOW");
+                System.out.println("El color es Amarillo");}
+            else if (randomNum == 3) {table.getCurrentCardOnTheTable().setColor("GREEN");
+                System.out.println("El color es verde");}
+        }
         tableImageView.setImage(initialCard.getImage());
         printCardsHumanPlayer();
-
         threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer());
         Thread t = new Thread(threadSingUNOMachine, "ThreadSingUNO");
         t.start();
 
-        threadPlayMachine = new ThreadPlayMachine(this.table, this.machinePlayer, this.tableImageView, this.gameUno);
+        threadPlayMachine = new ThreadPlayMachine(this.table, this.machinePlayer, this.tableImageView, this.gameUno, this);
         threadPlayMachine.start();
         gameUno.setMachineThread(threadPlayMachine);
         gameUno.setListenersForShiftEvents(this);
@@ -110,6 +130,8 @@ public class GameUnoController implements ShiftEventListener {
                 table.verifyCardTypeOnTable(card);
                 System.out.println(gameUno.canThrowCard());
                 if(gameUno.canThrowCard()){
+                    System.out.println("Tiro carta");
+
                     // Aqui deberian verificar si pueden en la tabla jugar esa carta
                     System.out.println(card.getValue());
                     System.out.println(card.getColor());
@@ -118,22 +140,22 @@ public class GameUnoController implements ShiftEventListener {
                     humanPlayer.removeCard(findPosCardsHumanPlayer(card));
                     printCardsHumanPlayer();
 
+                    if(humanPlayer.getCardsPlayer().isEmpty()){
+                        System.out.println("Gano el humano");
+                        gameUno.setWinStatus(1);
+                        System.out.println("El win status es :"+ gameUno.getWinStatus());
+
+                    }
+                    updateWinStatus();
                     if(gameUno.HasToChangeColor()){
                         createButtonsForChangeColor();
                     }else{
-
-                        if(threadPlayMachine.getMachinePlayer().isOnTurn()){
+                        if(threadPlayMachine.getMachinePlayer().isOnTurn()) {
                             System.out.println("La maquina ya está jugando");
-
                             threadPlayMachine.setHasPlayerPlayed(true);
                         }
                     }
-
                 }
-
-
-
-
             });
 
             this.gridPaneCardsPlayer.add(cardImageView, i, 0);
@@ -177,6 +199,7 @@ public class GameUnoController implements ShiftEventListener {
     @FXML
     void onHandleNext(ActionEvent event) {
         if (this.posInitCardToShow < this.humanPlayer.getCardsPlayer().size() - 4) {
+            System.out.println("El tamaño de la baraja es :"+humanPlayer.getCardsPlayer().size());
             this.posInitCardToShow++;
             printCardsHumanPlayer();
         }
@@ -296,5 +319,27 @@ public class GameUnoController implements ShiftEventListener {
 
             threadPlayMachine.setHasPlayerPlayed(true);
         }
+    }
+    public void updateWinStatus(){
+
+        Platform.runLater(() -> {System.out.println("Entro al update winStatus");
+                    if(gameUno.getWinStatus()==1){
+                        winMessageLabel.setText("Ganaste");
+                        gridPaneCardsPlayer.setDisable(true);
+                        gridPaneCardsMachine.setDisable(true);
+                        deckButton.setDisable(true);
+                        oneButton.setDisable(true);
+
+                    }
+                    else if(gameUno.getWinStatus()==2){
+                        winMessageLabel.setText("Perdiste");
+                        gridPaneCardsPlayer.setDisable(true);
+                        gridPaneCardsMachine.setDisable(true);
+                        deckButton.setDisable(true);
+                        oneButton.setDisable(true);
+
+                    }; } );
+
+
     }
 }

@@ -39,6 +39,7 @@ public class Deck {
             }
         }
         Collections.shuffle(deckOfCards);
+
     }
 
     private String getCardValue(String name) {

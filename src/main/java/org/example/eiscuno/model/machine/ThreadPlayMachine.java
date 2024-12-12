@@ -1,6 +1,7 @@
 package org.example.eiscuno.model.machine;
 
 import javafx.scene.image.ImageView;
+import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.player.Player;
@@ -13,13 +14,15 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
     private ImageView tableImageView;
     private volatile boolean hasPlayerPlayed;
     private GameUno gameUno;
+    private GameUnoController gameUnoController;
 
-    public ThreadPlayMachine(Table table, Player machinePlayer, ImageView tableImageView, GameUno gameUno) {
+    public ThreadPlayMachine(Table table, Player machinePlayer, ImageView tableImageView, GameUno gameUno, GameUnoController gameUnoController) {
         this.table = table;
         this.machinePlayer = machinePlayer;
         this.tableImageView = tableImageView;
         this.hasPlayerPlayed = false;
         this.gameUno = gameUno;
+        this.gameUnoController = gameUnoController;
     }
 
     @Override
@@ -52,24 +55,36 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
 
             }
         }
+
     }
 
     private boolean putCardOnTheTable(){
-        System.out.println("Machine is choosing cards");
-        int index = (int) (Math.random() * machinePlayer.getCardsPlayer().size());
-        Card card = machinePlayer.getCard(index);
-        card = chooseAllowedCard(card);
-        if(!(card == null)){
-            gameUno.playCard(card);
-            tableImageView.setImage(card.getImage());
-            machinePlayer.removeCard(machinePlayer.getCardsPlayer().indexOf(card));
+        if(!machinePlayer.getCardsPlayer().isEmpty()){
+            System.out.println("Machine is choosing cards");
+            int index = (int) (Math.random() * machinePlayer.getCardsPlayer().size());
+            Card card = machinePlayer.getCard(index);
+            card = chooseAllowedCard(card);
+            if (!(card == null)) {
+                gameUno.playCard(card);
+                tableImageView.setImage(card.getImage());
+                machinePlayer.removeCard(machinePlayer.getCardsPlayer().indexOf(card));
 
 
+            }
+            System.out.println("Machine cards after playing " + machinePlayer.getStringOfOwnCards());
+            System.out.println("La maquina gano ");
+            System.out.println(machinePlayer.getCardsPlayer().isEmpty());
+            if (machinePlayer.getCardsPlayer().isEmpty()){
+                System.out.println("Gano la maquina");
+                gameUno.setWinStatus(2);
+                System.out.println("El winstatus es " + gameUno.getWinStatus());
+                gameUnoController.updateWinStatus();
+
+            }
+
+            return machinePlayer.isOnTurn();
         }
-        System.out.println("Machine cards after playing " + machinePlayer.getStringOfOwnCards());
-
-        return machinePlayer.isOnTurn();
-
+        return true;
     }
 
     private Card chooseAllowedCard(Card card){

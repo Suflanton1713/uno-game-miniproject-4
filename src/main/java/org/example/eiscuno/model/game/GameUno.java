@@ -24,6 +24,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     public ShiftEventManager events;
     private boolean canThrowCard;
     private boolean hasToChangeColor;
+    private int  winStatus;
 
     /**
      * Constructs a new GameUno instance.
@@ -34,6 +35,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      * @param table         The table where cards are placed during the game.
      */
     public GameUno(Player humanPlayer, Player machinePlayer, Deck deck, Table table) {
+        winStatus=0;// 0 normal game, 1 human win, 2 machine win
         this.humanPlayer = humanPlayer;
         this.machinePlayer = machinePlayer;
         this.deck = deck;
@@ -219,4 +221,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     public Table getTable() {
         return table;
     }
+    public void setWinStatus(int winStatus) {this.winStatus = winStatus;}
+    public int getWinStatus() {return winStatus;}
+
+
 }

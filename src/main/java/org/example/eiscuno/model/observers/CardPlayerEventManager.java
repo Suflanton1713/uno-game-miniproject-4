@@ -13,7 +13,9 @@ public class CardPlayerEventManager {
     public CardPlayerEventManager(String... operations) {
         for (String operation : operations) {
             this.listeners.put(operation, new ArrayList<>());
+
         }
+
     }
 
     public void belongToCardEvent(String eventType, CardPlayedEventListener listener) {
@@ -27,7 +29,7 @@ public class CardPlayerEventManager {
     }
 
     public void notifyCanPlayCard(String eventType) {
-        System.out.println(getListeners());
+        System.out.println("Estos son los listeners"+getListeners());
         List<CardPlayedEventListener> users = listeners.get(eventType);
         for (CardPlayedEventListener listener : users) {
             listener.canPlayCardUpdate(eventType);
@@ -35,6 +37,7 @@ public class CardPlayerEventManager {
     }
 
     public void notifyCantPlayCard(String eventType, Card card) {
+        System.out.println("No se puede tirar carta");
         System.out.println(getListeners());
         List<CardPlayedEventListener> users = listeners.get(eventType);
         for (CardPlayedEventListener listener : users) {
@@ -43,6 +46,7 @@ public class CardPlayerEventManager {
     }
 
     public void notifyDrawCards(String eventType, int amount) {
+        System.out.println("Arroje carta");
         System.out.println(getListeners());
         List<CardPlayedEventListener> users = listeners.get(eventType);
         System.out.println(users);
