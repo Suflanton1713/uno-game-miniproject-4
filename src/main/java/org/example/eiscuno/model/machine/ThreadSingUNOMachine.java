@@ -43,6 +43,6 @@ public class ThreadSingUNOMachine implements Runnable{
             }
             gameUnoController.printCardsHumanPlayer();
 
-        } else if (gameUno.getSingUno()) {gameUno.changeSingUno();}
+        }
     }
 }

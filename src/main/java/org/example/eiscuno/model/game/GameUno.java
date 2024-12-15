@@ -53,8 +53,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      */
     @Override
     public void startGame() {
-        for (int i = 0; i < 10; i++) {
-            if (i < 5) {
+        for (int i = 0; i < 4; i++) {
+            if (i < 2) {
                 humanPlayer.addCard(this.deck.takeCard());
             } else {
                 machinePlayer.addCard(this.deck.takeCard());
@@ -226,8 +226,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     public void setWinStatus(int winStatus) {this.winStatus = winStatus;}
     public int getWinStatus() {return winStatus;}
     public boolean getSingUno(){return singUno;}
-    public void changeSingUno(){if (singUno){singUno = false;}
-        else singUno = true;
+    public void setSingUno(boolean val){singUno = val;
+
         System.out.println("Sing uno es:"+singUno);
     }
 

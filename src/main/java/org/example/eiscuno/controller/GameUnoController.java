@@ -159,6 +159,7 @@ public class GameUnoController implements ShiftEventListener {
             });
 
             this.gridPaneCardsPlayer.add(cardImageView, i, 0);
+            gameUno.setSingUno(false);
         }
         });
     }
@@ -236,7 +237,7 @@ public class GameUnoController implements ShiftEventListener {
      */
     @FXML
     void onHandleUno() {
-        if(humanPlayer.getCardsPlayer().size()==1){gameUno.changeSingUno();}
+        if(humanPlayer.getCardsPlayer().size()==1){gameUno.setSingUno(true);}
     }
 
     @Override
