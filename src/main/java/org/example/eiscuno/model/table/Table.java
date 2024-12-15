@@ -1,5 +1,6 @@
 package org.example.eiscuno.model.table;
 
+import javafx.scene.control.Tab;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.observers.CardPlayerEventManager;
@@ -88,11 +89,14 @@ public class Table{
             case "Wild":
                 System.out.println("Changing colors");
                 events.notifyWildCard("wild");
+                break;
             case "FourWildDraw":
                 System.out.println("Taking four cards...");
                 events.notifyDrawCards("drawCards", 4);
+                break;
             default:
                 System.out.println("Not a Wild card");
+                break;
         }
 
         System.out.println(("CARD COLOR: " + cardAdded.getColor()));
@@ -120,6 +124,10 @@ public class Table{
                 System.out.println("Just a number card...");
                 break;
         }
+    }
+
+    public void setColorForTable(String color){
+        this.getCurrentCardOnTheTable().setColor(color);
     }
 
 

@@ -20,6 +20,7 @@ public class Card {
      * @param value of the card
      */
     public Card(String url, String value, String color) {
+        System.out.println(url);
         this.url = url;
         this.value = value;
         this.color = color;

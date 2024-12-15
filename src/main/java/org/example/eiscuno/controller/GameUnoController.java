@@ -243,7 +243,7 @@ public class GameUnoController implements ShiftEventListener {
     }
 
     private void createButtonsForChangeColor(){
-
+        deckButton.setDisable(true);
         // Crear los botones
         Button btnAzul = new Button("Azul");
         Button btnRojo = new Button("Rojo");
@@ -277,7 +277,7 @@ public class GameUnoController implements ShiftEventListener {
 
     private void handleChangerColorButtonClick(String color) {
         System.out.println("Se presionó el botón: " + color);
-        table.getCurrentCardOnTheTable().setColor(color);
+        table.setColorForTable(color);
         System.out.println(table.getCurrentCardOnTheTable().getColor());
 
         List<Node> botonesAEliminar = new ArrayList<>();
@@ -289,12 +289,19 @@ public class GameUnoController implements ShiftEventListener {
         }
         centralPane.getChildren().removeAll(botonesAEliminar);
         gameUno.setHasToChangeColor(false);
-        gameUno.events.notifyShiftEvent("onturn");
-        gameUno.events.notifyShiftToController("turnChangerController");
-        if(threadPlayMachine.getMachinePlayer().isOnTurn()){
-            System.out.println("La maquina ya está jugando");
+        System.out.println("Es wild draw");
+        System.out.println(!(table.getCurrentCardOnTheTable().getValue().equals("Wild")));
+        System.out.println("Solo wild");
+        System.out.println((table.getCurrentCardOnTheTable().getValue().equals("Wild")));
+        System.out.println("");
 
+        if(machinePlayer.isOnTurn()){
+            deckButton.setDisable(true);
+            System.out.println("La maquina ya está jugando");
             threadPlayMachine.setHasPlayerPlayed(true);
+        }else{
+            deckButton.setDisable(false);
         }
+
     }
 }
