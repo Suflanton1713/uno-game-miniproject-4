@@ -87,7 +87,7 @@ public class GameUnoController implements ShiftEventListener {
         }
         tableImageView.setImage(initialCard.getImage());
         printCardsHumanPlayer();
-        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer());
+        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno);
         Thread t = new Thread(threadSingUNOMachine, "ThreadSingUNO");
         t.start();
 
@@ -115,7 +115,7 @@ public class GameUnoController implements ShiftEventListener {
     /**
      * Prints the human player's cards on the grid pane.
      */
-    private void printCardsHumanPlayer() {
+    public void printCardsHumanPlayer() {
         Platform.runLater(() -> {
         this.gridPaneCardsPlayer.getChildren().clear();
         Card[] currentVisibleCardsHumanPlayer = this.gameUno.getCurrentVisibleCardsHumanPlayer(this.posInitCardToShow);
@@ -236,7 +236,7 @@ public class GameUnoController implements ShiftEventListener {
      */
     @FXML
     void onHandleUno() {
-
+        if(humanPlayer.getCardsPlayer().size()==1){gameUno.changeSingUno();}
     }
 
     @Override

@@ -25,6 +25,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     private boolean canThrowCard;
     private boolean hasToChangeColor;
     private int  winStatus;
+    private boolean singUno;
 
     /**
      * Constructs a new GameUno instance.
@@ -43,6 +44,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         this.events = new ShiftEventManager("onturn", "offturn", "turnChangerController");
         this.hasToChangeColor = false;
         this.canThrowCard = true;
+        this.singUno = false;
     }
 
     /**
@@ -223,6 +225,11 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     }
     public void setWinStatus(int winStatus) {this.winStatus = winStatus;}
     public int getWinStatus() {return winStatus;}
+    public boolean getSingUno(){return singUno;}
+    public void changeSingUno(){if (singUno){singUno = false;}
+        else singUno = true;
+        System.out.println("Sing uno es:"+singUno);
+    }
 
 
 }
