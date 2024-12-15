@@ -25,7 +25,6 @@
             <Button fx:id="ButtonUno" layoutX="50.0" layoutY="150.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="50.0" prefWidth="100.0" />
          </children>
          <BorderPane.margin>
-            <Insets />
          </BorderPane.margin>
       </Pane>
    </right>
@@ -58,7 +57,6 @@
             <ImageView fitHeight="83.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" />
             <Label text="5">
                <HBox.margin>
-                  <Insets top="50.0" />
                </HBox.margin>
             </Label>
             <Button mnemonicParsing="false" text="Salir" />
@@ -71,7 +69,6 @@
             <ImageView fitHeight="85.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" />
             <Label text="6">
                <HBox.margin>
-                  <Insets top="50.0" />
                </HBox.margin>
             </Label>
             <Button mnemonicParsing="false" onAction="#onHandleBack" prefWidth="74.0" style="-fx-background-color: red;" text="Anterior" textFill="WHITE">
