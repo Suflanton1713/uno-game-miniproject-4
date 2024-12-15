@@ -293,6 +293,7 @@ public class GameUnoController implements ShiftEventListener {
         gameUno.events.notifyShiftToController("turnChangerController");
         if(threadPlayMachine.getMachinePlayer().isOnTurn()){
             System.out.println("La maquina ya está jugando");
+            System.out.println("hi");
 
             threadPlayMachine.setHasPlayerPlayed(true);
         }
