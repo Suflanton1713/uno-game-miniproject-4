@@ -87,7 +87,7 @@ public class GameUnoController implements ShiftEventListener {
         }
         tableImageView.setImage(initialCard.getImage());
         printCardsHumanPlayer();
-        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno);
+        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno, this.machinePlayer.getCardsPlayer());
         Thread t = new Thread(threadSingUNOMachine, "ThreadSingUNO");
         t.start();
 
@@ -159,10 +159,14 @@ public class GameUnoController implements ShiftEventListener {
             });
 
             this.gridPaneCardsPlayer.add(cardImageView, i, 0);
-            gameUno.setSingUno(false);
+
         }
         });
+
     }
+
+
+
 
     /**
      * Finds the position of a specific card in the human player's hand.
@@ -223,6 +227,8 @@ public class GameUnoController implements ShiftEventListener {
 
         gameUno.events.notifyShiftEvent("onturn");
         gameUno.events.notifyShiftToController("turnChangerController");
+        gameUno.setSingUno(false);
+
 
         if(threadPlayMachine.getMachinePlayer().isOnTurn()){
             System.out.println("La maquina ya está jugando");
@@ -238,6 +244,7 @@ public class GameUnoController implements ShiftEventListener {
     @FXML
     void onHandleUno() {
         if(humanPlayer.getCardsPlayer().size()==1){gameUno.setSingUno(true);}
+        else if (machinePlayer.getCardsPlayer().size()==1) {gameUno.setSingUno(true);}
     }
 
     @Override
