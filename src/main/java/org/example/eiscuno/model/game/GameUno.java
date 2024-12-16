@@ -212,7 +212,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         return hasToChangeColor;
     }
 
-    public void setHasToChangeColor(boolean hadToChangeColor) {
+    public void setHasToChangeColor(boolean hadToChangeColor){
         this.hasToChangeColor = hadToChangeColor;
     }
 
