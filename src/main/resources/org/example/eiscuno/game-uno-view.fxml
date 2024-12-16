@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,38 +11,33 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="BackgroundGame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.eiscuno.controller.GameUnoController">
+<BorderPane fx:id="centralPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.eiscuno.controller.GameUnoController">
    <left>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="306.0" prefWidth="275.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="deckButton" layoutX="50.0" layoutY="30.0" mnemonicParsing="false" onAction="#onHandleTakeCard" prefHeight="149.0" prefWidth="100.0" text="Baraja" />
+            <Button fx:id="deckButton" layoutX="207.0" layoutY="143.0" mnemonicParsing="false" onAction="#onHandleTakeCard" prefHeight="80.0" prefWidth="58.0" text="Baraja" />
          </children>
       </Pane>
    </left>
    <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="358.0" prefWidth="202.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ButtonUno" layoutX="50.0" layoutY="150.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="50.0" prefWidth="100.0" />
+            <Button fx:id="ButtonUno" layoutX="-25.0" layoutY="270.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="72.0" prefWidth="100.0" />
          </children>
          <BorderPane.margin>
          </BorderPane.margin>
       </Pane>
    </right>
    <center>
-      <Pane prefHeight="399.0" prefWidth="426.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="341.0" prefWidth="342.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="tableImageView" fitHeight="149.0" fitWidth="100.0" layoutX="50.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tableImageView" fitHeight="116.0" fitWidth="67.0" layoutX="99.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </center>
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="EISC Uno" textFill="RED">
-               <font>
-                  <Font name="Berlin Sans FB Bold" size="18.0" />
-               </font>
-            </Label>
             <GridPane fx:id="gridPaneCardsMachine">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -54,39 +49,36 @@
                   <RowConstraints />
                </rowConstraints>
             </GridPane>
-            <ImageView fitHeight="83.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" />
-            <Label text="5">
-               <HBox.margin>
-               </HBox.margin>
-            </Label>
             <Button mnemonicParsing="false" text="Salir" />
          </children>
       </HBox>
    </top>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="194.0" prefWidth="800.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="85.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" />
-            <Label text="6">
-               <HBox.margin>
-               </HBox.margin>
-            </Label>
             <Button mnemonicParsing="false" onAction="#onHandleBack" prefWidth="74.0" style="-fx-background-color: red;" text="Anterior" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB" size="12.0" />
-               </font></Button>
-            <GridPane fx:id="gridPaneCardsPlayer">
+               </font>
+               <HBox.margin>
+                  <Insets right="50.0" top="100.0" />
+               </HBox.margin></Button>
+            <GridPane fx:id="gridPaneCardsPlayer" prefHeight="196.0" prefWidth="360.0">
               <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="90.4000244140625" minWidth="10.0" prefWidth="70.9999755859375" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="141.59999084472656" minWidth="10.0" prefWidth="67.99998779296875" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="176.7999267578125" minWidth="10.0" prefWidth="69.60001220703126" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="229.59996032714844" minWidth="10.0" prefWidth="69.40001220703127" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="323.9999633789063" minWidth="10.0" prefWidth="71.20002441406251" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Button mnemonicParsing="false" onAction="#onHandleNext" prefWidth="74.0" style="-fx-background-color: RED;" text="Siguiente" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#onHandleNext" prefWidth="74.0" style="-fx-background-color: RED;" text="Siguiente" textFill="WHITE">
+               <HBox.margin>
+                  <Insets top="100.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </bottom>

@@ -24,6 +24,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     public ShiftEventManager events;
     private boolean canThrowCard;
     private boolean hasToChangeColor;
+    private int  winStatus;
+    private boolean singUno;
 
     /**
      * Constructs a new GameUno instance.
@@ -34,6 +36,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      * @param table         The table where cards are placed during the game.
      */
     public GameUno(Player humanPlayer, Player machinePlayer, Deck deck, Table table) {
+        winStatus=0;// 0 normal game, 1 human win, 2 machine win
         this.humanPlayer = humanPlayer;
         this.machinePlayer = machinePlayer;
         this.deck = deck;
@@ -41,6 +44,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         this.events = new ShiftEventManager("onturn", "offturn", "turnChangerController");
         this.hasToChangeColor = false;
         this.canThrowCard = true;
+        this.singUno = false;
     }
 
     /**
@@ -49,8 +53,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      */
     @Override
     public void startGame() {
-        for (int i = 0; i < 10; i++) {
-            if (i < 5) {
+        for (int i = 0; i < 4; i++) {
+            if (i < 2) {
                 humanPlayer.addCard(this.deck.takeCard());
             } else {
                 machinePlayer.addCard(this.deck.takeCard());
@@ -124,7 +128,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     @Override
     public Card[] getCurrentVisibleCardsHumanPlayer(int posInitCardToShow) {
         int totalCards = this.humanPlayer.getCardsPlayer().size();
-        int numVisibleCards = Math.min(4, totalCards - posInitCardToShow);
+        int numVisibleCards = Math.min(8, totalCards - posInitCardToShow);
         Card[] cards = new Card[numVisibleCards];
 
         for (int i = 0; i < numVisibleCards; i++) {
@@ -219,4 +223,13 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     public Table getTable() {
         return table;
     }
+    public void setWinStatus(int winStatus) {this.winStatus = winStatus;}
+    public int getWinStatus() {return winStatus;}
+    public boolean getSingUno(){return singUno;}
+    public void setSingUno(boolean val){singUno = val;
+
+        System.out.println("Sing uno es:"+singUno);
+    }
+
+
 }
