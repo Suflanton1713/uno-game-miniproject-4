@@ -592,6 +592,10 @@ public class GameUnoController implements ShiftEventListener {
         // Si es el turno de la máquina, deshabilitar el botón de la baraja
         if (machinePlayer.isOnTurn()) {
             deckButton.setDisable(true);
+            threadPlayMachine.setHasPlayerPlayed(true);
+        }
+        else{
+                deckButton.setDisable(false);
         }
     }
 
