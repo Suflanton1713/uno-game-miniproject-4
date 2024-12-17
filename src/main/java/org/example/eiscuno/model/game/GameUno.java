@@ -103,6 +103,9 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         this.table.addCardOnTheTable(card);
         events.notifyShiftEvent("onturn");
         events.notifyShiftToController("turnChangerController");
+        System.out.println(machinePlayer.getStringOfOwnCards());
+        setHumanSingUno(false);
+        setMachineSingUno(false);
     }
 
     public void passTurnWhenUnoSung() {

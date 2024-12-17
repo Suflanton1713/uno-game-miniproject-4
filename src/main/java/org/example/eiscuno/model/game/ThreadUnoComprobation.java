@@ -14,12 +14,10 @@ public class ThreadUnoComprobation implements Runnable{
     private GameUnoController gameUnoController;
     private GameUno gameUno;
     private ArrayList<Card> cardsMachine;
-    private Player humanPlayer;
-    private Player machinePlayer;
-    private boolean cardsAddedToMachine;
-    private boolean cardsAddedToPlayer;
-    private int actualTurnStatus;
-    private int turnWhenCardsAdded;
+    private boolean canPlayerSingUno;
+    private boolean canMachineSingUno;
+
+
 
 
     public ThreadUnoComprobation(ArrayList<Card> cardsPlayer, Deck deck, GameUnoController gameUnoController, GameUno gameUno, ArrayList<Card> cardsMachine, Player humanPlayer, Player machinePlayer) {
@@ -28,27 +26,37 @@ public class ThreadUnoComprobation implements Runnable{
         this.gameUnoController = gameUnoController;
         this.gameUno=gameUno;
         this.cardsMachine = cardsMachine;
-        this.humanPlayer = humanPlayer;
-        this.machinePlayer = machinePlayer;
-        cardsAddedToMachine = false;
-        cardsAddedToPlayer = false;
-        actualTurnStatus = 1;
-        turnWhenCardsAdded = 0;
+        canPlayerSingUno = true;
+        canMachineSingUno = true;
     }
 
     @Override
     public void run(){
-        double i=0;
+        gameUnoController.getOneButton().setDisable(true);
         while (true){
             try {
-                i=Math.random() * 2000;
-                Thread.sleep((long) (i));
+                Thread.sleep((long) (100));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
+            if(cardsPlayer.size()>=2 || cardsMachine.size()>=2){
+                canMachineSingUno = true;
+                canPlayerSingUno = true;
+                gameUnoController.getOneButton().setDisable(true);
+            }
+
+
+
+
 
             if(cardsPlayer.size()==1 || cardsMachine.size()==1){
+
+                if(canPlayerSingUno || canMachineSingUno){
+                    System.out.println("Se habilita el boton");
+                    gameUnoController.getOneButton().setDisable(false);
+                }
+
                 hasOneCardTheHumanPlayer();
                 machinePlayerOnlyHasOneCard();
             }
@@ -56,7 +64,7 @@ public class ThreadUnoComprobation implements Runnable{
     }
 
     private void hasOneCardTheHumanPlayer(){
-        if(cardsPlayer.size() == 1 && !gameUno.getHumanSingUno() && gameUno.isMachineSingUno()){
+        if(cardsPlayer.size() == 1 && !gameUno.getHumanSingUno() && gameUno.isMachineSingUno() && canMachineSingUno){
             System.out.println("Entro al hasOneCardTheHumanPlayer");
             System.out.println("UNO");
             for (int i=0; i<2;i++){
@@ -64,24 +72,25 @@ public class ThreadUnoComprobation implements Runnable{
             }
             gameUnoController.printCardsHumanPlayer();
 
-            cardsAddedToPlayer = true;
+            canMachineSingUno = false;
+            gameUnoController.getOneButton().setDisable(true);
 
-            turnWhenCardsAdded = 1;
-
-
+        }else if(cardsPlayer.size() == 1 && gameUno.getHumanSingUno()){
+            gameUnoController.getOneButton().setDisable(true);
         }
     }
     private void machinePlayerOnlyHasOneCard(){
-        if(cardsMachine.size() == 1 && !gameUno.isMachineSingUno() && gameUno.getHumanSingUno()){
+        if(cardsMachine.size() == 1 && !gameUno.isMachineSingUno() && gameUno.getHumanSingUno() &&canPlayerSingUno){
             System.out.println("UNO");
             for (int i=0; i<2;i++){
                 cardsMachine.add(deck.takeCard());
             }
             gameUnoController.printCardsHumanPlayer();
-            cardsAddedToMachine = true;
+            canPlayerSingUno = false;
+            gameUnoController.getOneButton().setDisable(true);
 
-            turnWhenCardsAdded = 2;
-
+        }else if(cardsMachine.size() == 1 && gameUno.isMachineSingUno()){
+            gameUnoController.getOneButton().setDisable(true);
         }
     }
 }

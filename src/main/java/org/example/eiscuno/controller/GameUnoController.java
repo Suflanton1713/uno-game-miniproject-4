@@ -368,4 +368,12 @@ public class GameUnoController implements ShiftEventListener {
 
 
     }
+
+    public Button getOneButton() {
+        return oneButton;
+    }
+
+    public void setOneButton(Button oneButton) {
+        this.oneButton = oneButton;
+    }
 }
