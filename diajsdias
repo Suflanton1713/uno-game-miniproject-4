@@ -1,0 +1,246 @@
+[33mcommit 65e61f56af87cbee11ad68808fe50cb2986a3fa1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mjdrl[m[33m)[m
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 17 12:59:09 2024 -0500
+
+    Ola
+
+[33mcommit 338acec71c938d5582a8e988e27a6f4ef872b05c[m
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 17 12:13:01 2024 -0500
+
+    Upload
+
+[33mcommit d73d74910134f4143c0fdf0b897717f678a306f7[m
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 17 10:00:13 2024 -0500
+
+    Add music on menu
+
+[33mcommit 8db9310d90e00a4f9346c07b61581798c6220c71[m
+Merge: c521737 1c3fa98
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 17 09:02:09 2024 -0500
+
+    Fusion changes
+
+[33mcommit c5217376ed92d1e8211ec35b485d8cb273b9cdfe[m
+Merge: dcd0fdc 1a26760
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 17 08:24:58 2024 -0500
+
+    Merged completed with DAR
+
+[33mcommit dcd0fdcc2b3d4be622d0e7e0de6d36140b687038[m
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 17 08:21:04 2024 -0500
+
+    Full animation for player
+
+[33mcommit 1c3fa98a3848a3d1d94c22eb8c9b28f01a3267fb[m[33m ([m[1;31morigin/laqg[m[33m)[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Tue Dec 17 06:09:52 2024 -0500
+
+    Some bugs corrections
+
+[33mcommit 35a45941c8e686cee10decb2530b42f4cdd1b680[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Tue Dec 17 05:55:00 2024 -0500
+
+    Unitary tests done and bugs solution
+
+[33mcommit 7f79060eaf6777d7999aa9d0fa0077793093550c[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Tue Dec 17 01:23:14 2024 -0500
+
+    Factory pattern design done
+
+[33mcommit f2a0c5b5dc2d5ec70c4fe88c10a5e3722c87e7c5[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 22:49:36 2024 -0500
+
+    Uno sing done pls help
+
+[33mcommit e79d88de2fead777adc2b214ca47e6b6c2068788[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 21:59:58 2024 -0500
+
+    Uno sung done
+
+[33mcommit 17fc21807e95be31910c21f8cb5d096c3e7ee9d3[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 20:52:05 2024 -0500
+
+    One sung bugs corrections
+
+[33mcommit 37b47ab9140ef71558eba49fe1888f8cd00ba681[m
+Merge: ad4b398 1a26760
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 19:16:58 2024 -0500
+
+    Some bugs
+
+[33mcommit ad4b398a56c6cdffdce0ceb6f7a8376875bf4bff[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 19:15:31 2024 -0500
+
+    Save commit
+
+[33mcommit 1a2676002fd2fe0305884c25cb6133fb79bad2ae[m[33m ([m[1;31morigin/DAR[m[33m)[m
+Author: Daniel Andrade <andrade.daniel@correounivalle.edu.co>
+Date:   Mon Dec 16 19:06:40 2024 -0500
+
+    Minor changes
+
+[33mcommit 15c1fa999e4e3aeb27175754aadd4459981d57bc[m
+Merge: 98c561c 149614f
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 18:29:17 2024 -0500
+
+    Singin one and machine working
+
+[33mcommit 149614fe508d1161c2717af1290f2864ac53268b[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 18:05:14 2024 -0500
+
+    H
+
+[33mcommit 98c561c5792c7b37c9c1fdedb762cf04f9c23b6e[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 18:00:14 2024 -0500
+
+    A
+
+[33mcommit 92b2c48f26cb7f03fdccc9ea37cdd9a205dba58c[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 17:56:35 2024 -0500
+
+    Pull for laqg
+
+[33mcommit 5a8cf4f5f069a47864946bbb387440f31fd670e9[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 16 17:49:25 2024 -0500
+
+    Prepull commit
+
+[33mcommit 4cb46ad32a30f44c4030acbfbd3e2d334d8ad241[m
+Merge: 90b6b27 ca94eb3
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Mon Dec 16 11:43:43 2024 -0500
+
+    Animation partialy
+
+[33mcommit 47abf6b37d8094932f4708ed36e0bc8e25881a46[m
+Merge: eb47917 f7a75e0
+Author: Daniel Andrade <andrade.daniel@correounivalle.edu.co>
+Date:   Sun Dec 15 22:59:39 2024 -0500
+
+    Merge with laqg
+
+[33mcommit eb479174cdc1fe23da1db16234b0a0c698cf8bdc[m
+Author: Daniel Andrade <andrade.daniel@correounivalle.edu.co>
+Date:   Sun Dec 15 22:45:10 2024 -0500
+
+    Minor Changes on sing uno
+
+[33mcommit 90b6b2703e841e1e1f03508daa2855b09987eb0c[m
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Sun Dec 15 18:23:19 2024 -0500
+
+    Uploaded parcial Mario cards
+
+[33mcommit e87ae79d5af3fddfe168e93e5b1420595b8adbec[m
+Merge: 9e2cca6 9354214
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Sun Dec 15 18:22:20 2024 -0500
+
+    Uploaded parcial Mario cards
+
+[33mcommit ca94eb32b17fcb2c076a567df5a03cf58fb01819[m
+Author: Daniel Andrade <andrade.daniel@correounivalle.edu.co>
+Date:   Sun Dec 15 10:50:56 2024 -0500
+
+    You can sing uno for yourself
+
+[33mcommit f7a75e02aa9bf5454d929752680ed49d396066e9[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Sun Dec 15 05:11:13 2024 -0500
+
+    Uno gameplay partially done
+
+[33mcommit 8527209b1c9a9443938ab97bad4a71d898a15db9[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Sun Dec 15 05:09:03 2024 -0500
+
+    Uno gameplay done
+
+[33mcommit a2e4783b5552bce26c6090c8fa7ade54038ba0d0[m
+Author: Daniel Andrade <andrade.daniel@correounivalle.edu.co>
+Date:   Sun Dec 15 00:07:51 2024 -0500
+
+    Working on the singing Uno conditions
+
+[33mcommit 7ec6e64f90a11e855ad5a9d23e957658defbc3e3[m
+Author: Daniel Andrade <andrade.daniel@correounivalle.edu.co>
+Date:   Wed Dec 11 19:13:57 2024 -0500
+
+    New changes in the win cinditions
+
+[33mcommit ecea0ffc4913ce5263b755d2f1a549dcc3c7fcf5[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Wed Dec 11 18:19:05 2024 -0500
+
+    Presaving push
+
+[33mcommit d8f247158640bcae09162bbf77f270ba055848a6[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Wed Dec 11 18:18:30 2024 -0500
+
+    Presaving push
+
+[33mcommit 9e2cca682dabcab33d6586eb58d6fec028e80a07[m
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 10 11:51:32 2024 -0500
+
+    Fusion changes
+
+[33mcommit c7885ccaff580d379617fa0f5b02ded579cf8d7f[m
+Author: Juan Rincón <juandavidrinconl@gmail.com>
+Date:   Tue Dec 10 08:47:23 2024 -0500
+
+    Uploaded images, styles und stages of design in WelcomeView and GameView
+
+[33mcommit 93542141f31edd5c8be65487f200f4cd7467a790[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Mon Dec 9 04:58:29 2024 -0500
+
+    Skip, reverse, drawTwo cards working for machine and human
+
+[33mcommit 8f6bacd99f8b737867c7f7b2bb1dfe40cff2bc5c[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Sun Dec 8 21:36:38 2024 -0500
+
+    Observer design-pattern and turn system done
+
+[33mcommit b1af356926df740795ead68eb96893a5491c76f9[m
+Author: Libardo Alejandro Quintero Gómez <quintero.libardo@correounivalle.edu.co>
+Date:   Fri Dec 6 04:38:22 2024 -0500
+
+    Observer design pattern partialy working
+
+[33mcommit 5a12091929808fe3406436fe4a6c834a095b2aad[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: a1f1e72 2149b72
+Author: Fabian Stiven Valencia Cordoba <51931450+fabiansvc@users.noreply.github.com>
+Date:   Thu Nov 28 15:44:01 2024 -0500
+
+    Merge pull request #1 from fabiansvc/test-threads
+    
+    Threads implemented
+
+[33mcommit 2149b72b646ce3c4de9af4415c48a7caeb4df655[m
+Author: Fabian Stiven Valencia Cordoba <fabian.cordoba@correounivalle.edu.co>
+Date:   Wed Nov 27 15:56:37 2024 -0500
+
+    Threads implemented
+
+[33mcommit a1f1e72a7f4cfbf0b468869d538bebe343bceb30[m
+Author: Fabian Valencia <fabian.cordoba@correounivalle.edu.
