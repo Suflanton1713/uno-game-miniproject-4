@@ -341,11 +341,12 @@ public class GameUnoController implements ShiftEventListener {
 
     }
 
-    private void handleChangerColorButtonClick(String color) {
+    private void handleChangerColorButtonClick(String color){
         deckButton.setDisable(false);
         System.out.println("Se presionó el botón: " + color);
         table.setColorForTable(color);
         System.out.println(table.getCurrentCardOnTheTable().getColor());
+        tableImageView.setImage(table.getCurrentCardOnTheTable().getImage());
 
         List<Node> botonesAEliminar = new ArrayList<>();
 

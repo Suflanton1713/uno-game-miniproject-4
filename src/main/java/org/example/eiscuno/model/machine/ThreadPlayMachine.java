@@ -67,8 +67,8 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                     }
                     if(gameUno.HasToChangeColor()){
                         table.setColorForTable(chooseColorForMachine());
+                        tableImageView.setImage(table.getCurrentCardOnTheTable().getImage());
                         gameUno.setHasToChangeColor(false);
-
                     }
                 }
 

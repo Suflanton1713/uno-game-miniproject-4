@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1ee8ff40-bbdd-4aec-a3d2-cf5cc45130ec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,6 +199,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.GameUnoTest.gettingNullWhenThereIsNoCardInDeckWhenSingingOne" />
+      <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
+      <item itemvalue="JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" />
+      <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" />
+      <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenPlayingCard" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.GameUnoTest.gettingNullWhenThereIsNoCardInDeckWhenSingingOne" />
