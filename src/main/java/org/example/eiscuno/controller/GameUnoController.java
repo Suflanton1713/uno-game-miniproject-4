@@ -169,6 +169,7 @@ public class GameUnoController implements ShiftEventListener {
                 cardImageView.setOnMouseClicked((MouseEvent event) -> {
                     table.verifyCardTypeOnTable(card);
                     if (gameUno.canThrowCard()) {
+                        animateCardToCenterWithRotation(cardImageView, card);
                         gameUno.playCard(card);
                         tableImageView.setImage(card.getImage());
                         humanPlayer.removeCard(findPosCardsHumanPlayer(card));
@@ -245,16 +246,18 @@ public class GameUnoController implements ShiftEventListener {
     @FXML
     void onHandleTakeCard(ActionEvent event) {
         if (machinePlayer.isOnTurn()) {
-            machinePlayer.drawsCard(deck, 1);
-        } else {
-            // Toma una carta del mazo
             Card newCard = deck.takeCard();
-
-            // Usa directamente el ImageView asociado a la carta para la animación
             ImageView cardImageView = newCard.getCard();
 
-            // Anima la carta para mostrarla en el mazo del jugador
-            animateCardToPlayerDeck(cardImageView, newCard);
+            animateCardToGridPane(cardImageView, newCard, gridPaneCardsMachine, machinePlayer);
+
+            machinePlayer.drawsCard(deck, 1);
+        } else {
+            Card newCard = deck.takeCard();
+            ImageView cardImageView = newCard.getCard();
+
+            // Animar la carta hacia el jugador
+            animateCardToGridPane(cardImageView, newCard, gridPaneCardsPlayer, humanPlayer);
         }
 
         // Actualiza la visualización de las cartas del jugador
@@ -282,7 +285,7 @@ public class GameUnoController implements ShiftEventListener {
         if(humanPlayer.getCardsPlayer().size()==1){gameUno.setSingUno(true);}
     }
 
-    private void animateCardToPlayerDeck(ImageView cardImageView, Card newCard) {
+    private void animateCardToGridPane(ImageView cardImageView, Card newCard, GridPane gridPaneTarget, Player targetPlayer) {
         isAnimating = true;
 
         // Coordenadas iniciales: desde el botón de la baraja
@@ -290,32 +293,119 @@ public class GameUnoController implements ShiftEventListener {
         double startX = deckBounds.getMinX();
         double startY = deckBounds.getMinY();
 
-        // Añadir la carta al contenedor principal (centralPane)
-        cardImageView.setLayoutX(startX);
-        cardImageView.setLayoutY(startY);
-        centralPane.getChildren().add(cardImageView);
+        // Clonar el ImageView para animar
+        ImageView animatedCard = new ImageView(cardImageView.getImage());
+        animatedCard.setFitHeight(90);
+        animatedCard.setFitWidth(70);
+        animatedCard.setLayoutX(startX);
+        animatedCard.setLayoutY(startY);
 
-        // Coordenadas del destino: el último hueco del GridPane
-        Bounds gridBounds = gridPaneCardsPlayer.localToScene(gridPaneCardsPlayer.getBoundsInLocal());
-        double targetX = gridBounds.getMinX() + (humanPlayer.getCardsPlayer().size() * 75); // Ajusta el espaciado
+        // Añadir la carta animada al contenedor principal
+        centralPane.getChildren().add(animatedCard);
+
+        // Calcular las coordenadas del destino en el GridPane
+        int nextColumn = gridPaneTarget.getChildren().size(); // Nueva columna basada en el número de cartas existentes
+        Bounds gridBounds = gridPaneTarget.localToScene(gridPaneTarget.getBoundsInLocal());
+        double targetX = gridBounds.getMinX() + (nextColumn * 75); // Espaciado horizontal entre cartas
         double targetY = gridBounds.getMinY();
 
-        // Crear la animación
+        // Configurar la animación
         TranslateTransition transition = new TranslateTransition();
-        transition.setNode(cardImageView);
-        transition.setDuration(javafx.util.Duration.millis(500));
+        transition.setNode(animatedCard);
+        transition.setDuration(javafx.util.Duration.millis(300));
         transition.setToX(targetX - startX);
         transition.setToY(targetY - startY);
 
         transition.setOnFinished(e -> {
-            centralPane.getChildren().remove(cardImageView); // Eliminar la carta animada
-            humanPlayer.addCard(newCard); // Añadir la carta al jugador
-            printCardsHumanPlayer(); // Actualizar el GridPane después de la animación
+            centralPane.getChildren().remove(animatedCard); // Eliminar la carta animada
+
+            // Añadir la carta a la lista del jugador/máquina
+            targetPlayer.addCard(newCard);
+
+            // Crear un nuevo ImageView para el GridPane
+            ImageView finalCardImageView = newCard.getCard();
+            finalCardImageView.setFitHeight(90);
+            finalCardImageView.setFitWidth(70);
+
+            // Añadir la carta a la posición correcta en el GridPane
+            Platform.runLater(() -> gridPaneTarget.add(finalCardImageView, nextColumn, 0));
+
+            isAnimating = false;
         });
 
-        // Ejecutar la animación
+        // Iniciar la animación
         transition.play();
     }
+
+    private void animateCardToCenterWithRotation(ImageView cardImageView, Card newCard) {
+        isAnimating = true;
+
+        // Obtener las coordenadas iniciales de la carta en el mazo del jugador
+        Bounds cardBounds = cardImageView.localToScene(cardImageView.getBoundsInLocal());
+        double startX = cardBounds.getMinX();
+        double startY = cardBounds.getMinY();
+
+        // Crear una copia de la carta para la animación
+        ImageView animatedCard = new ImageView(cardImageView.getImage());
+        animatedCard.setFitHeight(90);
+        animatedCard.setFitWidth(70);
+        animatedCard.setLayoutX(startX);
+        animatedCard.setLayoutY(startY);
+
+        // Generar una rotación aleatoria entre -20 y 20 grados
+        double rotationAngle = (Math.random() * 40) - 20;
+
+        // Añadir la carta animada al contenedor central
+        centralPane.getChildren().add(animatedCard);
+
+        // Coordenadas dinámicas del centro del tablero
+        Bounds centerBounds = tableImageView.localToScene(tableImageView.getBoundsInLocal());
+        double centerX = centerBounds.getMinX() + centerBounds.getWidth() / 2;
+        double centerY = centerBounds.getMinY() + centerBounds.getHeight() / 2;
+
+        // Configurar la animación de movimiento
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(animatedCard);
+        transition.setDuration(javafx.util.Duration.millis(500)); // Duración de 500 ms
+        transition.setToX(centerX - startX - animatedCard.getFitWidth() / 2);
+        transition.setToY(centerY - startY - animatedCard.getFitHeight() / 2);
+
+        // Evento al finalizar la animación
+        transition.setOnFinished(e -> {
+            centralPane.getChildren().remove(animatedCard); // Eliminar la carta animada
+
+            // Crear una nueva carta fija con rotación y colocarla en el centro
+            ImageView finalCard = new ImageView(newCard.getImage());
+            finalCard.setFitHeight(90);
+            finalCard.setFitWidth(70);
+            finalCard.setRotate(rotationAngle); // Mantener la rotación
+            finalCard.setLayoutX(centerX - finalCard.getFitWidth() / 2);
+            finalCard.setLayoutY(centerY - finalCard.getFitHeight() / 2);
+
+            // Eliminar cualquier carta previa en el centro
+            centralPane.getChildren().removeIf(node -> node instanceof ImageView && node != tableImageView);
+
+            // Añadir la nueva carta al contenedor
+            centralPane.getChildren().add(finalCard);
+
+            // Actualizar el mazo del jugador
+            Platform.runLater(() -> printCardsHumanPlayer());
+
+            isAnimating = false;
+        });
+
+        // Iniciar la animación
+        transition.play();
+    }
+
+
+
+
+
+
+
+
+
 
 
 
