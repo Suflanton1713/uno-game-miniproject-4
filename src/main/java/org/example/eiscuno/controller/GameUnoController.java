@@ -5,13 +5,14 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import org.example.eiscuno.controller.decorator.ButtonDecorator;
 import org.example.eiscuno.controller.decorator.ColorButtonDecorator;
 import org.example.eiscuno.model.card.Card;
@@ -612,13 +613,109 @@ public class GameUnoController implements ShiftEventListener {
     }
 
 
+    public void win(Boolean win) {
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("YOU WON! CONGRATULATIONS!");
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        alert.setContentText(null);
+        DialogPane dialogPane = alert.getDialogPane();
+        ButtonType okButtonType = ButtonType.OK;
+        Button okButton = (Button) alert.getDialogPane().lookupButton(okButtonType);
+        Label resultsLabel = new Label();
+        Label resultsLabel2 = new Label();
+        if (win) {
+            resultsLabel.setText("¡Felicidades");
+
+        } else {
+            resultsLabel.setText("¡El poder de la oscuridad triunfa, los rebeldes cayeron ante su fuerza!" );
+        }
+        okButton.setStyle(
+                "-fx-background-color: #000065; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-font-size: 25px;"
+        );
+        resultsLabel.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                "-fx-text-fill: white; " +
+                "-fx-font-weight: bold; " +
+                "-fx-font-size: 32px;");
+
+        resultsLabel2.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                "-fx-text-fill: white; " +
+                "-fx-font-weight: bold; " +
+                "-fx-font-size: 32px;");
+
+        VBox content = new VBox();
+        content.getChildren().add(resultsLabel);
+        content.getChildren().add(resultsLabel2);
+        content.setStyle("-fx-alignment: center;");
+        VBox.setMargin(resultsLabel, new Insets(500, 0, 0, 0));
+
+        content.setAlignment(Pos.BOTTOM_CENTER);
+        alert.getDialogPane().setContent(content);
+        dialogPane.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
+        dialogPane.getStyleClass().add("mi-alerta");
+        alert.show();
+
+    }
 
     public void updateWinStatus(){
 
         Platform.runLater(() -> {System.out.println("Entro al update winStatus");
-                    if(gameUno.getWinStatus()==1){
-                        winMessageLabel.setText("Ganaste");
+            boolean win = gameUno.getWinStatus() == 1;
+                    if(win){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("YOU WON! CONGRATULATIONS!");
+                        alert.setHeaderText(null);
+                        alert.setGraphic(null);
+                        alert.setContentText(null);
+
+                        DialogPane dialogPane = alert.getDialogPane();
+                        ButtonType okButtonType = ButtonType.OK;
+                        Button okButton = (Button) alert.getDialogPane().lookupButton(okButtonType);
+                        Label resultsLabel = new Label();
+                        Label resultsLabel2 = new Label();
+
+                        if (win) {
+                            resultsLabel.setText("¡Felicidades!");
+                        }
+
+// Establecer estilo del botón
+                        okButton.setStyle(
+                                "-fx-background-color: #000065; " +
+                                        "-fx-text-fill: white; " +
+                                        "-fx-font-size: 25px;"
+                        );
+
+// Establecer estilo de los labels
+                        resultsLabel.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        resultsLabel2.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        VBox content = new VBox();
+                        content.getChildren().add(resultsLabel);
+                        content.getChildren().add(resultsLabel2);
+                        content.setStyle("-fx-alignment: center;");
+                        VBox.setMargin(resultsLabel, new Insets(500, 0, 0, 0));
+                        content.setAlignment(Pos.BOTTOM_CENTER);
+
+                        alert.getDialogPane().setContent(content);
+                        dialogPane.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
+                        dialogPane.getStyleClass().add("mi-alerta");
+
+// Obtener el Stage del Alert y cambiar el tamaño de la ventana
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.setWidth(800);  // Establece el ancho de la ventana
+                        stage.setHeight(600); // Establece la altura de la ventana
+
+                        alert.show();
                         gridPaneCardsPlayer.setDisable(true);
                         gridPaneCardsMachine.setDisable(true);
                         deckButton.setDisable(true);
@@ -626,9 +723,70 @@ public class GameUnoController implements ShiftEventListener {
                         machinePlayer.setOnTurn(false);
                         humanPlayer.setOnTurn(false);
 
+
+
                     }
-                    else if(gameUno.getWinStatus()==2){
-                        winMessageLabel.setText("Perdiste");
+                    else if(!win){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("YOU WON! CONGRATULATIONS!");
+                        alert.setHeaderText(null);
+                        alert.setGraphic(null);
+                        alert.setContentText(null);
+
+                        DialogPane dialogPane = alert.getDialogPane();
+                        ButtonType okButtonType = ButtonType.OK;
+                        Button okButton = (Button) alert.getDialogPane().lookupButton(okButtonType);
+                        Label resultsLabel = new Label();
+                        Label resultsLabel2 = new Label();
+
+                        if (!win) {
+                            resultsLabel.setText("¡Perdiste!");
+                        }
+
+// Establecer estilo del botón
+                        okButton.setStyle(
+                                "-fx-background-color: #000065; " +
+                                        "-fx-text-fill: white; " +
+                                        "-fx-font-size: 25px;"
+                        );
+
+// Establecer estilo de los labels
+                        resultsLabel.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        resultsLabel2.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        VBox content = new VBox();
+                        content.getChildren().add(resultsLabel);
+                        content.getChildren().add(resultsLabel2);
+                        content.setStyle("-fx-alignment: center;");
+                        VBox.setMargin(resultsLabel, new Insets(500, 0, 0, 0));
+                        content.setAlignment(Pos.BOTTOM_CENTER);
+
+// Establecer fondo para el DialogPane
+                        Image backgroundImage = new Image(getClass().getResource("/org/example/eiscuno/images/bowser.jpg").toExternalForm());  // Cambia la ruta a tu imagen
+                        BackgroundImage background = new BackgroundImage(backgroundImage,
+                                BackgroundRepeat.NO_REPEAT,
+                                BackgroundRepeat.NO_REPEAT,
+                                BackgroundPosition.CENTER,
+                                BackgroundSize.DEFAULT);
+                        dialogPane.setBackground(new Background(background));
+
+                        alert.getDialogPane().setContent(content);
+                        dialogPane.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
+                        dialogPane.getStyleClass().add("mi-alerta");
+
+// Obtener el Stage del Alert y cambiar el tamaño de la ventana
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.setWidth(800);  // Establece el ancho de la ventana
+                        stage.setHeight(600); // Establece la altura de la ventana
+
+                        alert.show();
                         gridPaneCardsPlayer.setDisable(true);
                         gridPaneCardsMachine.setDisable(true);
                         deckButton.setDisable(true);
