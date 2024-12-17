@@ -4,11 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,7 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import org.example.eiscuno.controller.decorator.ButtonDecorator;
+import org.example.eiscuno.controller.decorator.ColorButtonDecorator;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.exception.GameException;
@@ -31,8 +28,6 @@ import org.example.eiscuno.view.GameUnoStage;
 import org.example.eiscuno.view.WelcomeStage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -541,17 +536,29 @@ public class GameUnoController implements ShiftEventListener {
         buttonGrid.setLayoutX(50); // Ajustar posición dentro de Colors (si es necesario)
         buttonGrid.setLayoutY(50); // Ajustar posición dentro de Colors (si es necesario)
 
-        // Crear los botones sin texto
+        // Crear los botones para cada color
         Button btnAzul = new Button();
         Button btnRojo = new Button();
         Button btnAmarillo = new Button();
         Button btnVerde = new Button();
 
-        // Establecer los colores de fondo de los botones
-        btnAzul.setStyle("-fx-background-color: BLUE; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
-        btnRojo.setStyle("-fx-background-color: RED; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
-        btnAmarillo.setStyle("-fx-background-color: YELLOW; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
-        btnVerde.setStyle("-fx-background-color: GREEN; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
+        // Crear los decoradores para cada botón
+        ButtonDecorator azulDecorator = new ColorButtonDecorator("BLUE");
+        ButtonDecorator rojoDecorator = new ColorButtonDecorator("RED");
+        ButtonDecorator amarilloDecorator = new ColorButtonDecorator("YELLOW");
+        ButtonDecorator verdeDecorator = new ColorButtonDecorator("GREEN");
+
+        // Aplicar los decoradores a los botones
+        azulDecorator.decorate(btnAzul);
+        rojoDecorator.decorate(btnRojo);
+        amarilloDecorator.decorate(btnAmarillo);
+        verdeDecorator.decorate(btnVerde);
+
+        // Establecer las acciones para los botones
+        btnAzul.setOnAction(e -> handleChangerColorButtonClick("BLUE", colorsPane));
+        btnRojo.setOnAction(e -> handleChangerColorButtonClick("RED", colorsPane));
+        btnAmarillo.setOnAction(e -> handleChangerColorButtonClick("YELLOW", colorsPane));
+        btnVerde.setOnAction(e -> handleChangerColorButtonClick("GREEN", colorsPane));
 
         // Añadir los botones al GridPane en posiciones correspondientes
         buttonGrid.add(btnAzul, 0, 0);    // Fila 0, Columna 0
@@ -559,18 +566,13 @@ public class GameUnoController implements ShiftEventListener {
         buttonGrid.add(btnAmarillo, 0, 1); // Fila 1, Columna 0
         buttonGrid.add(btnVerde, 1, 1);    // Fila 1, Columna 1
 
-        // Asociar las acciones a los botones
-        btnAzul.setOnAction(e -> handleChangerColorButtonClick("BLUE", colorsPane));
-        btnRojo.setOnAction(e -> handleChangerColorButtonClick("RED", colorsPane));
-        btnAmarillo.setOnAction(e -> handleChangerColorButtonClick("YELLOW", colorsPane));
-        btnVerde.setOnAction(e -> handleChangerColorButtonClick("GREEN", colorsPane));
-
         // Agregar el GridPane al Pane "Colors"
         colorsPane.getChildren().add(buttonGrid);
 
         // Asegurar que el GridPane se muestre encima de otros elementos
         buttonGrid.setViewOrder(1);  // Establece un valor de Z-Index mayor para que se muestre encima
     }
+
 
 
 
@@ -592,6 +594,10 @@ public class GameUnoController implements ShiftEventListener {
         // Si es el turno de la máquina, deshabilitar el botón de la baraja
         if (machinePlayer.isOnTurn()) {
             deckButton.setDisable(true);
+            threadPlayMachine.setHasPlayerPlayed(true);
+        }
+        else{
+                deckButton.setDisable(false);
         }
     }
 
