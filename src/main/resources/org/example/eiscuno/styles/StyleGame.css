@@ -1,0 +1,67 @@
+#centralPane{
+    -fx-background-image: url("../images/backgroundGame.jpg");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+#ButtonUno{
+    -fx-background-image: url("../images/button_uno.png");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+}
+
+#deckButton{
+    -fx-background-image: url("../images/deck.png");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+}
+
+#oneButton{
+    -fx-background-image: url("../images/button_uno.png");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+}
+
+#exitButton{
+    -fx-background-color:
+            linear-gradient(#ffcc00, #e6a700), /* Fondo amarillo brillante */
+            linear-gradient(#ffdd33, #ff9900), /* Gradiente naranja */
+            radial-gradient(center 50% 50%, radius 100%, #ffd700, #e6a700); /* Iluminación radial */
+    -fx-background-radius: 12; /* Bordes redondeados */
+    -fx-border-radius: 12;
+    -fx-border-width: 3; /* Grosor del borde */
+    -fx-border-color: #664400; /* Color marrón oscuro */
+    -fx-text-fill: #ffffff; /* Color del texto */
+    -fx-font-weight: bold; /* Negrita */
+    -fx-font-size: 16px; /* Tamaño del texto */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0.5, 2, 2); /* Sombra */
+    -fx-padding: 10 20; /* Relleno interno */
+}
+
+.buttons {
+    -fx-background-color:
+            linear-gradient(#ffcc00, #e6a700), /* Fondo amarillo brillante */
+            linear-gradient(#ffdd33, #ff9900), /* Gradiente naranja */
+            radial-gradient(center 50% 50%, radius 100%, #ffd700, #e6a700); /* Iluminación radial */
+    -fx-background-radius: 12; /* Bordes redondeados */
+    -fx-border-radius: 12;
+    -fx-border-width: 3; /* Grosor del borde */
+    -fx-border-color: #664400; /* Color marrón oscuro */
+    -fx-text-fill: #ffffff; /* Color del texto */
+    -fx-font-weight: bold; /* Negrita */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0.5, 2, 2); /* Sombra */
+    -fx-padding: 10 20; /* Relleno interno */
+}
+
+.dialog-pane {
+    -fx-background-image: url('../images/credits.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-border-color: #000065;
+    -fx-border-width: 10px;
+    -fx-pref-width: 1100px; /* Ancho preferido de la alerta */
+    -fx-pref-height: 260px;
+}

@@ -3,13 +3,15 @@ package org.example.eiscuno;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.example.eiscuno.view.GameUnoStage;
+import org.example.eiscuno.view.WelcomeStage;
 
 import java.io.IOException;
 
 /**
  * The main class of the EISC Uno application.
  */
-public class Main extends Application {
+public class
+Main extends Application {
 
     /**
      * The main method of the application.
@@ -28,6 +30,6 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        GameUnoStage.getInstance();
+        WelcomeStage.getInstance();
     }
 }
