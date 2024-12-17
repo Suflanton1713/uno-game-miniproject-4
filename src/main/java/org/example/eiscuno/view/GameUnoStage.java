@@ -3,6 +3,8 @@ package org.example.eiscuno.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -43,6 +45,17 @@ public class  GameUnoStage extends Stage {
     public static void deleteInstance() {
         GameUnoStageHolder.INSTANCE.close();
         GameUnoStageHolder.INSTANCE = null;
+    }
+
+    public static void deletedInstance() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(null);
+        alert.setHeaderText("¿Seguro que desea cerrar la ventana?");
+        alert.setContentText("Perderá el progreso actual.");
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            GameUnoStage.GameUnoStageHolder.INSTANCE.close();
+            GameUnoStage.GameUnoStageHolder.INSTANCE = null;
+        }
     }
 
     /**
