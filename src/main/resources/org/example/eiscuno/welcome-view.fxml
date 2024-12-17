@@ -13,8 +13,8 @@
                <VBox.margin>
                   <Insets top="180.0" />
                </VBox.margin></Button>
-            <Button fx:id="ButtonStartGame1" mnemonicParsing="false" styleClass="buttons" text="Options" />
-            <Button fx:id="ButtonStartGame2" mnemonicParsing="false" styleClass="buttons" text="Credits" />
+            <Button fx:id="ButtonStartGame1" mnemonicParsing="false" styleClass="buttons" text="Instrucction" />
+            <Button fx:id="ButtonStartGame2" mnemonicParsing="false" onAction="#handleClickCredits" styleClass="buttons" text="Credits" />
          </children>
       </VBox>
    </left>
