@@ -3,7 +3,7 @@ package org.example.eiscuno.model.game;
 import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
-import org.example.eiscuno.model.observers.listeners.ShiftEventListenerAdaptor;
+import org.example.eiscuno.model.exception.GameException;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.observers.ShiftEventManager;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
@@ -25,7 +25,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     private boolean canThrowCard;
     private boolean hasToChangeColor;
     private int  winStatus;
-    private boolean singUno;
+    private boolean humanSingUno;
+    private boolean machineSingUno;
 
     /**
      * Constructs a new GameUno instance.
@@ -44,7 +45,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         this.events = new ShiftEventManager("onturn", "offturn", "turnChangerController");
         this.hasToChangeColor = false;
         this.canThrowCard = true;
-        this.singUno = false;
+        this.humanSingUno = false;
+
     }
 
     /**
@@ -53,6 +55,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      */
     @Override
     public void startGame() {
+        humanPlayer.setOnTurn(true);
         for (int i = 0; i < 4; i++) {
             if (i < 2) {
                 humanPlayer.addCard(this.deck.takeCard());
@@ -100,7 +103,27 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      */
     @Override
     public void playCard(Card card) {
-        this.table.addCardOnTheTable(card);
+        try{
+
+            if(winStatus!=0){
+                throw new GameException.gameEndedException();
+            }
+
+            this.table.addCardOnTheTable(card);
+            events.notifyShiftEvent("onturn");
+            events.notifyShiftToController("turnChangerController");
+            System.out.println(machinePlayer.getStringOfOwnCards());
+            setHumanSingUno(false);
+            setMachineSingUno(false);
+
+        }catch (GameException.gameEndedException e){
+            System.out.println(e.getMessage());
+            System.out.println("Game has ended.");
+        }
+
+    }
+
+    public void passTurnWhenUnoSung() {
         events.notifyShiftEvent("onturn");
         events.notifyShiftToController("turnChangerController");
     }
@@ -145,7 +168,10 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      */
     @Override
     public Boolean isGameOver() {
-        return null;
+        if(winStatus!=0){
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -168,22 +194,36 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
 
 
     public void drawCardUpdate(String eventType, int amount){
-        System.out.println("Other player draw card");
+        try{
+            if(amount == 0) throw new IllegalArgumentException("Can't draw zero cards.");
+            if(!machinePlayer.isOnTurn() && !humanPlayer.isOnTurn()) throw new IllegalStateException("Illegal state of turns.");
 
-        if(amount == 4){
-            wildCardUpdate("Change color");
+            System.out.println("Other player draw card");
+
+            if(amount == 4){
+                wildCardUpdate("Change color");
+            }
+
+            if(amount == 1){
+                setHumanSingUno(false);
+                setMachineSingUno(false);
+            }
+
+            if(machinePlayer.isOnTurn()){
+                humanPlayer.drawsCard(deck,amount);
+
+            }else{
+                machinePlayer.drawsCard(deck,amount);
+            }
+
+            events.notifyShiftEvent("onturn");
+            events.notifyShiftToController("turnChangerController");
+
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException(e + "No cards drawed");
+        }catch(IllegalStateException e1){
+            throw new IllegalStateException(e1 + "No turns setted");
         }
-
-        if(machinePlayer.isOnTurn()){
-            humanPlayer.drawsCard(deck,amount);
-
-        }else{
-            machinePlayer.drawsCard(deck,amount);
-        }
-
-        events.notifyShiftEvent("onturn");
-        events.notifyShiftToController("turnChangerController");
-
     }
 
 
@@ -192,9 +232,6 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         events.notifyShiftEvent("onturn");
         events.notifyShiftToController("turnChangerController");
 
-        if(machinePlayer.isOnTurn()){
-
-        }
     }
 
     public void reverseTurnUpdate(String eventType){
@@ -212,7 +249,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         return hasToChangeColor;
     }
 
-    public void setHasToChangeColor(boolean hadToChangeColor) {
+    public void setHasToChangeColor(boolean hadToChangeColor){
         this.hasToChangeColor = hadToChangeColor;
     }
 
@@ -225,11 +262,31 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     }
     public void setWinStatus(int winStatus) {this.winStatus = winStatus;}
     public int getWinStatus() {return winStatus;}
-    public boolean getSingUno(){return singUno;}
-    public void setSingUno(boolean val){singUno = val;
+    public boolean getHumanSingUno(){return humanSingUno;}
+    public void setHumanSingUno(boolean val){
+        humanSingUno = val;
 
-        System.out.println("Sing uno es:"+singUno);
+        System.out.println("Sing uno es:"+ humanSingUno);
     }
 
 
+    public boolean isHumanSingUno() {
+        return humanSingUno;
+    }
+
+    public boolean isMachineSingUno() {
+        return machineSingUno;
+    }
+
+    public void setMachineSingUno(boolean machineSingUno) {
+        this.machineSingUno = machineSingUno;
+    }
+
+    public Player getHumanPlayer() {
+        return humanPlayer;
+    }
+
+    public Player getMachinePlayer() {
+        return machinePlayer;
+    }
 }

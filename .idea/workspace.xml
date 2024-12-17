@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ee8ff40-bbdd-4aec-a3d2-cf5cc45130ec" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/CardFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/ICardFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/exception/GameException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUnoAdaptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/ThreadUnoComprobation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/controller/GameUnoControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/game/GameUnoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/table/TableTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/table/Table.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +36,7 @@
         <option value="Enum" />
         <option value="CSS File" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -35,8 +52,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Suflanton1713/uno-game-miniproject-4.git&quot;,
-    &quot;accountId&quot;: &quot;7f5d12d4-fde5-4fd7-a85e-05b5fbdaa37c&quot;
+    &quot;url&quot;: &quot;https://github.com/fabiansvc/eisc-uno.git&quot;,
+    &quot;accountId&quot;: &quot;0c82e6b4-a45c-4190-a110-02ef4a3ff1b6&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -60,9 +77,32 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
+    "JUnit.GameUnoControllerTest.forcingErrorWhenThereisMulticolorCardInDeck.executor": "Run",
+    "JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCards.executor": "Run",
+    "JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCardsInDeck.executor": "Run",
+    "JUnit.GameUnoControllerTest.initialCardWhenThereAreNoCardsInDeck.executor": "Run",
+    "JUnit.GameUnoControllerTest.initialCardWhenThereIsANormalCardsInDeck.executor": "Run",
+    "JUnit.GameUnoControllerTest.watchingColorChangesWhenMulticolorCard.executor": "Run",
+    "JUnit.GameUnoTest.gettingNullWhenThereIsNoCardInDeckWhenSingingOne.executor": "Run",
+    "JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard.executor": "Run",
+    "JUnit.GameUnoTest.verifyTurnChangerWhenPlayingCard.executor": "Run",
+    "JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne.executor": "Run",
+    "JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard.executor": "Run",
+    "JUnit.GameUnoTest.verifyingWhenAPlayerEatsACardFromDeck.executor": "Run",
+    "JUnit.TableTest.checkingWhenPlayedCardIsAFourWildCard.executor": "Run",
+    "JUnit.TableTest.checkingWhenPlayedCardIsAWildCard.executor": "Run",
+    "JUnit.TableTest.checkingWhenPlayedCardIsNotAWildCardAndNotPassesWildCardComprobation.executor": "Run",
+    "JUnit.TableTest.comparingAllColorsWhenPuttingCardOnTable.executor": "Run",
+    "JUnit.TableTest.comparingAllValuesWhenPuttingCardOnTable.executor": "Run",
+    "JUnit.TableTest.forcingColorComparationToReturnFalse.executor": "Run",
+    "JUnit.TableTest.forcingExceptionWhenIllegalColorAppear.executor": "Run",
+    "JUnit.TableTest.forcingExceptionWhenIllegalValueAppear.executor": "Run",
+    "JUnit.TableTest.forcingValueComparationToReturnFalse.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "Merging jdrl",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -83,32 +123,94 @@
       <recent name="C:\Users\fsvc1\Coding\eisc-uno\src\main\resources\org\example\eiscuno\images" />
       <recent name="C:\Users\fsvc1\Coding\eisc-uno\src" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.eiscuno.model.game" />
+      <recent name="org.example.eiscuno.model.table" />
+      <recent name="org.example.eiscuno.controller" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.Main" />
+    <configuration name="GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisc-uno" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.eiscuno.*" />
+          <option name="PATTERN" value="org.example.eiscuno.model.game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.game" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.game.GameUnoTest" />
+      <option name="METHOD_NAME" value="verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameUnoTest.verifyTurnChangerWhenPlayingCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisc-uno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.eiscuno.model.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.game" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.game.GameUnoTest" />
+      <option name="METHOD_NAME" value="verifyTurnChangerWhenPlayingCard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisc-uno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.eiscuno.model.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.game" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.game.GameUnoTest" />
+      <option name="METHOD_NAME" value="verifyingEatingCardsFeatureWhenMachineSingingOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisc-uno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.eiscuno.model.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.game" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.game.GameUnoTest" />
+      <option name="METHOD_NAME" value="verifyingMultipleIllegalGameStateWhenDrawingCard" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
+        <item itemvalue="JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" />
+        <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" />
+        <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenPlayingCard" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
       </set>
     </attachedChunks>
   </component>
@@ -146,21 +248,39 @@
       <workItem from="1733606272490" duration="6616000" />
       <workItem from="1733642268159" duration="3048000" />
       <workItem from="1733690709160" duration="18932000" />
-      <workItem from="1733716456949" duration="21378000" />
-      <workItem from="1734304665602" duration="314000" />
-      <workItem from="1734337491272" duration="5976000" />
-      <workItem from="1734348074463" duration="227000" />
-      <workItem from="1734348314931" duration="377000" />
-      <workItem from="1734366914926" duration="4431000" />
+      <workItem from="1733716456949" duration="21458000" />
+      <workItem from="1734328632351" duration="117000" />
+      <workItem from="1734328767638" duration="70000" />
+      <workItem from="1734358021291" duration="3375000" />
+      <workItem from="1734393050704" duration="734000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/uno_game_miniproject_4$Main.ic" NAME="Main Coverage Results" MODIFIED="1734305256613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>org.example.eiscuno.*</FILTER>
-    </SUITE>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/table/TableTest.java</url>
+          <line>146</line>
+          <properties class="org.example.eiscuno.model.table.TableTest" method="checkingWhenPlayedCardIsNotAWildCardAndNotPassesWildCardComprobation">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/game/GameUnoTest.java</url>
+          <line>75</line>
+          <properties class="org.example.eiscuno.model.game.GameUnoTest" method="verifyingEatingCardsFeatureAndUnstackingCardsFeatureWhenMachineSingingOne">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

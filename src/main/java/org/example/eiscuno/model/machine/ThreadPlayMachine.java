@@ -3,10 +3,14 @@ package org.example.eiscuno.model.machine;
 import javafx.scene.image.ImageView;
 import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.card.Card;
+import org.example.eiscuno.model.exception.GameException;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
 import org.example.eiscuno.model.table.Table;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ThreadPlayMachine extends Thread implements ShiftEventListener {
     private Table table;
@@ -44,21 +48,71 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
     public void run() {
         while (true){
 
-            if(hasPlayerPlayed){
+            if(hasPlayerPlayed && !(gameUno.isGameOver())){
                 try{
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 // Aqui iria la logica de colocar la carta
-                hasPlayerPlayed = putCardOnTheTable();
+
+                if(gameUno.isHumanSingUno() && (machinePlayer.getCardsPlayer().size() == 1)){
+                    gameUno.passTurnWhenUnoSung();
+                    hasPlayerPlayed = false;
+                }else{
+                    try {
+                        hasPlayerPlayed = putCardOnTheTable();
+                    } catch (GameException e) {
+                        throw new RuntimeException(e);
+                    }
+                    if(gameUno.HasToChangeColor()){
+                        table.setColorForTable(chooseColorForMachine());
+                        gameUno.setHasToChangeColor(false);
+
+                    }
+                }
+
+
 
             }
         }
 
     }
 
-    private boolean putCardOnTheTable(){
+    private String chooseColorForMachine(){
+        int blueCounter = 0, yellowCounter = 0, greenCounter = 0, redCounter = 0;
+        String colorChoosen;
+        int maxNumber;
+        for(Card card : machinePlayer.getCardsPlayer() ){
+            switch (card.getColor()){
+                case "BLUE":
+                    blueCounter++;
+                    break;
+                case "YELLOW":
+                    yellowCounter++;
+                    break;
+                case "GREEN":
+                    greenCounter++;
+                    break;
+                case "RED":
+                    redCounter++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        maxNumber = blueCounter;
+        colorChoosen = "BLUE";
+
+        if(yellowCounter > maxNumber) colorChoosen = "YELLOW";
+        if(greenCounter > maxNumber) colorChoosen = "GREEN";
+        if(redCounter > maxNumber) colorChoosen = "RED";
+
+        return colorChoosen;
+
+    }
+
+    private boolean putCardOnTheTable() throws GameException {
         if(!machinePlayer.getCardsPlayer().isEmpty()){
             System.out.println("Machine is choosing cards");
             int index = (int) (Math.random() * machinePlayer.getCardsPlayer().size());
@@ -68,7 +122,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                 gameUno.playCard(card);
                 tableImageView.setImage(card.getImage());
                 machinePlayer.removeCard(machinePlayer.getCardsPlayer().indexOf(card));
-
+                gameUnoController.animateMachineCardToCenter(card);
 
             }
             System.out.println("Machine cards after playing " + machinePlayer.getStringOfOwnCards());
@@ -87,7 +141,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
         return true;
     }
 
-    private Card chooseAllowedCard(Card card){
+    private Card chooseAllowedCard(Card card) throws GameException {
         boolean isChoosenCardAllowed = false;
         boolean haveDrawedACard = false;
         int indexOfCardChoosen = machinePlayer.getCardsPlayer().indexOf(card);

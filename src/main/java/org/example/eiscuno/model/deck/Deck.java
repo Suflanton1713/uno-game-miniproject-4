@@ -1,5 +1,8 @@
 package org.example.eiscuno.model.deck;
 
+import jdk.incubator.vector.VectorOperators;
+import org.example.eiscuno.model.cardfactory.CardFactory;
+import org.example.eiscuno.model.exception.GameException;
 import org.example.eiscuno.model.unoenum.EISCUnoEnum;
 import org.example.eiscuno.model.card.Card;
 
@@ -11,13 +14,25 @@ import java.util.Stack;
  */
 public class Deck {
     private Stack<Card> deckOfCards;
+    private CardFactory cardFactory;
 
     /**
      * Constructs a new deck of Uno cards and initializes it.
      */
     public Deck() {
         deckOfCards = new Stack<>();
+        cardFactory = new CardFactory();
         initializeDeck();
+    }
+
+
+    /**
+     * Constructs a new deck of Uno cards in test environment and don't initialize it.
+     *  @param TestDiferentiation for differentiate constructor when testing
+     */
+    public Deck(boolean TestDiferentiation) {
+        deckOfCards = new Stack<>();
+        cardFactory = new CardFactory();
     }
 
     /**
@@ -34,81 +49,13 @@ public class Deck {
                     cardEnum.name().startsWith("TWO_WILD_DRAW_") ||
                     cardEnum.name().equals("FOUR_WILD_DRAW") ||
                     cardEnum.name().equals("WILD")) {
-                Card card = new Card(cardEnum.getFilePath(), getCardValue(cardEnum.name()), getCardColor(cardEnum.name()));
+                Card card = cardFactory.produceCard(cardEnum.getFilePath(), cardEnum.name());
                 deckOfCards.push(card);
             }
         }
         Collections.shuffle(deckOfCards);
 
     }
-
-    private String getCardValue(String name) {
-        if (name.endsWith("0")) {
-            return "0";
-        } else if (name.endsWith("1")) {
-            return "1";
-        } else if (name.endsWith("2")) {
-            return "2";
-        } else if (name.endsWith("3")) {
-            return "3";
-        } else if (name.endsWith("4")) {
-            return "4";
-        } else if (name.endsWith("5")) {
-            return "5";
-        } else if (name.endsWith("6")) {
-            return "6";
-        } else if (name.endsWith("7")) {
-            return "7";
-        } else if (name.endsWith("8")) {
-            return "8";
-        } else if (name.endsWith("9")) {
-            return "9";
-        } else if (name.startsWith("RESERVE_")) {
-            return "Reverse";
-        } else if (name.startsWith("SKIP_")) {
-            return "Skip";
-        } else if (name.startsWith("TWO_WILD_DRAW_")) {
-            return "TwoWildDraw";
-        } else if (name.equals("FOUR_WILD_DRAW")) {
-            return "FourWildDraw";
-        } else if (name.equals("WILD")) {
-            return "Wild";
-        } else {
-            return null;
-        }
-
-    }
-
-    private String getCardColor(String name) {
-        if (name.startsWith("GREEN")) {
-            return "GREEN";
-        } else if (name.startsWith("YELLOW")) {
-            return "YELLOW";
-        } else if (name.startsWith("BLUE")) {
-            return "BLUE";
-        } else if (name.startsWith("RED")) {
-            return "RED";
-        } else if (name.startsWith("RESERVE_") || name.startsWith("TWO_WILD_DRAW_") || name.startsWith("SKIP_")) {
-            if (name.endsWith("GREEN")) {
-                return "GREEN";
-            } else if (name.endsWith("YELLOW")) {
-                return "YELLOW";
-            } else if (name.endsWith("BLUE")) {
-                return "BLUE";
-            } else if (name.endsWith("RED")) {
-                return "RED";
-            }
-
-        } else if (name.startsWith("FOUR_WILD_DRAW")) {
-            return "MULTICOLOR";
-        } else if (name.startsWith("WILD")) {
-            return "MULTICOLOR";
-        } else {
-            return null;
-        }
-        return null;
-    }
-
 
 
     /**
@@ -118,10 +65,18 @@ public class Deck {
      * @throws IllegalStateException if the deck is empty
      */
     public Card takeCard() {
-        if (deckOfCards.isEmpty()) {
-            throw new IllegalStateException("No hay más cartas en el mazo.");
-        }
-        return deckOfCards.pop();
+            try{
+                if (deckOfCards.isEmpty()){
+                    throw new GameException.OutOfCardsInDeck("Se acaba la partida.");
+                }else{
+                return deckOfCards.pop();
+                }
+
+            }catch( GameException.OutOfCardsInDeck e){
+                System.out.println(e.getMessage());
+                return null;
+    }
+
     }
 
 
@@ -132,5 +87,9 @@ public class Deck {
      */
     public boolean isEmpty() {
         return deckOfCards.isEmpty();
+    }
+
+    public Stack<Card> getDeckOfCards() {
+        return deckOfCards;
     }
 }

@@ -20,6 +20,10 @@ public class Player implements IPlayer, ShiftEventListener {
      */
     public Player(String typePlayer){
         this.cardsPlayer = new ArrayList<Card>();
+        Card card1 =  new Card("/org/example/eiscuno/cards-uno/2_wild_draw_green.png", "TwoWildDraw", "GREEN");
+        Card card2 =  new Card("/org/example/eiscuno/cards-uno/2_wild_draw_blue.png", "TwoWildDraw", "BLUE");
+        cardsPlayer.add(card1);
+        cardsPlayer.add(card2);
         this.typePlayer = typePlayer;
         isOnTurn = false;
     };
@@ -112,4 +116,6 @@ public class Player implements IPlayer, ShiftEventListener {
         result = result + "]";
         return result;
     }
+
+
 }

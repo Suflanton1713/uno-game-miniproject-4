@@ -1,6 +1,8 @@
 package org.example.eiscuno.model.table;
 
+import javafx.scene.control.Tab;
 import org.example.eiscuno.model.card.Card;
+import org.example.eiscuno.model.exception.GameException;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.observers.CardPlayerEventManager;
 
@@ -56,7 +58,7 @@ public class Table{
         return this.cardsTable.get(this.cardsTable.size()-1);
     }
 
-    public void verifyCardTypeOnTable(Card card){
+    public void verifyCardTypeOnTable(Card card) throws GameException {
         if(itsAWildCard(card)){
             events.notifyCanPlayCard("threwCard");
         }else{
@@ -74,13 +76,37 @@ public class Table{
         }
     }
 
-    public boolean hadCardSameColor(Card cardAdded) {
-        return Objects.equals(cardAdded.getColor(), getCurrentCardOnTheTable().getColor()) || getCurrentCardOnTheTable().getColor() == null;
+    public boolean hadCardSameColor(Card cardAdded) throws GameException {
+        try{
+            if(!Objects.equals(cardAdded.getColor(), "BLUE") && !Objects.equals(cardAdded.getColor(), "YELLOW") && !Objects.equals(cardAdded.getColor(), "RED") && !Objects.equals(cardAdded.getColor(), "GREEN") && !Objects.equals(cardAdded.getColor(), "MULTICOLOR")){
+                throw new GameException.IllegalCardColor(" In table when comparing cards");
+            }
+
+            return Objects.equals(cardAdded.getColor(), getCurrentCardOnTheTable().getColor()) || getCurrentCardOnTheTable().getColor() == null;
+        }catch(GameException.IllegalCardColor e){
+            System.out.println(e.getMessage());
+            throw new GameException(" In table when comparing cards");
+        }
     }
 
 
-    public boolean hadCardSameValue(Card cardAdded){
-        return Objects.equals(cardAdded.getValue(), getCurrentCardOnTheTable().getValue()) || getCurrentCardOnTheTable().getValue() == null;
+    public boolean hadCardSameValue(Card cardAdded) throws GameException {
+        try {
+            if (!isValidCardValue(cardAdded.getValue())) {
+                throw new GameException.IllegalCardValue("In table when comparing cards: Invalid card value");
+            }
+            return Objects.equals(cardAdded.getValue(), getCurrentCardOnTheTable().getValue()) || getCurrentCardOnTheTable().getValue() == null;
+        } catch (GameException.IllegalCardValue e) {
+            System.out.println(e.getMessage());
+            throw new GameException("In table when comparing cards: Invalid card value");
+        }
+    }
+
+
+
+
+    private boolean isValidCardValue(String value) {
+        return value.matches("^(0|1|2|3|4|5|6|7|8|9|Skip|Reverse|Wild|TwoWildDraw|FourWildDraw)$");
     }
 
     public boolean itsAWildCard(Card cardAdded){
@@ -88,11 +114,14 @@ public class Table{
             case "Wild":
                 System.out.println("Changing colors");
                 events.notifyWildCard("wild");
+                break;
             case "FourWildDraw":
                 System.out.println("Taking four cards...");
                 events.notifyDrawCards("drawCards", 4);
+                break;
             default:
                 System.out.println("Not a Wild card");
+                break;
         }
 
         System.out.println(("CARD COLOR: " + cardAdded.getColor()));
@@ -120,6 +149,10 @@ public class Table{
                 System.out.println("Just a number card...");
                 break;
         }
+    }
+
+    public void setColorForTable(String color){
+        this.getCurrentCardOnTheTable().setColor(color);
     }
 
 
