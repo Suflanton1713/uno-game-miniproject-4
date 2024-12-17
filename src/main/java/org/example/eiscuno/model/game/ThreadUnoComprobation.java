@@ -40,6 +40,8 @@ public class ThreadUnoComprobation extends GameUnoAdaptor implements Runnable{
                 e.printStackTrace();
             }
 
+
+
             if(cardsPlayer.size()>=2){
                 canMachineSingUno = true;
                 gameUnoController.getOneButton().setDisable(true);

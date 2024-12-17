@@ -46,6 +46,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         this.hasToChangeColor = false;
         this.canThrowCard = true;
         this.humanSingUno = false;
+
     }
 
     /**
@@ -54,6 +55,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
      */
     @Override
     public void startGame() {
+        humanPlayer.setOnTurn(true);
         for (int i = 0; i < 4; i++) {
             if (i < 2) {
                 humanPlayer.addCard(this.deck.takeCard());
@@ -278,5 +280,13 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
 
     public void setMachineSingUno(boolean machineSingUno) {
         this.machineSingUno = machineSingUno;
+    }
+
+    public Player getHumanPlayer() {
+        return humanPlayer;
+    }
+
+    public Player getMachinePlayer() {
+        return machinePlayer;
     }
 }
