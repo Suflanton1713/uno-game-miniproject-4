@@ -122,7 +122,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                 gameUnoController.updateWinStatus();
 
             }
-            gameUno.setSingUno(false);
+
             return machinePlayer.isOnTurn();
         }
         return true;

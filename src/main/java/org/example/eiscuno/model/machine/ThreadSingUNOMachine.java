@@ -47,7 +47,7 @@ public class ThreadSingUNOMachine implements Runnable{
                 cardsPlayer.add(deck.takeCard());
             }
             gameUnoController.printCardsHumanPlayer();
-            //gameUnoController.printCardsHumanPlayer();
+
 
         }
     }
