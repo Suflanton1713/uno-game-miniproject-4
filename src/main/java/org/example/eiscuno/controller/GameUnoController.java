@@ -92,8 +92,9 @@ public class GameUnoController implements ShiftEventListener {
         }
         tableImageView.setImage(initialCard.getImage());
         printCardsHumanPlayer();
+        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno, this.machinePlayer.getCardsPlayer());
         updateMachineDeckDisplay();
-        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno);
+
         Thread t = new Thread(threadSingUNOMachine, "ThreadSingUNO");
         t.start();
 
@@ -260,10 +261,8 @@ public class GameUnoController implements ShiftEventListener {
             animateCardToGridPane(cardImageView, newCard, gridPaneCardsPlayer, humanPlayer);
         }
 
-        // Actualiza la visualización de las cartas del jugador
         printCardsHumanPlayer();
 
-        // Notifica el cambio de turno
         gameUno.events.notifyShiftEvent("onturn");
         gameUno.events.notifyShiftToController("turnChangerController");
 
@@ -273,8 +272,6 @@ public class GameUnoController implements ShiftEventListener {
             threadPlayMachine.setHasPlayerPlayed(true);
         }
     }
-
-
 
     /**
      * Handles the action of saying "Uno".
