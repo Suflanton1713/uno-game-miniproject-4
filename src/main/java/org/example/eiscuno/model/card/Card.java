@@ -20,13 +20,14 @@ public class Card {
      * @param value of the card
      */
     public Card(String url, String value, String color) {
-        System.out.println(url);
         this.url = url;
         this.value = value;
         this.color = color;
         this.image = new Image(String.valueOf(getClass().getResource(url)));
         this.cardImageView = createCardImageView();
     }
+
+
 
     /**
      * Creates and configures the ImageView for the card.

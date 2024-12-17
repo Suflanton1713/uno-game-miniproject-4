@@ -48,17 +48,17 @@ public class GameException extends Exception {
     }
 
     /**
-     * Exception for handling actions performed out of the board bounds.
+     * Exception when the deck runs out of cards.
      * Extends {@code IndexOutOfBoundsException}.
      * @version 1.0
      */
-    public static class OutOfCardsInDeck extends IndexOutOfBoundsException {
+    public static class OutOfCardsInDeck extends IllegalStateException{
         /**
          * Default constructor for the {@code OutOfBoardAction}.
          * @version 1.0
          */
         public OutOfCardsInDeck() {
-            super("You are making an action out of the board");
+            super("No hay más cartas en el mazo");
         }
 
         /**
@@ -67,7 +67,7 @@ public class GameException extends Exception {
          * @version 1.0
          */
         public OutOfCardsInDeck(String message) {
-            super("You are making an action out of the board: " + message);
+            super("No hay más cartas en el mazo. " + message);
         }
     }
 

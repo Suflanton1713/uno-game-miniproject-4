@@ -73,20 +73,12 @@ public class GameUnoController implements ShiftEventListener {
         initVariables();
         this.gameUno.startGame();
 
-        Card initialCard = deck.takeCard();
+        Card initialCard = initialCard();
+
         table.addCardOnTheTable(initialCard);
-        if (Objects.equals(table.getCurrentCardOnTheTable().getColor(), "MULTICOLOR")) {
-            int randomNum = (int) (Math.random() * 4) ;
-            if (randomNum == 0) {table.getCurrentCardOnTheTable().setColor("RED");
-                System.out.println("El color es Rojo");}
-            else if (randomNum == 1) {table.getCurrentCardOnTheTable().setColor("BLUE");
-                System.out.println("El color es Azul");}
-            else if (randomNum == 2) {table.getCurrentCardOnTheTable().setColor("YELLOW");
-                System.out.println("El color es Amarillo");}
-            else if (randomNum == 3) {table.getCurrentCardOnTheTable().setColor("GREEN");
-                System.out.println("El color es verde");}
-        }
+
         tableImageView.setImage(initialCard.getImage());
+
         printCardsHumanPlayer();
 
         threadUnoComprobation = new ThreadUnoComprobation(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno, this.machinePlayer.getCardsPlayer(), this.humanPlayer, this.machinePlayer);
@@ -104,6 +96,37 @@ public class GameUnoController implements ShiftEventListener {
         table.setListenerForCardEvent(gameUno);
         System.out.println(threadPlayMachine);
 
+    }
+
+    public Card initialCard(){
+
+        try{
+            Card initialCard = deck.takeCard();
+            if(initialCard == null){
+                throw new NullPointerException("No hay carta para iniciar el juego.");
+            }
+
+
+            if (Objects.equals(initialCard.getColor(), "MULTICOLOR")) {
+                int randomNum = (int) (Math.random() * 4) ;
+                if (randomNum == 0) {initialCard.setColor("RED");
+                    System.out.println("El color es Rojo");}
+                else if (randomNum == 1) {initialCard.setColor("BLUE");
+                    System.out.println("El color es Azul");}
+                else if (randomNum == 2) {initialCard.setColor("YELLOW");
+                    System.out.println("El color es Amarillo");}
+                else if (randomNum == 3) {initialCard.setColor("GREEN");
+                    System.out.println("El color es verde");}
+            }
+
+            return initialCard;
+
+
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+            Card card =  new Card("/org/example/eiscuno/cards-uno/9_green.png", "9", "GREEN");
+            return card;
+        }
     }
 
     /**
