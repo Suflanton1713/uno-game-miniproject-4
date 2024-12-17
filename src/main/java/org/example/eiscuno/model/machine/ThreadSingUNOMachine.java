@@ -29,11 +29,15 @@ public class ThreadSingUNOMachine implements Runnable{
             try {
                 i=Math.random() * 5000;
                 Thread.sleep((long) (i));
+                if((cardsPlayer.size()==1 || cardsMachine.size()==1) && !(gameUno.getHumanSingUno()==true) ) {
+                    Thread.sleep(1000);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             if((cardsPlayer.size()==1 || cardsMachine.size()==1) && !(gameUno.getHumanSingUno()==true) ){
+
                 System.out.println("UNO MARDITO MAMAGUEVOOOOOO");
                 gameUno.setMachineSingUno(true);
             }
