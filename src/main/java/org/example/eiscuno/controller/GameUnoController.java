@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
+import org.example.eiscuno.model.exception.GameException;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.game.ThreadUnoComprobation;
 import org.example.eiscuno.model.machine.ThreadPlayMachine;
@@ -98,12 +99,12 @@ public class GameUnoController implements ShiftEventListener {
 
     }
 
-    public Card initialCard(){
+    public Card initialCard (){
 
         try{
             Card initialCard = deck.takeCard();
             if(initialCard == null){
-                throw new NullPointerException("No hay carta para iniciar el juego.");
+                throw new NullPointerException("There is no card to start the uno game.");
             }
 
 
@@ -123,9 +124,10 @@ public class GameUnoController implements ShiftEventListener {
 
 
         } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
-            Card card =  new Card("/org/example/eiscuno/cards-uno/9_green.png", "9", "GREEN");
-            return card;
+            throw new RuntimeException("The deck was wrongly initialized", e);
+            //System.out.println(e.getMessage());
+            //Card card =  new Card("/org/example/eiscuno/cards-uno/9_green.png", "9", "GREEN");
+            //return card;
         }
     }
 
@@ -144,7 +146,7 @@ public class GameUnoController implements ShiftEventListener {
     /**
      * Prints the human player's cards on the grid pane.
      */
-    public void printCardsHumanPlayer() {
+    public void printCardsHumanPlayer() throws RuntimeException {
         Platform.runLater(() -> {
         this.gridPaneCardsPlayer.getChildren().clear();
         Card[] currentVisibleCardsHumanPlayer = this.gameUno.getCurrentVisibleCardsHumanPlayer(this.posInitCardToShow);
@@ -156,7 +158,11 @@ public class GameUnoController implements ShiftEventListener {
             cardImageView.setOnMouseClicked((MouseEvent event) -> {
 
 
-                table.verifyCardTypeOnTable(card);
+                try {
+                    table.verifyCardTypeOnTable(card);
+                } catch (GameException e) {
+                    throw new RuntimeException(e);
+                }
                 System.out.println(gameUno.canThrowCard());
                 if(gameUno.canThrowCard()){
                     System.out.println("Tiro carta");
@@ -378,6 +384,8 @@ public class GameUnoController implements ShiftEventListener {
                         gridPaneCardsMachine.setDisable(true);
                         deckButton.setDisable(true);
                         oneButton.setDisable(true);
+                        machinePlayer.setOnTurn(false);
+                        humanPlayer.setOnTurn(false);
 
                     }
                     else if(gameUno.getWinStatus()==2){
@@ -386,6 +394,8 @@ public class GameUnoController implements ShiftEventListener {
                         gridPaneCardsMachine.setDisable(true);
                         deckButton.setDisable(true);
                         oneButton.setDisable(true);
+                        machinePlayer.setOnTurn(false);
+                        humanPlayer.setOnTurn(false);
 
                     }; } );
 
@@ -398,5 +408,13 @@ public class GameUnoController implements ShiftEventListener {
 
     public void setOneButton(Button oneButton) {
         this.oneButton = oneButton;
+    }
+
+    public void setDeck(Deck deck){
+        this.deck = deck;
+    }
+
+    public Deck getDeck(){
+        return deck;
     }
 }

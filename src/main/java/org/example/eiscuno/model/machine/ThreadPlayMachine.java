@@ -3,6 +3,7 @@ package org.example.eiscuno.model.machine;
 import javafx.scene.image.ImageView;
 import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.card.Card;
+import org.example.eiscuno.model.exception.GameException;
 import org.example.eiscuno.model.game.GameUno;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
@@ -47,7 +48,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
     public void run() {
         while (true){
 
-            if(hasPlayerPlayed){
+            if(hasPlayerPlayed && !(gameUno.isGameOver())){
                 try{
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
@@ -59,7 +60,11 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                     gameUno.passTurnWhenUnoSung();
                     hasPlayerPlayed = false;
                 }else{
-                    hasPlayerPlayed = putCardOnTheTable();
+                    try {
+                        hasPlayerPlayed = putCardOnTheTable();
+                    } catch (GameException e) {
+                        throw new RuntimeException(e);
+                    }
                     if(gameUno.HasToChangeColor()){
                         table.setColorForTable(chooseColorForMachine());
                         gameUno.setHasToChangeColor(false);
@@ -107,7 +112,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
 
     }
 
-    private boolean putCardOnTheTable(){
+    private boolean putCardOnTheTable() throws GameException {
         if(!machinePlayer.getCardsPlayer().isEmpty()){
             System.out.println("Machine is choosing cards");
             int index = (int) (Math.random() * machinePlayer.getCardsPlayer().size());
@@ -136,7 +141,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
         return true;
     }
 
-    private Card chooseAllowedCard(Card card){
+    private Card chooseAllowedCard(Card card) throws GameException {
         boolean isChoosenCardAllowed = false;
         boolean haveDrawedACard = false;
         int indexOfCardChoosen = machinePlayer.getCardsPlayer().indexOf(card);

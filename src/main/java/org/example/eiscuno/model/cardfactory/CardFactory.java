@@ -13,6 +13,13 @@ public class CardFactory implements ICardFactory {
         return new Card(url,value,color);
     };
 
+    public Card produceCard(String EnumName){
+        String color = getCardColor(EnumName);
+        String value = getCardValue(EnumName);
+
+        return new Card(value,color);
+    };
+
     private String getCardValue(String name) {
         if (name.endsWith("0")) {
             return "0";

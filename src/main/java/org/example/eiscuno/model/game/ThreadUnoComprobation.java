@@ -8,7 +8,7 @@ import org.example.eiscuno.model.player.Player;
 
 import java.util.ArrayList;
 
-public class ThreadUnoComprobation implements Runnable{
+public class ThreadUnoComprobation extends GameUnoAdaptor implements Runnable{
     private ArrayList<Card> cardsPlayer;
     private Deck deck;
     private GameUnoController gameUnoController;
