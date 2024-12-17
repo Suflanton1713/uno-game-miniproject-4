@@ -40,8 +40,12 @@ public class ThreadUnoComprobation implements Runnable{
                 e.printStackTrace();
             }
 
-            if(cardsPlayer.size()>=2 || cardsMachine.size()>=2){
+            if(cardsPlayer.size()>=2){
                 canMachineSingUno = true;
+                gameUnoController.getOneButton().setDisable(true);
+            }
+
+            if(cardsMachine.size()>=2){
                 canPlayerSingUno = true;
                 gameUnoController.getOneButton().setDisable(true);
             }
@@ -50,10 +54,14 @@ public class ThreadUnoComprobation implements Runnable{
 
 
 
+
             if(cardsPlayer.size()==1 || cardsMachine.size()==1){
 
-                if(canPlayerSingUno || canMachineSingUno){
-                    System.out.println("Se habilita el boton");
+                if((cardsPlayer.size()==1 && canMachineSingUno) || (cardsMachine.size()==1 && canPlayerSingUno) ){
+                    System.out.println("(cardsPlayer.size()==1 && canMachineSingUno)");
+                    System.out.println((cardsPlayer.size()==1 && canMachineSingUno));
+                    System.out.println("(cardsMachine.size()==1 && canPlayerSingUno)");
+                    System.out.println((cardsMachine.size()==1 && canPlayerSingUno));
                     gameUnoController.getOneButton().setDisable(false);
                 }
 
@@ -76,6 +84,9 @@ public class ThreadUnoComprobation implements Runnable{
             gameUnoController.getOneButton().setDisable(true);
 
         }else if(cardsPlayer.size() == 1 && gameUno.getHumanSingUno()){
+            System.out.println("yo cante mardita cerda dejame quieto");
+
+            canMachineSingUno = false;
             gameUnoController.getOneButton().setDisable(true);
         }
     }
@@ -86,10 +97,12 @@ public class ThreadUnoComprobation implements Runnable{
                 cardsMachine.add(deck.takeCard());
             }
             gameUnoController.printCardsHumanPlayer();
+
             canPlayerSingUno = false;
             gameUnoController.getOneButton().setDisable(true);
 
         }else if(cardsMachine.size() == 1 && gameUno.isMachineSingUno()){
+            canPlayerSingUno = false;
             gameUnoController.getOneButton().setDisable(true);
         }
     }
