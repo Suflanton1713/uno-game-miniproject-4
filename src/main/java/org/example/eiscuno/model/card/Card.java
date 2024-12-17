@@ -78,25 +78,23 @@ public class Card {
     public void setColor(String color) {
         this.color = color;
         if(Objects.equals(color, "GREEN")){
-            this.url = "/org/example/eiscuno/cards-uno/0_green.png";
+            this.url = "/org/example/eiscuno/cards-uno/wild_green.png";
             this.image = new Image(String.valueOf(getClass().getResource(url)));
             this.cardImageView = createCardImageView();
 
         }else if(Objects.equals(color, "BLUE")){
-            this.url = "/org/example/eiscuno/cards-uno/0_blue.png";
+            this.url = "/org/example/eiscuno/cards-uno/wild_blue.png";
             this.image = new Image(String.valueOf(getClass().getResource(url)));
             this.cardImageView = createCardImageView();
 
         }else if(Objects.equals(color, "RED")){
-            this.url = "/org/example/eiscuno/cards-uno/0_red.png";
+            this.url = "/org/example/eiscuno/cards-uno/wild_red.png";
             this.image = new Image(String.valueOf(getClass().getResource(url)));
             this.cardImageView = createCardImageView();
         }else{
-            this.url = "/org/example/eiscuno/cards-uno/0_yellow.png";
+            this.url = "/org/example/eiscuno/cards-uno/wild_yellow.png";
             this.image = new Image(String.valueOf(getClass().getResource(url)));
             this.cardImageView = createCardImageView();
         }
-
-
     }
 }

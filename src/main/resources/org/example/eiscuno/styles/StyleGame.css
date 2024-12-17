@@ -54,3 +54,14 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0.5, 2, 2); /* Sombra */
     -fx-padding: 10 20; /* Relleno interno */
 }
+
+.dialog-pane {
+    -fx-background-image: url('../images/credits.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-border-color: #000065;
+    -fx-border-width: 10px;
+    -fx-pref-width: 1100px; /* Ancho preferido de la alerta */
+    -fx-pref-height: 260px;
+}

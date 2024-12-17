@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class  GameUnoStage extends Stage {
         }
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
+        getIcons().add(new Image(getClass().getResourceAsStream("/org/example/eiscuno/images/favicon.png")));
         // Configuring the stage
         setTitle("EISC Uno"); // Sets the title of the stage
         setScene(scene); // Sets the scene for the stage

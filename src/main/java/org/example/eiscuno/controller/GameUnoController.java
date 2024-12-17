@@ -4,19 +4,17 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.example.eiscuno.controller.decorator.ButtonDecorator;
+import org.example.eiscuno.controller.decorator.ColorButtonDecorator;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.exception.GameException;
@@ -31,8 +29,6 @@ import org.example.eiscuno.view.GameUnoStage;
 import org.example.eiscuno.view.WelcomeStage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -61,8 +57,6 @@ public class GameUnoController implements ShiftEventListener {
     private Label winMessageLabel;
     @FXML
     private Button oneButton;
-    @FXML
-    private ImageView instantAnimatedCard;
 
 
 
@@ -87,6 +81,9 @@ public class GameUnoController implements ShiftEventListener {
     private ImageView personaje;  // ImageView para el personaje
     @FXML
     private ImageView character;  // ImageView para el character
+
+    @FXML
+    private ImageView instantAnimatedCard;
 
     // Arreglos de rutas de las imágenes para cada uno
     private String[] personajeImages = {
@@ -433,8 +430,6 @@ public class GameUnoController implements ShiftEventListener {
     private void animateCardToCenterWithRotation(ImageView cardImageView, Card newCard) {
         isAnimating = true;
 
-
-
         // Obtener las coordenadas iniciales de la carta en el mazo del jugador
         Bounds cardBounds = cardImageView.localToScene(cardImageView.getBoundsInLocal());
         double startX = cardBounds.getMinX();
@@ -448,13 +443,11 @@ public class GameUnoController implements ShiftEventListener {
         animatedCard.setLayoutY(startY);
 
 
-
         // Generar una rotación aleatoria entre -20 y 20 grados
         double rotationAngle = (Math.random() * 40) - 20;
 
         // Añadir la carta animada al contenedor central
         centralPane.getChildren().add(animatedCard);
-
 
         // Coordenadas dinámicas del centro del tablero
         Bounds centerBounds = tableImageView.localToScene(tableImageView.getBoundsInLocal());
@@ -474,12 +467,13 @@ public class GameUnoController implements ShiftEventListener {
 
             // Crear una nueva carta fija con rotación y colocarla en el centro
             ImageView finalCard = new ImageView(newCard.getImage());
-            instantAnimatedCard=finalCard;
             finalCard.setFitHeight(90);
             finalCard.setFitWidth(70);
             finalCard.setRotate(rotationAngle); // Mantener la rotación
             finalCard.setLayoutX(centerX - finalCard.getFitWidth() / 2);
             finalCard.setLayoutY(centerY - finalCard.getFitHeight() / 2);
+
+            instantAnimatedCard=finalCard;
 
             // Eliminar cualquier carta previa en el centro
             centralPane.getChildren().removeIf(node -> node instanceof ImageView && node != tableImageView);
@@ -549,38 +543,43 @@ public class GameUnoController implements ShiftEventListener {
         buttonGrid.setLayoutX(50); // Ajustar posición dentro de Colors (si es necesario)
         buttonGrid.setLayoutY(50); // Ajustar posición dentro de Colors (si es necesario)
 
-        // Crear los botones sin texto
+        // Crear los botones para cada color
         Button btnAzul = new Button();
         Button btnRojo = new Button();
         Button btnAmarillo = new Button();
         Button btnVerde = new Button();
 
-        // Establecer los colores de fondo de los botones
-        btnAzul.setStyle("-fx-background-color: BLUE; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
-        btnRojo.setStyle("-fx-background-color: RED; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
-        btnAmarillo.setStyle("-fx-background-color: YELLOW; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
-        btnVerde.setStyle("-fx-background-color: GREEN; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
+        // Crear los decoradores para cada botón
+        ButtonDecorator azulDecorator = new ColorButtonDecorator("BLUE");
+        ButtonDecorator rojoDecorator = new ColorButtonDecorator("RED");
+        ButtonDecorator amarilloDecorator = new ColorButtonDecorator("YELLOW");
+        ButtonDecorator verdeDecorator = new ColorButtonDecorator("GREEN");
 
-        // Añadir los botones al GridPane en posiciones correspondientes
-        buttonGrid.add(btnAzul, 0, 0);    // Fila 0, Columna 0
-        buttonGrid.add(btnRojo, 0, 1);    // Fila 0, Columna 1
-        buttonGrid.add(btnAmarillo, 0, 2); // Fila 1, Columna 0
-        buttonGrid.add(btnVerde, 0, 3);    // Fila 1, Columna 1
+        // Aplicar los decoradores a los botones
+        azulDecorator.decorate(btnAzul);
+        rojoDecorator.decorate(btnRojo);
+        amarilloDecorator.decorate(btnAmarillo);
+        verdeDecorator.decorate(btnVerde);
 
-        // Asociar las acciones a los botones
+        // Establecer las acciones para los botones
         btnAzul.setOnAction(e -> handleChangerColorButtonClick("BLUE", colorsPane));
         btnRojo.setOnAction(e -> handleChangerColorButtonClick("RED", colorsPane));
         btnAmarillo.setOnAction(e -> handleChangerColorButtonClick("YELLOW", colorsPane));
         btnVerde.setOnAction(e -> handleChangerColorButtonClick("GREEN", colorsPane));
 
+        // Añadir los botones al GridPane en posiciones correspondientes
+        buttonGrid.add(btnAzul, 0, 0);    // Fila 0, Columna 0
+        buttonGrid.add(btnRojo, 1, 0);    // Fila 0, Columna 1
+        buttonGrid.add(btnAmarillo, 0, 1); // Fila 1, Columna 0
+        buttonGrid.add(btnVerde, 1, 1);    // Fila 1, Columna 1
+
         // Agregar el GridPane al Pane "Colors"
         colorsPane.getChildren().add(buttonGrid);
 
         // Asegurar que el GridPane se muestre encima de otros elementos
-        buttonGrid.setViewOrder(1);
-        // Establece un valor de Z-Index mayor para que se muestre encima
-        buttonGrid.toFront();
+        buttonGrid.setViewOrder(1);  // Establece un valor de Z-Index mayor para que se muestre encima
     }
+
 
 
 
@@ -591,16 +590,15 @@ public class GameUnoController implements ShiftEventListener {
 
         System.out.println("Se presionó el botón: " + color);
         table.setColorForTable(color);  // Establecer el color de la mesa
-
         System.out.println(table.getCurrentCardOnTheTable().getColor());
-        instantAnimatedCard.setImage(table.getCurrentCardOnTheTable().getImage());
-
 
         // Eliminar los botones del Pane con el ID "Colors" cuando se haga clic en uno
         colorsPane.getChildren().clear();  // Eliminar todos los botones del Pane con el ID "Colors"
 
         // Restablecer el estado de cambio de color
         gameUno.setHasToChangeColor(false);
+
+        instantAnimatedCard.setImage(table.getCurrentCardOnTheTable().getImage());
 
         // Si es el turno de la máquina, deshabilitar el botón de la baraja
         if (machinePlayer.isOnTurn()) {
@@ -623,13 +621,109 @@ public class GameUnoController implements ShiftEventListener {
     }
 
 
+    public void win(Boolean win) {
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("YOU WON! CONGRATULATIONS!");
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        alert.setContentText(null);
+        DialogPane dialogPane = alert.getDialogPane();
+        ButtonType okButtonType = ButtonType.OK;
+        Button okButton = (Button) alert.getDialogPane().lookupButton(okButtonType);
+        Label resultsLabel = new Label();
+        Label resultsLabel2 = new Label();
+        if (win) {
+            resultsLabel.setText("¡Felicidades");
+
+        } else {
+            resultsLabel.setText("¡El poder de la oscuridad triunfa, los rebeldes cayeron ante su fuerza!" );
+        }
+        okButton.setStyle(
+                "-fx-background-color: #000065; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-font-size: 25px;"
+        );
+        resultsLabel.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                "-fx-text-fill: white; " +
+                "-fx-font-weight: bold; " +
+                "-fx-font-size: 32px;");
+
+        resultsLabel2.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                "-fx-text-fill: white; " +
+                "-fx-font-weight: bold; " +
+                "-fx-font-size: 32px;");
+
+        VBox content = new VBox();
+        content.getChildren().add(resultsLabel);
+        content.getChildren().add(resultsLabel2);
+        content.setStyle("-fx-alignment: center;");
+        VBox.setMargin(resultsLabel, new Insets(500, 0, 0, 0));
+
+        content.setAlignment(Pos.BOTTOM_CENTER);
+        alert.getDialogPane().setContent(content);
+        dialogPane.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
+        dialogPane.getStyleClass().add("mi-alerta");
+        alert.show();
+
+    }
 
     public void updateWinStatus(){
 
         Platform.runLater(() -> {System.out.println("Entro al update winStatus");
-                    if(gameUno.getWinStatus()==1){
-                        winMessageLabel.setText("Ganaste");
+            boolean win = gameUno.getWinStatus() == 1;
+                    if(win){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("YOU WON! CONGRATULATIONS!");
+                        alert.setHeaderText(null);
+                        alert.setGraphic(null);
+                        alert.setContentText(null);
+
+                        DialogPane dialogPane = alert.getDialogPane();
+                        ButtonType okButtonType = ButtonType.OK;
+                        Button okButton = (Button) alert.getDialogPane().lookupButton(okButtonType);
+                        Label resultsLabel = new Label();
+                        Label resultsLabel2 = new Label();
+
+                        if (win) {
+                            resultsLabel.setText("¡Felicidades!");
+                        }
+
+// Establecer estilo del botón
+                        okButton.setStyle(
+                                "-fx-background-color: #000065; " +
+                                        "-fx-text-fill: white; " +
+                                        "-fx-font-size: 25px;"
+                        );
+
+// Establecer estilo de los labels
+                        resultsLabel.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        resultsLabel2.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        VBox content = new VBox();
+                        content.getChildren().add(resultsLabel);
+                        content.getChildren().add(resultsLabel2);
+                        content.setStyle("-fx-alignment: center;");
+                        VBox.setMargin(resultsLabel, new Insets(500, 0, 0, 0));
+                        content.setAlignment(Pos.BOTTOM_CENTER);
+
+                        alert.getDialogPane().setContent(content);
+                        dialogPane.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
+                        dialogPane.getStyleClass().add("mi-alerta");
+
+// Obtener el Stage del Alert y cambiar el tamaño de la ventana
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.setWidth(800);  // Establece el ancho de la ventana
+                        stage.setHeight(600); // Establece la altura de la ventana
+
+                        alert.show();
                         gridPaneCardsPlayer.setDisable(true);
                         gridPaneCardsMachine.setDisable(true);
                         deckButton.setDisable(true);
@@ -637,9 +731,70 @@ public class GameUnoController implements ShiftEventListener {
                         machinePlayer.setOnTurn(false);
                         humanPlayer.setOnTurn(false);
 
+
+
                     }
-                    else if(gameUno.getWinStatus()==2){
-                        winMessageLabel.setText("Perdiste");
+                    else if(!win){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("YOU WON! CONGRATULATIONS!");
+                        alert.setHeaderText(null);
+                        alert.setGraphic(null);
+                        alert.setContentText(null);
+
+                        DialogPane dialogPane = alert.getDialogPane();
+                        ButtonType okButtonType = ButtonType.OK;
+                        Button okButton = (Button) alert.getDialogPane().lookupButton(okButtonType);
+                        Label resultsLabel = new Label();
+                        Label resultsLabel2 = new Label();
+
+                        if (!win) {
+                            resultsLabel.setText("¡Perdiste!");
+                        }
+
+// Establecer estilo del botón
+                        okButton.setStyle(
+                                "-fx-background-color: #000065; " +
+                                        "-fx-text-fill: white; " +
+                                        "-fx-font-size: 25px;"
+                        );
+
+// Establecer estilo de los labels
+                        resultsLabel.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        resultsLabel2.setStyle("-fx-font-family: 'JetBrains Mono'; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-weight: bold; " +
+                                "-fx-font-size: 32px;");
+
+                        VBox content = new VBox();
+                        content.getChildren().add(resultsLabel);
+                        content.getChildren().add(resultsLabel2);
+                        content.setStyle("-fx-alignment: center;");
+                        VBox.setMargin(resultsLabel, new Insets(500, 0, 0, 0));
+                        content.setAlignment(Pos.BOTTOM_CENTER);
+
+// Establecer fondo para el DialogPane
+                        Image backgroundImage = new Image(getClass().getResource("/org/example/eiscuno/images/bowser.jpg").toExternalForm());  // Cambia la ruta a tu imagen
+                        BackgroundImage background = new BackgroundImage(backgroundImage,
+                                BackgroundRepeat.NO_REPEAT,
+                                BackgroundRepeat.NO_REPEAT,
+                                BackgroundPosition.CENTER,
+                                BackgroundSize.DEFAULT);
+                        dialogPane.setBackground(new Background(background));
+
+                        alert.getDialogPane().setContent(content);
+                        dialogPane.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
+                        dialogPane.getStyleClass().add("mi-alerta");
+
+// Obtener el Stage del Alert y cambiar el tamaño de la ventana
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.setWidth(800);  // Establece el ancho de la ventana
+                        stage.setHeight(600); // Establece la altura de la ventana
+
+                        alert.show();
                         gridPaneCardsPlayer.setDisable(true);
                         gridPaneCardsMachine.setDisable(true);
                         deckButton.setDisable(true);

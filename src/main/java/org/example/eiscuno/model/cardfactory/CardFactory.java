@@ -1,25 +1,47 @@
+/**
+ * Clase que implementa la fábrica de cartas para el juego Uno.
+ * Proporciona métodos para crear instancias de cartas basadas en nombres y valores.
+ */
 package org.example.eiscuno.model.cardfactory;
 
 import org.example.eiscuno.model.card.Card;
 
 public class CardFactory implements ICardFactory {
 
-
+    /**
+     * Crea una carta con una URL de imagen y un nombre enumerado que indica sus características.
+     *
+     * @param url      URL de la imagen asociada a la carta.
+     * @param EnumName Nombre del enumerado que indica color y valor de la carta.
+     * @return Una nueva instancia de {@link Card}.
+     */
     @Override
-    public Card produceCard(String url, String EnumName){
+    public Card produceCard(String url, String EnumName) {
         String color = getCardColor(EnumName);
         String value = getCardValue(EnumName);
 
-        return new Card(url,value,color);
-    };
+        return new Card(url, value, color);
+    }
 
-    public Card produceCard(String EnumName){
+    /**
+     * Crea una carta utilizando solo un nombre enumerado para determinar sus características.
+     *
+     * @param EnumName Nombre del enumerado que indica color y valor de la carta.
+     * @return Una nueva instancia de {@link Card}.
+     */
+    public Card produceCard(String EnumName) {
         String color = getCardColor(EnumName);
         String value = getCardValue(EnumName);
 
-        return new Card(value,color);
-    };
+        return new Card(value, color);
+    }
 
+    /**
+     * Obtiene el valor de la carta a partir de su nombre enumerado.
+     *
+     * @param name Nombre del enumerado.
+     * @return El valor de la carta como cadena de texto.
+     */
     private String getCardValue(String name) {
         if (name.endsWith("0")) {
             return "0";
@@ -54,9 +76,14 @@ public class CardFactory implements ICardFactory {
         } else {
             return null;
         }
-
     }
 
+    /**
+     * Obtiene el color de la carta a partir de su nombre enumerado.
+     *
+     * @param name Nombre del enumerado.
+     * @return El color de la carta como cadena de texto o "MULTICOLOR" para cartas comodín.
+     */
     private String getCardColor(String name) {
         if (name.startsWith("GREEN")) {
             return "GREEN";
@@ -76,7 +103,6 @@ public class CardFactory implements ICardFactory {
             } else if (name.endsWith("RED")) {
                 return "RED";
             }
-
         } else if (name.startsWith("FOUR_WILD_DRAW")) {
             return "MULTICOLOR";
         } else if (name.startsWith("WILD")) {
@@ -86,7 +112,4 @@ public class CardFactory implements ICardFactory {
         }
         return null;
     }
-
-
-
 }
