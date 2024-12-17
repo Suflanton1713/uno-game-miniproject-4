@@ -8,6 +8,9 @@ import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
 import org.example.eiscuno.model.table.Table;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ThreadPlayMachine extends Thread implements ShiftEventListener {
     private Table table;
     private Player machinePlayer;
@@ -51,10 +54,56 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                     e.printStackTrace();
                 }
                 // Aqui iria la logica de colocar la carta
-                hasPlayerPlayed = putCardOnTheTable();
+
+                if(gameUno.isHumanSingUno() && (machinePlayer.getCardsPlayer().size() == 1)){
+                    gameUno.passTurnWhenUnoSung();
+                    hasPlayerPlayed = false;
+                }else{
+                    hasPlayerPlayed = putCardOnTheTable();
+                    if(gameUno.HasToChangeColor()){
+                        table.setColorForTable(chooseColorForMachine());
+                        gameUno.setHasToChangeColor(false);
+
+                    }
+                }
+
+
 
             }
         }
+
+    }
+
+    private String chooseColorForMachine(){
+        int blueCounter = 0, yellowCounter = 0, greenCounter = 0, redCounter = 0;
+        String colorChoosen;
+        int maxNumber;
+        for(Card card : machinePlayer.getCardsPlayer() ){
+            switch (card.getColor()){
+                case "BLUE":
+                    blueCounter++;
+                    break;
+                case "YELLOW":
+                    yellowCounter++;
+                    break;
+                case "GREEN":
+                    greenCounter++;
+                    break;
+                case "RED":
+                    redCounter++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        maxNumber = blueCounter;
+        colorChoosen = "BLUE";
+
+        if(yellowCounter > maxNumber) colorChoosen = "YELLOW";
+        if(greenCounter > maxNumber) colorChoosen = "GREEN";
+        if(redCounter > maxNumber) colorChoosen = "RED";
+
+        return colorChoosen;
 
     }
 

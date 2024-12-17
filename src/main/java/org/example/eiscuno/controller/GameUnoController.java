@@ -13,10 +13,10 @@ import javafx.scene.layout.Pane;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.game.GameUno;
+import org.example.eiscuno.model.game.ThreadUnoComprobation;
 import org.example.eiscuno.model.machine.ThreadPlayMachine;
 import org.example.eiscuno.model.machine.ThreadSingUNOMachine;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
-import org.example.eiscuno.model.observers.listeners.ShiftEventListenerAdaptor;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.table.Table;
 
@@ -63,6 +63,7 @@ public class GameUnoController implements ShiftEventListener {
 
     private ThreadSingUNOMachine threadSingUNOMachine;
     private ThreadPlayMachine threadPlayMachine;
+    private ThreadUnoComprobation threadUnoComprobation;
 
     /**
      * Initializes the controller.
@@ -87,7 +88,12 @@ public class GameUnoController implements ShiftEventListener {
         }
         tableImageView.setImage(initialCard.getImage());
         printCardsHumanPlayer();
-        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno, this.machinePlayer.getCardsPlayer());
+
+        threadUnoComprobation = new ThreadUnoComprobation(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno, this.machinePlayer.getCardsPlayer(), this.humanPlayer, this.machinePlayer);
+        Thread t1 = new Thread(threadUnoComprobation, "ThreadUnoComprobation");
+        t1.start();
+
+        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.deck, this, this.gameUno, this.machinePlayer.getCardsPlayer(), this.humanPlayer, this.machinePlayer);
         Thread t = new Thread(threadSingUNOMachine, "ThreadSingUNO");
         t.start();
 
@@ -227,7 +233,7 @@ public class GameUnoController implements ShiftEventListener {
 
         gameUno.events.notifyShiftEvent("onturn");
         gameUno.events.notifyShiftToController("turnChangerController");
-        gameUno.setSingUno(false);
+        gameUno.setHumanSingUno(false);
 
 
         if(threadPlayMachine.getMachinePlayer().isOnTurn()){
@@ -243,8 +249,8 @@ public class GameUnoController implements ShiftEventListener {
      */
     @FXML
     void onHandleUno() {
-        if(humanPlayer.getCardsPlayer().size()==1){gameUno.setSingUno(true);}
-        else if (machinePlayer.getCardsPlayer().size()==1) {gameUno.setSingUno(true);}
+        if(humanPlayer.getCardsPlayer().size()==1){gameUno.setHumanSingUno(true);}
+        else if (machinePlayer.getCardsPlayer().size()==1) {gameUno.setHumanSingUno(true);}
     }
 
     @Override
@@ -307,8 +313,9 @@ public class GameUnoController implements ShiftEventListener {
     }
 
     private void handleChangerColorButtonClick(String color) {
+        deckButton.setDisable(false);
         System.out.println("Se presionó el botón: " + color);
-        table.getCurrentCardOnTheTable().setColor(color);
+        table.setColorForTable(color);
         System.out.println(table.getCurrentCardOnTheTable().getColor());
 
         List<Node> botonesAEliminar = new ArrayList<>();
@@ -320,15 +327,25 @@ public class GameUnoController implements ShiftEventListener {
         }
         centralPane.getChildren().removeAll(botonesAEliminar);
         gameUno.setHasToChangeColor(false);
-        gameUno.events.notifyShiftEvent("onturn");
-        gameUno.events.notifyShiftToController("turnChangerController");
-        if(threadPlayMachine.getMachinePlayer().isOnTurn()){
+        System.out.println("Es wild draw");
+        System.out.println(!(table.getCurrentCardOnTheTable().getValue().equals("Wild")));
+        System.out.println("Solo wild");
+        System.out.println((table.getCurrentCardOnTheTable().getValue().equals("Wild")));
+        System.out.println("");
+
+        if(machinePlayer.isOnTurn()){
+            deckButton.setDisable(true);
             System.out.println("La maquina ya está jugando");
             System.out.println("hi");
 
             threadPlayMachine.setHasPlayerPlayed(true);
+        }else{
+            deckButton.setDisable(false);
         }
+
     }
+
+
     public void updateWinStatus(){
 
         Platform.runLater(() -> {System.out.println("Entro al update winStatus");
@@ -350,5 +367,13 @@ public class GameUnoController implements ShiftEventListener {
                     }; } );
 
 
+    }
+
+    public Button getOneButton() {
+        return oneButton;
+    }
+
+    public void setOneButton(Button oneButton) {
+        this.oneButton = oneButton;
     }
 }
