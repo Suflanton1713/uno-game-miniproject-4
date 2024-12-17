@@ -9,7 +9,7 @@
    <left>
       <VBox alignment="CENTER" prefHeight="513.0" prefWidth="379.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ButtonStartGame" mnemonicParsing="false" styleClass="buttons" text="Start Game">
+            <Button fx:id="ButtonStartGame" mnemonicParsing="false" onAction="#handleClickPlay" styleClass="buttons" text="Start Game">
                <VBox.margin>
                   <Insets top="180.0" />
                </VBox.margin></Button>
@@ -19,7 +19,7 @@
       </VBox>
    </left>
    <bottom>
-      <Button fx:id="buttonSound" mnemonicParsing="false" BorderPane.alignment="BOTTOM_RIGHT">
+      <Button fx:id="buttonSound" mnemonicParsing="false" onAction="#handleClickSound" BorderPane.alignment="BOTTOM_RIGHT">
          <BorderPane.margin>
             <Insets bottom="10.0" right="10.0" />
          </BorderPane.margin>

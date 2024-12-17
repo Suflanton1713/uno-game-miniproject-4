@@ -65,6 +65,8 @@ public class GameUnoController implements ShiftEventListener {
     private GameUno gameUno;
     private int posInitCardToShow;
     private boolean isAnimating = false;
+    @FXML
+    private Pane PaneCentral;
 
 
     private ThreadSingUNOMachine threadSingUNOMachine;
@@ -482,26 +484,32 @@ public class GameUnoController implements ShiftEventListener {
 
     }
 
-    private void createButtonsForChangeColor(){
+    private void createButtonsForChangeColor() {
 
-        // Crear los botones
-        Button btnAzul = new Button("Azul");
-        Button btnRojo = new Button("Rojo");
-        Button btnAmarillo = new Button("Amarillo");
-        Button btnVerde = new Button("Verde");
+        // Crear los botones sin texto
+        Button btnAzul = new Button();
+        Button btnRojo = new Button();
+        Button btnAmarillo = new Button();
+        Button btnVerde = new Button();
 
-        // Posicionar los botones
-        btnAzul.setLayoutX(20);
-        btnAzul.setLayoutY(20);
+        // Establecer los colores de fondo de los botones
+        btnAzul.setStyle("-fx-background-color: BLUE; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
+        btnRojo.setStyle("-fx-background-color: RED; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
+        btnAmarillo.setStyle("-fx-background-color: YELLOW; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
+        btnVerde.setStyle("-fx-background-color: GREEN; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
 
-        btnRojo.setLayoutX(100);
-        btnRojo.setLayoutY(20);
+        // Posicionar los botones en forma circular
+        btnAzul.setLayoutX(50);
+        btnAzul.setLayoutY(50);
 
-        btnAmarillo.setLayoutX(180);
-        btnAmarillo.setLayoutY(20);
+        btnRojo.setLayoutX(150);
+        btnRojo.setLayoutY(50);
 
-        btnVerde.setLayoutX(260);
-        btnVerde.setLayoutY(20);
+        btnAmarillo.setLayoutX(250);
+        btnAmarillo.setLayoutY(50);
+
+        btnVerde.setLayoutX(350);
+        btnVerde.setLayoutY(50);
 
         // Asociar acciones a los botones
         btnAzul.setOnAction(e -> handleChangerColorButtonClick("BLUE"));
@@ -510,10 +518,9 @@ public class GameUnoController implements ShiftEventListener {
         btnVerde.setOnAction(e -> handleChangerColorButtonClick("GREEN"));
 
         // Agregar los botones al pane
-        centralPane.getChildren().addAll(btnAzul, btnRojo, btnAmarillo, btnVerde);
-
-
+        PaneCentral.getChildren().addAll(btnAzul, btnRojo, btnAmarillo, btnVerde);
     }
+
 
     private void handleChangerColorButtonClick(String color) {
         deckButton.setDisable(false);

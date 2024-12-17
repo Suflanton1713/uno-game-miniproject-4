@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ee8ff40-bbdd-4aec-a3d2-cf5cc45130ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/CardFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/ICardFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/exception/GameException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUnoAdaptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/ThreadUnoComprobation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/controller/GameUnoControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/game/GameUnoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/table/TableTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/table/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/WelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/welcome-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +40,12 @@
     &quot;assignee&quot;: &quot;fabiansvc&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/fabiansvc/eisc-uno.git&quot;,
-    &quot;accountId&quot;: &quot;0c82e6b4-a45c-4190-a110-02ef4a3ff1b6&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Suflanton1713/uno-game-miniproject-4.git",
+    "accountId": "7f5d12d4-fde5-4fd7-a85e-05b5fbdaa37c"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -77,6 +67,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "JUnit.GameUnoControllerTest.forcingErrorWhenThereisMulticolorCardInDeck.executor": "Run",
     "JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCards.executor": "Run",
     "JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCardsInDeck.executor": "Run",
@@ -103,7 +94,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Merging jdrl",
+    "git-widget-placeholder": "jdrl",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Fabian/Documents/eisc-uno",
@@ -132,7 +123,14 @@
       <recent name="org.example.eiscuno.controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Unnamed">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.Main" />
+      <module name="eisc-uno" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisc-uno" />
       <extension name="coverage">
@@ -197,6 +195,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
+      <item itemvalue="JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" />
+      <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" />
+      <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenPlayingCard" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
@@ -209,8 +214,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
       </set>
     </attachedChunks>
   </component>
@@ -253,6 +258,7 @@
       <workItem from="1734328767638" duration="70000" />
       <workItem from="1734358021291" duration="3375000" />
       <workItem from="1734393050704" duration="734000" />
+      <workItem from="1734445209447" duration="2341000" />
     </task>
     <servers />
   </component>

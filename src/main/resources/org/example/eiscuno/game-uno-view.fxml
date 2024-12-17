@@ -29,7 +29,7 @@
       </Pane>
    </right>
    <center>
-      <Pane prefHeight="341.0" prefWidth="342.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="PaneCentral" prefHeight="341.0" prefWidth="342.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="tableImageView" fitHeight="116.0" fitWidth="67.0" layoutX="99.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
          </children>
