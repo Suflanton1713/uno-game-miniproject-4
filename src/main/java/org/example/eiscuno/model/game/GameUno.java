@@ -151,7 +151,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     @Override
     public Card[] getCurrentVisibleCardsHumanPlayer(int posInitCardToShow) {
         int totalCards = this.humanPlayer.getCardsPlayer().size();
-        int numVisibleCards = Math.min(4, totalCards - posInitCardToShow);
+        int numVisibleCards = Math.min(8, totalCards - posInitCardToShow);
         Card[] cards = new Card[numVisibleCards];
 
         for (int i = 0; i < numVisibleCards; i++) {

@@ -3,6 +3,8 @@ package org.example.eiscuno.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.io.IOException;
  * Represents the main stage of the Uno game application.
  * This stage displays the game interface to the user.
  */
-public class GameUnoStage extends Stage {
+public class  GameUnoStage extends Stage {
 
     /**
      * Constructs a new instance of GameUnoStage.
@@ -28,6 +30,7 @@ public class GameUnoStage extends Stage {
             throw new IOException("Error while loading FXML file", e);
         }
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/org/example/eiscuno/styles/styleGame.css").toExternalForm());
         // Configuring the stage
         setTitle("EISC Uno"); // Sets the title of the stage
         setScene(scene); // Sets the scene for the stage
@@ -42,6 +45,17 @@ public class GameUnoStage extends Stage {
     public static void deleteInstance() {
         GameUnoStageHolder.INSTANCE.close();
         GameUnoStageHolder.INSTANCE = null;
+    }
+
+    public static void deletedInstance() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(null);
+        alert.setHeaderText("¿Seguro que desea cerrar la ventana?");
+        alert.setContentText("Perderá el progreso actual.");
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            GameUnoStage.GameUnoStageHolder.INSTANCE.close();
+            GameUnoStage.GameUnoStageHolder.INSTANCE = null;
+        }
     }
 
     /**

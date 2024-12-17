@@ -122,7 +122,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                 gameUno.playCard(card);
                 tableImageView.setImage(card.getImage());
                 machinePlayer.removeCard(machinePlayer.getCardsPlayer().indexOf(card));
-
+                gameUnoController.animateMachineCardToCenter(card);
 
             }
             System.out.println("Machine cards after playing " + machinePlayer.getStringOfOwnCards());
