@@ -4,8 +4,11 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.exception.GameException;
@@ -23,10 +27,14 @@ import org.example.eiscuno.model.machine.ThreadSingUNOMachine;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.table.Table;
+import org.example.eiscuno.view.GameUnoStage;
+import org.example.eiscuno.view.WelcomeStage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * Controller class for the Uno game.
@@ -73,11 +81,49 @@ public class GameUnoController implements ShiftEventListener {
     private ThreadPlayMachine threadPlayMachine;
     private ThreadUnoComprobation threadUnoComprobation;
 
+    @FXML
+    private ImageView personaje;  // ImageView para el personaje
+    @FXML
+    private ImageView character;  // ImageView para el character
+
+    // Arreglos de rutas de las imágenes para cada uno
+    private String[] personajeImages = {
+            "/org/example/eiscuno/images/personaje1.png",
+            "/org/example/eiscuno/images/personaje2.png",
+            "/org/example/eiscuno/images/personaje3.png",
+            "/org/example/eiscuno/images/personaje4.png"
+    };
+
+    private String[] characterImages = {
+            "/org/example/eiscuno/images/character1.png",
+            "/org/example/eiscuno/images/character2.png",
+            "/org/example/eiscuno/images/character3.png",
+            "/org/example/eiscuno/images/character4.png"
+    };
+
+    /**
+     * Método que se ejecuta para mostrar imágenes aleatorias
+     */
+    public void displayRandomImages() {
+        Random rand = new Random();
+
+        // Seleccionar una imagen aleatoria para 'personaje'
+        int randomPersonajeIndex = rand.nextInt(personajeImages.length);
+        Image personajeImage = new Image(getClass().getResourceAsStream(personajeImages[randomPersonajeIndex]));
+        personaje.setImage(personajeImage);
+
+        // Seleccionar una imagen aleatoria para 'character'
+        int randomCharacterIndex = rand.nextInt(characterImages.length);
+        Image characterImage = new Image(getClass().getResourceAsStream(characterImages[randomCharacterIndex]));
+        character.setImage(characterImage);
+    }
+
     /**
      * Initializes the controller.
      */
     @FXML
     public void initialize() {
+        displayRandomImages();
         initVariables();
         this.gameUno.startGame();
 
@@ -485,6 +531,15 @@ public class GameUnoController implements ShiftEventListener {
     }
 
     private void createButtonsForChangeColor() {
+        // Obtener el Pane con el ID "Colors"
+        Pane colorsPane = (Pane) centralPane.lookup("#Colors");
+
+        // Crear el GridPane para organizar los botones
+        GridPane buttonGrid = new GridPane();
+        buttonGrid.setHgap(5);  // Reducir espaciado horizontal entre botones
+        buttonGrid.setVgap(5);  // Reducir espaciado vertical entre botones
+        buttonGrid.setLayoutX(50); // Ajustar posición dentro de Colors (si es necesario)
+        buttonGrid.setLayoutY(50); // Ajustar posición dentro de Colors (si es necesario)
 
         // Crear los botones sin texto
         Button btnAzul = new Button();
@@ -493,67 +548,64 @@ public class GameUnoController implements ShiftEventListener {
         Button btnVerde = new Button();
 
         // Establecer los colores de fondo de los botones
-        btnAzul.setStyle("-fx-background-color: BLUE; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
-        btnRojo.setStyle("-fx-background-color: RED; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
-        btnAmarillo.setStyle("-fx-background-color: YELLOW; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
-        btnVerde.setStyle("-fx-background-color: GREEN; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 0);");
+        btnAzul.setStyle("-fx-background-color: BLUE; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
+        btnRojo.setStyle("-fx-background-color: RED; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
+        btnAmarillo.setStyle("-fx-background-color: YELLOW; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
+        btnVerde.setStyle("-fx-background-color: GREEN; -fx-min-width: 60px; -fx-min-height: 60px; -fx-background-radius: 30px;");
 
-        // Posicionar los botones en forma circular
-        btnAzul.setLayoutX(50);
-        btnAzul.setLayoutY(50);
+        // Añadir los botones al GridPane en posiciones correspondientes
+        buttonGrid.add(btnAzul, 0, 0);    // Fila 0, Columna 0
+        buttonGrid.add(btnRojo, 1, 0);    // Fila 0, Columna 1
+        buttonGrid.add(btnAmarillo, 0, 1); // Fila 1, Columna 0
+        buttonGrid.add(btnVerde, 1, 1);    // Fila 1, Columna 1
 
-        btnRojo.setLayoutX(150);
-        btnRojo.setLayoutY(50);
+        // Asociar las acciones a los botones
+        btnAzul.setOnAction(e -> handleChangerColorButtonClick("BLUE", colorsPane));
+        btnRojo.setOnAction(e -> handleChangerColorButtonClick("RED", colorsPane));
+        btnAmarillo.setOnAction(e -> handleChangerColorButtonClick("YELLOW", colorsPane));
+        btnVerde.setOnAction(e -> handleChangerColorButtonClick("GREEN", colorsPane));
 
-        btnAmarillo.setLayoutX(250);
-        btnAmarillo.setLayoutY(50);
+        // Agregar el GridPane al Pane "Colors"
+        colorsPane.getChildren().add(buttonGrid);
 
-        btnVerde.setLayoutX(350);
-        btnVerde.setLayoutY(50);
-
-        // Asociar acciones a los botones
-        btnAzul.setOnAction(e -> handleChangerColorButtonClick("BLUE"));
-        btnRojo.setOnAction(e -> handleChangerColorButtonClick("RED"));
-        btnAmarillo.setOnAction(e -> handleChangerColorButtonClick("YELLOW"));
-        btnVerde.setOnAction(e -> handleChangerColorButtonClick("GREEN"));
-
-        // Agregar los botones al pane
-        PaneCentral.getChildren().addAll(btnAzul, btnRojo, btnAmarillo, btnVerde);
+        // Asegurar que el GridPane se muestre encima de otros elementos
+        buttonGrid.setViewOrder(1);  // Establece un valor de Z-Index mayor para que se muestre encima
     }
 
 
-    private void handleChangerColorButtonClick(String color) {
-        deckButton.setDisable(false);
+
+
+
+    private void handleChangerColorButtonClick(String color, Pane colorsPane) {
+        deckButton.setDisable(false);  // Habilitar el botón de la baraja
+
         System.out.println("Se presionó el botón: " + color);
-        table.setColorForTable(color);
+        table.setColorForTable(color);  // Establecer el color de la mesa
         System.out.println(table.getCurrentCardOnTheTable().getColor());
 
-        List<Node> botonesAEliminar = new ArrayList<>();
+        // Eliminar los botones del Pane con el ID "Colors" cuando se haga clic en uno
+        colorsPane.getChildren().clear();  // Eliminar todos los botones del Pane con el ID "Colors"
 
-        for (var nodo : centralPane.getChildren()) {
-            if (nodo instanceof Button) {
-                botonesAEliminar.add((Button) nodo);
-            }
-        }
-        centralPane.getChildren().removeAll(botonesAEliminar);
+        // Restablecer el estado de cambio de color
         gameUno.setHasToChangeColor(false);
-        System.out.println("Es wild draw");
-        System.out.println(!(table.getCurrentCardOnTheTable().getValue().equals("Wild")));
-        System.out.println("Solo wild");
-        System.out.println((table.getCurrentCardOnTheTable().getValue().equals("Wild")));
-        System.out.println("");
 
-        if(machinePlayer.isOnTurn()){
+        // Si es el turno de la máquina, deshabilitar el botón de la baraja
+        if (machinePlayer.isOnTurn()) {
             deckButton.setDisable(true);
-            System.out.println("La maquina ya está jugando");
-            System.out.println("hi");
-
-            threadPlayMachine.setHasPlayerPlayed(true);
-        }else{
-            deckButton.setDisable(false);
         }
-
     }
+
+
+
+    @FXML
+    void handleClickExit(ActionEvent event) throws IOException {
+        GameUnoStage.deletedInstance();
+
+        // Abre el WelcomeStage utilizando el Singleton
+        WelcomeStage.getInstance().show();
+    }
+
+
 
 
     public void updateWinStatus(){
