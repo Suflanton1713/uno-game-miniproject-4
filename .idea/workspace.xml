@@ -5,65 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ee8ff40-bbdd-4aec-a3d2-cf5cc45130ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/diajsdias" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/decorator/ButtonDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/decorator/ColorButtonDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/wild_blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/wild_green.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/wild_red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/wild_yellow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/bowser.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/favicon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/ThreadUnoComprobation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/ThreadUnoComprobation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/GameUnoStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/GameUnoStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/WelcomeStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/WelcomeStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_wild_draw.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_wild_draw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/4_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/5_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/6_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/7_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/8_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/9_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/reserve_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/skip_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/wild.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/cards-uno/wild.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/personaje4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/personaje4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/styles/StyleGame.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/styles/StyleGame.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/welcome-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +88,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Merging laqg",
+    "git-widget-placeholder": "laqg",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Juan David/Documents/miniproject-4/uno-game-miniproject-4/src/main/resources/org/example/eiscuno/images",
@@ -177,7 +120,7 @@
       <recent name="org.example.eiscuno.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.Main" />
       <module name="eisc-uno" />
@@ -249,8 +192,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TableTest.forcingExceptionWhenIllegalColorAppear" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisc-uno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.eiscuno.model.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.table" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.table.TableTest" />
+      <option name="METHOD_NAME" value="forcingExceptionWhenIllegalColorAppear" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JUnit.TableTest.forcingExceptionWhenIllegalColorAppear" />
       <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
       <item itemvalue="JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" />
       <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" />
@@ -258,6 +218,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TableTest.forcingExceptionWhenIllegalColorAppear" />
         <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
         <item itemvalue="JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" />
         <item itemvalue="JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard" />

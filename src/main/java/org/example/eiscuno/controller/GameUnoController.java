@@ -538,10 +538,10 @@ public class GameUnoController implements ShiftEventListener {
 
         // Crear el GridPane para organizar los botones
         GridPane buttonGrid = new GridPane();
-        buttonGrid.setHgap(5);  // Reducir espaciado horizontal entre botones
-        buttonGrid.setVgap(5);  // Reducir espaciado vertical entre botones
-        buttonGrid.setLayoutX(50); // Ajustar posición dentro de Colors (si es necesario)
-        buttonGrid.setLayoutY(50); // Ajustar posición dentro de Colors (si es necesario)
+        buttonGrid.setHgap(-5);  // Reducir espaciado horizontal entre botones
+        buttonGrid.setVgap(-5);  // Reducir espaciado vertical entre botones
+        buttonGrid.setLayoutX(-30); // Ajustar posición dentro de Colors (si es necesario)
+        buttonGrid.setLayoutY(-40); // Ajustar posición dentro de Colors (si es necesario)
 
         // Crear los botones para cada color
         Button btnAzul = new Button();
@@ -569,9 +569,9 @@ public class GameUnoController implements ShiftEventListener {
 
         // Añadir los botones al GridPane en posiciones correspondientes
         buttonGrid.add(btnAzul, 0, 0);    // Fila 0, Columna 0
-        buttonGrid.add(btnRojo, 1, 0);    // Fila 0, Columna 1
-        buttonGrid.add(btnAmarillo, 0, 1); // Fila 1, Columna 0
-        buttonGrid.add(btnVerde, 1, 1);    // Fila 1, Columna 1
+        buttonGrid.add(btnRojo, 0, 1);    // Fila 0, Columna 1
+        buttonGrid.add(btnAmarillo, 0, 2); // Fila 1, Columna 0
+        buttonGrid.add(btnVerde, 0, 3);    // Fila 1, Columna 1
 
         // Agregar el GridPane al Pane "Colors"
         colorsPane.getChildren().add(buttonGrid);
