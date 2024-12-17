@@ -1,0 +1,59 @@
+#BackgroundPane{
+    -fx-background-image: url("../images/backgroundView.jpg");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+.buttons {
+    -fx-background-color:
+            linear-gradient(#ffcc00, #e6a700), /* Fondo amarillo brillante */
+            linear-gradient(#ffdd33, #ff9900), /* Gradiente naranja */
+            radial-gradient(center 50% 50%, radius 100%, #ffd700, #e6a700); /* Iluminación radial */
+    -fx-background-radius: 12; /* Bordes redondeados */
+    -fx-border-radius: 12;
+    -fx-border-width: 3; /* Grosor del borde */
+    -fx-border-color: #664400; /* Color marrón oscuro */
+    -fx-text-fill: #ffffff; /* Color del texto */
+    -fx-font-weight: bold; /* Negrita */
+    -fx-font-size: 16px; /* Tamaño del texto */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0.5, 2, 2); /* Sombra */
+    -fx-padding: 10 20; /* Relleno interno */
+}
+
+.buttons:hover {
+    -fx-background-color:
+            linear-gradient(#ffd633, #ffb200),
+            linear-gradient(#ffe066, #ffcc00),
+            radial-gradient(center 50% 50%, radius 100%, #ffcc00, #e6a700); /* Fondo más claro al pasar el mouse */
+    -fx-border-color: #996600; /* Bordes más oscuros */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,1.0), 10, 0.5, 2, 2); /* Sombra más pronunciada */
+    -fx-cursor: hand; /* Cambia el cursor */
+}
+
+.buttons:pressed {
+    -fx-background-color:
+            linear-gradient(#e6a700, #cc8e00),
+            linear-gradient(#ffcc00, #e6a700),
+            radial-gradient(center 50% 50%, radius 100%, #e6a700, #cc8e00); /* Fondo más oscuro al presionar */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0.5, 1, 1); /* Sombra reducida */
+    -fx-translate-y: 2px; /* Mueve ligeramente el botón hacia abajo */
+}
+
+#buttonSound {
+    -fx-background-color: transparent; /* Fondo transparente para resaltar la imagen */
+    -fx-background-image: url('../images/soundButton.png');/* Ruta de tu imagen */
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-padding: 10 20; /* Espaciado interno */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* Color del texto */
+    -fx-background-size: contain; /* Ensures the image is contained within the button */
+    -fx-background-repeat: no-repeat;
+}
+
+#buttonSound:hover {
+    -fx-background-image: url('../images/soundButton.png'); /* Imagen alternativa al pasar el cursor */
+    -fx-cursor: hand;
+    -fx-background-size: contain; /* Ensures the image is contained within the button */
+    -fx-background-color: none; /* No additional background color */
+    -fx-background-repeat: no-repeat;
+}

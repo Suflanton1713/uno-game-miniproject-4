@@ -100,13 +100,16 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                 default:
                     break;
             }
+
         }
+
         maxNumber = blueCounter;
         colorChoosen = "BLUE";
 
         if(yellowCounter > maxNumber) colorChoosen = "YELLOW";
         if(greenCounter > maxNumber) colorChoosen = "GREEN";
         if(redCounter > maxNumber) colorChoosen = "RED";
+        System.out.println(colorChoosen);
 
         return colorChoosen;
 
@@ -122,7 +125,7 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                 gameUno.playCard(card);
                 tableImageView.setImage(card.getImage());
                 machinePlayer.removeCard(machinePlayer.getCardsPlayer().indexOf(card));
-
+                gameUnoController.animateMachineCardToCenter(card);
 
             }
             System.out.println("Machine cards after playing " + machinePlayer.getStringOfOwnCards());

@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ee8ff40-bbdd-4aec-a3d2-cf5cc45130ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/CardFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/cardfactory/ICardFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUnoAdaptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/controller/GameUnoControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/game/GameUnoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/deck/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/exception/GameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/exception/GameException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/ThreadUnoComprobation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/ThreadUnoComprobation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadPlayMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/machine/ThreadSingUNOMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/table/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/table/TableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/eiscuno/model/table/TableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +39,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/fabiansvc/eisc-uno.git&quot;,
-    &quot;accountId&quot;: &quot;0c82e6b4-a45c-4190-a110-02ef4a3ff1b6&quot;
+    &quot;url&quot;: &quot;https://github.com/Suflanton1713/uno-game-miniproject-4.git&quot;,
+    &quot;accountId&quot;: &quot;7f5d12d4-fde5-4fd7-a85e-05b5fbdaa37c&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -72,52 +59,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "JUnit.GameUnoControllerTest.forcingErrorWhenThereisMulticolorCardInDeck.executor": "Run",
-    "JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCards.executor": "Run",
-    "JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCardsInDeck.executor": "Run",
-    "JUnit.GameUnoControllerTest.initialCardWhenThereAreNoCardsInDeck.executor": "Run",
-    "JUnit.GameUnoControllerTest.initialCardWhenThereIsANormalCardsInDeck.executor": "Run",
-    "JUnit.GameUnoControllerTest.watchingColorChangesWhenMulticolorCard.executor": "Run",
-    "JUnit.GameUnoTest.gettingNullWhenThereIsNoCardInDeckWhenSingingOne.executor": "Run",
-    "JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard.executor": "Run",
-    "JUnit.GameUnoTest.verifyTurnChangerWhenPlayingCard.executor": "Run",
-    "JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne.executor": "Run",
-    "JUnit.GameUnoTest.verifyingExceptionsForMultipleIllegalGameStateWhenDrawingCard.executor": "Run",
-    "JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard.executor": "Run",
-    "JUnit.GameUnoTest.verifyingWhenAPlayerEatsACardFromDeck.executor": "Run",
-    "JUnit.TableTest.checkingWhenPlayedCardIsAFourWildCard.executor": "Run",
-    "JUnit.TableTest.checkingWhenPlayedCardIsAWildCard.executor": "Run",
-    "JUnit.TableTest.checkingWhenPlayedCardIsNotAWildCardAndNotPassesWildCardComprobation.executor": "Run",
-    "JUnit.TableTest.comparingAllColorsWhenPuttingCardOnTable.executor": "Run",
-    "JUnit.TableTest.comparingAllValuesWhenPuttingCardOnTable.executor": "Run",
-    "JUnit.TableTest.forcingColorComparationToReturnFalse.executor": "Run",
-    "JUnit.TableTest.forcingExceptionWhenIllegalColorAppear.executor": "Run",
-    "JUnit.TableTest.forcingExceptionWhenIllegalValueAppear.executor": "Run",
-    "JUnit.TableTest.forcingValueComparationToReturnFalse.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Merging DAR",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Fabian/Documents/eisc-uno",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.sync",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoControllerTest.forcingErrorWhenThereisMulticolorCardInDeck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCards.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCardsInDeck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoControllerTest.initialCardWhenThereAreNoCardsInDeck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoControllerTest.initialCardWhenThereIsANormalCardsInDeck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoControllerTest.watchingColorChangesWhenMulticolorCard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoTest.gettingNullWhenThereIsNoCardInDeckWhenSingingOne.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoTest.verifyTurnChangerWhenBothPlayerAndMachinesPlaysCard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoTest.verifyTurnChangerWhenPlayingCard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameUnoTest.verifyingWhenAPlayerEatsACardFromDeck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.checkingWhenPlayedCardIsAFourWildCard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.checkingWhenPlayedCardIsAWildCard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.checkingWhenPlayedCardIsNotAWildCardAndNotPassesWildCardComprobation.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.comparingAllColorsWhenPuttingCardOnTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.comparingAllValuesWhenPuttingCardOnTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.forcingColorComparationToReturnFalse.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.forcingExceptionWhenIllegalColorAppear.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.forcingExceptionWhenIllegalValueAppear.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TableTest.forcingValueComparationToReturnFalse.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;jdrl&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Fabian/Documents/eisc-uno&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fsvc1\Coding\eisc-uno\src\main\resources\org\example\eiscuno" />
@@ -133,18 +120,57 @@
       <recent name="org.example.eiscuno.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameUnoTest.verifyingWhenAPlayerEatsACardFromDeck">
-    <configuration name="GameUnoTest.gettingNullWhenThereIsNoCardInDeckWhenSingingOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Unnamed">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.Main" />
+      <module name="eisc-uno" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameUnoControllerTest.forcingErrorWhenThereisMulticolorCardInDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisc-uno" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.eiscuno.model.game.*" />
+          <option name="PATTERN" value="org.example.eiscuno.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.game" />
-      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.game.GameUnoTest" />
-      <option name="METHOD_NAME" value="gettingNullWhenThereIsNoCardInDeckWhenSingingOne" />
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.controller" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.controller.GameUnoControllerTest" />
+      <option name="METHOD_NAME" value="forcingErrorWhenThereisMulticolorCardInDeck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameUnoControllerTest.initialCardWhenThereAreMulticolorCardsInDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisc-uno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.eiscuno.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.controller" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.controller.GameUnoControllerTest" />
+      <option name="METHOD_NAME" value="initialCardWhenThereAreMulticolorCardsInDeck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameUnoControllerTest.watchingColorChangesWhenMulticolorCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisc-uno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.eiscuno.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.eiscuno.controller" />
+      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.controller.GameUnoControllerTest" />
+      <option name="METHOD_NAME" value="watchingColorChangesWhenMulticolorCard" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -166,22 +192,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameUnoTest.verifyingExceptionsForMultipleIllegalGameStateWhenDrawingCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="eisc-uno" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.eiscuno.model.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.game" />
-      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.game.GameUnoTest" />
-      <option name="METHOD_NAME" value="verifyingExceptionsForMultipleIllegalGameStateWhenDrawingCard" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisc-uno" />
       <extension name="coverage">
@@ -198,27 +208,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameUnoTest.verifyingWhenAPlayerEatsACardFromDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="eisc-uno" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.eiscuno.model.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.eiscuno.model.game" />
-      <option name="MAIN_CLASS_NAME" value="org.example.eiscuno.model.game.GameUnoTest" />
-      <option name="METHOD_NAME" value="verifyingWhenAPlayerEatsACardFromDeck" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JUnit.GameUnoControllerTest.forcingErrorWhenThereisMulticolorCardInDeck" />
+      <item itemvalue="JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCardsInDeck" />
+      <item itemvalue="JUnit.GameUnoControllerTest.watchingColorChangesWhenMulticolorCard" />
+      <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
+      <item itemvalue="JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GameUnoTest.verifyingWhenAPlayerEatsACardFromDeck" />
-        <item itemvalue="JUnit.GameUnoTest.verifyingExceptionsForMultipleIllegalGameStateWhenDrawingCard" />
-        <item itemvalue="JUnit.GameUnoTest.gettingNullWhenThereIsNoCardInDeckWhenSingingOne" />
+        <item itemvalue="JUnit.GameUnoControllerTest.watchingColorChangesWhenMulticolorCard" />
+        <item itemvalue="JUnit.GameUnoControllerTest.forcingErrorWhenThereisMulticolorCardInDeck" />
+        <item itemvalue="JUnit.GameUnoControllerTest.initialCardWhenThereAreMulticolorCardsInDeck" />
         <item itemvalue="JUnit.GameUnoTest.verifyingEatingCardsFeatureWhenMachineSingingOne" />
         <item itemvalue="JUnit.GameUnoTest.verifyingMultipleIllegalGameStateWhenDrawingCard" />
       </list>
@@ -227,8 +229,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
       </set>
     </attachedChunks>
   </component>
@@ -271,6 +273,7 @@
       <workItem from="1734328767638" duration="70000" />
       <workItem from="1734358021291" duration="3375000" />
       <workItem from="1734393050704" duration="734000" />
+      <workItem from="1734445209447" duration="2341000" />
     </task>
     <servers />
   </component>
@@ -297,6 +300,24 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/eiscuno/controller/GameUnoControllerTest.java</url>
+          <line>31</line>
+          <properties class="org.example.eiscuno.controller.GameUnoControllerTest" method="initialCardWhenThereAreMulticolorCardsInDeck">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/eiscuno/controller/GameUnoControllerTest.java</url>
+          <line>54</line>
+          <properties class="org.example.eiscuno.controller.GameUnoControllerTest" method="watchingColorChangesWhenMulticolorCard">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

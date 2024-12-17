@@ -3,6 +3,7 @@ module org.example.eiscuno {
     requires javafx.fxml;
     requires java.sql;
     requires jdk.incubator.vector;
+    requires javafx.media;
 
 
     opens org.example.eiscuno to javafx.fxml;
