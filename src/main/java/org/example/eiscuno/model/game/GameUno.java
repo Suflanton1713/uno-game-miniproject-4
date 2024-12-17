@@ -3,7 +3,6 @@ package org.example.eiscuno.model.game;
 import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.deck.Deck;
-import org.example.eiscuno.model.observers.listeners.ShiftEventListenerAdaptor;
 import org.example.eiscuno.model.player.Player;
 import org.example.eiscuno.model.observers.ShiftEventManager;
 import org.example.eiscuno.model.observers.listeners.ShiftEventListener;
@@ -25,7 +24,8 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     private boolean canThrowCard;
     private boolean hasToChangeColor;
     private int  winStatus;
-    private boolean singUno;
+    private boolean humanSingUno;
+    private boolean machineSingUno;
 
     /**
      * Constructs a new GameUno instance.
@@ -44,7 +44,7 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
         this.events = new ShiftEventManager("onturn", "offturn", "turnChangerController");
         this.hasToChangeColor = false;
         this.canThrowCard = true;
-        this.singUno = false;
+        this.humanSingUno = false;
     }
 
     /**
@@ -101,6 +101,11 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     @Override
     public void playCard(Card card) {
         this.table.addCardOnTheTable(card);
+        events.notifyShiftEvent("onturn");
+        events.notifyShiftToController("turnChangerController");
+    }
+
+    public void passTurnWhenUnoSung() {
         events.notifyShiftEvent("onturn");
         events.notifyShiftToController("turnChangerController");
     }
@@ -174,6 +179,11 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
             wildCardUpdate("Change color");
         }
 
+        if(amount == 1){
+            setHumanSingUno(false);
+            setMachineSingUno(false);
+        }
+
         if(machinePlayer.isOnTurn()){
             humanPlayer.drawsCard(deck,amount);
 
@@ -225,11 +235,23 @@ public class GameUno implements IGameUno, CardPlayedEventListener {
     }
     public void setWinStatus(int winStatus) {this.winStatus = winStatus;}
     public int getWinStatus() {return winStatus;}
-    public boolean getSingUno(){return singUno;}
-    public void setSingUno(boolean val){singUno = val;
+    public boolean getHumanSingUno(){return humanSingUno;}
+    public void setHumanSingUno(boolean val){
+        humanSingUno = val;
 
-        System.out.println("Sing uno es:"+singUno);
+        System.out.println("Sing uno es:"+ humanSingUno);
     }
 
 
+    public boolean isHumanSingUno() {
+        return humanSingUno;
+    }
+
+    public boolean isMachineSingUno() {
+        return machineSingUno;
+    }
+
+    public void setMachineSingUno(boolean machineSingUno) {
+        this.machineSingUno = machineSingUno;
+    }
 }

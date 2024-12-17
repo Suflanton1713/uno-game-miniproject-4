@@ -54,12 +54,20 @@ public class ThreadPlayMachine extends Thread implements ShiftEventListener {
                     e.printStackTrace();
                 }
                 // Aqui iria la logica de colocar la carta
-                hasPlayerPlayed = putCardOnTheTable();
-                if(gameUno.HasToChangeColor()){
-                    table.setColorForTable(chooseColorForMachine());
-                    gameUno.setHasToChangeColor(false);
 
+                if(gameUno.isHumanSingUno() && (machinePlayer.getCardsPlayer().size() == 1)){
+                    gameUno.passTurnWhenUnoSung();
+                    hasPlayerPlayed = false;
+                }else{
+                    hasPlayerPlayed = putCardOnTheTable();
+                    if(gameUno.HasToChangeColor()){
+                        table.setColorForTable(chooseColorForMachine());
+                        gameUno.setHasToChangeColor(false);
+
+                    }
                 }
+
+
 
             }
         }
