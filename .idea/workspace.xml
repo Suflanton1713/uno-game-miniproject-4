@@ -5,35 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ee8ff40-bbdd-4aec-a3d2-cf5cc45130ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/character1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/character2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/character3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/character4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/credits.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/deck.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/personaje1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/personaje2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/personaje3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/personaje4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/GameUnoStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/GameUnoStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/1301279 (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/1301279.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/DALL·E 2024-12-15 19.01.17 - An online UNO game interface designed to inspire creativity. The screen features a vibrant and d.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/Prueba.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/backgroundGame.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/backgroundGame.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/backgroundGame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/gradient_1720_1024 (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/gradient_1720_1024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/image-removebg-preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/super-mario-bros-the-movie.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/the_super_mario_bros__movie_full_wallpaper_by_mrscientific_dfwld4c-pre.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/vista-superior-mesa-luz-textura-madera-tonos-crema-fondo-madera_84485-2542.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/styles/StyleGame.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/styles/StyleGame.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/welcome-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +89,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Merging DAR",
+    "git-widget-placeholder": "DAR",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Juan David/Documents/miniproject-4/uno-game-miniproject-4/src/main/resources/org/example/eiscuno/images",

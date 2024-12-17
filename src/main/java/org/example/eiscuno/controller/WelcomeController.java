@@ -1,5 +1,6 @@
 package org.example.eiscuno.controller;
 
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -14,6 +15,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import org.example.eiscuno.view.GameUnoStage;
 
 
@@ -26,13 +28,17 @@ public class WelcomeController {
     @FXML
     private Button buttonSound; // Botón para detener o reanudar la música
 
+    @FXML
+    private Label labelGame;
+
     /**
      * Método que se ejecuta al inicializar el controlador.
      * Inicia la música de fondo.
      */
     @FXML
     public void initialize() {
-        playMusic(); // Reproduce la música al iniciar el WelcomeStage
+        playMusic();
+        startEffect();// Reproduce la música al iniciar el WelcomeStage
     }
 
     /**
@@ -71,6 +77,21 @@ public class WelcomeController {
             welcomeStage.close();
 
         }
+    }
+
+    @FXML
+    private void startEffect() {
+        // Configurar la animación de escala
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(1), labelGame);
+        scaleTransition.setFromX(1);
+        scaleTransition.setFromY(1);
+        scaleTransition.setToX(1.5); // Aumenta el tamaño un 50%
+        scaleTransition.setToY(1.5);
+        scaleTransition.setAutoReverse(true); // Vuelve al tamaño original
+        scaleTransition.setCycleCount(ScaleTransition.INDEFINITE); // Se repite indefinidamente
+
+        // Iniciar la animación
+        scaleTransition.play();
     }
 
     /**
