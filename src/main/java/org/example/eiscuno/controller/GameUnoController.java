@@ -82,6 +82,9 @@ public class GameUnoController implements ShiftEventListener {
     @FXML
     private ImageView character;  // ImageView para el character
 
+    @FXML
+    private ImageView instantAnimatedCard;
+
     // Arreglos de rutas de las imágenes para cada uno
     private String[] personajeImages = {
             "/org/example/eiscuno/images/personaje1.png",
@@ -439,6 +442,7 @@ public class GameUnoController implements ShiftEventListener {
         animatedCard.setLayoutX(startX);
         animatedCard.setLayoutY(startY);
 
+
         // Generar una rotación aleatoria entre -20 y 20 grados
         double rotationAngle = (Math.random() * 40) - 20;
 
@@ -468,6 +472,8 @@ public class GameUnoController implements ShiftEventListener {
             finalCard.setRotate(rotationAngle); // Mantener la rotación
             finalCard.setLayoutX(centerX - finalCard.getFitWidth() / 2);
             finalCard.setLayoutY(centerY - finalCard.getFitHeight() / 2);
+
+            instantAnimatedCard=finalCard;
 
             // Eliminar cualquier carta previa en el centro
             centralPane.getChildren().removeIf(node -> node instanceof ImageView && node != tableImageView);
@@ -591,6 +597,8 @@ public class GameUnoController implements ShiftEventListener {
 
         // Restablecer el estado de cambio de color
         gameUno.setHasToChangeColor(false);
+
+        instantAnimatedCard.setImage(table.getCurrentCardOnTheTable().getImage());
 
         // Si es el turno de la máquina, deshabilitar el botón de la baraja
         if (machinePlayer.isOnTurn()) {
