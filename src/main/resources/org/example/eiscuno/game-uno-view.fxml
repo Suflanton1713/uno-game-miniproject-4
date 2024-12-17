@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -17,11 +16,7 @@
       <Pane prefHeight="306.0" prefWidth="275.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="deckButton" layoutX="207.0" layoutY="166.0" mnemonicParsing="false" onAction="#onHandleTakeCard" prefHeight="71.0" prefWidth="48.0" />
-            <ImageView fx:id="personaje" fitHeight="127.0" fitWidth="85.0" layoutX="59.0" layoutY="258.0" pickOnBounds="true">
-               <image>
-                  <Image url="@images/personaje1.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="personaje" fitHeight="127.0" fitWidth="85.0" layoutX="59.0" layoutY="258.0" pickOnBounds="true" />
          </children>
       </Pane>
    </left>
@@ -29,11 +24,7 @@
       <Pane prefHeight="358.0" prefWidth="202.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="oneButton" layoutX="-25.0" layoutY="270.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="72.0" prefWidth="100.0" />
-            <ImageView fx:id="character" fitHeight="123.0" fitWidth="93.0" layoutX="19.0" layoutY="25.0" pickOnBounds="true">
-               <image>
-                  <Image url="@images/character2.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="character" fitHeight="123.0" fitWidth="93.0" layoutX="19.0" layoutY="25.0" pickOnBounds="true" />
          </children>
          <BorderPane.margin>
          </BorderPane.margin>

@@ -67,6 +67,7 @@ public class Deck {
     public Card takeCard() {
             try{
                 if (deckOfCards.isEmpty()){
+
                     throw new GameException.OutOfCardsInDeck("Se acaba la partida.");
                 }else{
                 return deckOfCards.pop();
