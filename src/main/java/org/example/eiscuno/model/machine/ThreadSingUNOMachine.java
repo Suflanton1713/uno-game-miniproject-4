@@ -10,22 +10,16 @@ import java.util.ArrayList;
 
 public class ThreadSingUNOMachine implements Runnable{
     private ArrayList<Card> cardsPlayer;
-    private Deck deck;
-    private GameUnoController gameUnoController;
     private GameUno gameUno;
     private ArrayList<Card> cardsMachine;
-    private Player humanPlayer;
-    private Player machinePlayer;
+
 
 
     public ThreadSingUNOMachine(ArrayList<Card> cardsPlayer, Deck deck, GameUnoController gameUnoController, GameUno gameUno, ArrayList<Card> cardsMachine, Player humanPlayer, Player machinePlayer) {
         this.cardsPlayer = cardsPlayer;
-        this.deck = deck;
-        this.gameUnoController = gameUnoController;
         this.gameUno=gameUno;
         this.cardsMachine = cardsMachine;
-        this.humanPlayer = humanPlayer;
-        this.machinePlayer = machinePlayer;
+
     }
 
     @Override

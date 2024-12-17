@@ -48,310 +48,100 @@ public class GameException extends Exception {
     }
 
     /**
-     * Exception for handling actions performed out of the board bounds.
-     * Extends {@code IndexOutOfBoundsException}.
+     * Exception when the deck runs out of cards.
+     * Extends {@code IllegalStateException}.
      * @version 1.0
      */
-    public static class OutOfCardsInDeck extends IndexOutOfBoundsException {
+    public static class OutOfCardsInDeck extends IllegalStateException{
         /**
-         * Default constructor for the {@code OutOfBoardAction}.
+         * Default constructor for the {@code OutOfCardsInDeck}.
          * @version 1.0
          */
         public OutOfCardsInDeck() {
-            super("You are making an action out of the board");
+            super("Deck has run out of cards");
         }
 
         /**
-         * Constructor with a custom error message for the {@code OutOfBoardAction}.
+         * Constructor with a custom error message for the {@code OutOfCardsInDeck}.
          * @param message the custom error message.
          * @version 1.0
          */
         public OutOfCardsInDeck(String message) {
-            super("You are making an action out of the board: " + message);
+            super("Deck has run out of cards. " + message);
         }
     }
 
     /**
-     * Exception for handling attempts to place a boat in an occupied space.
-     * Extends {@code Exception}.
+     * Exception for handling illegal colors in cards.
+     * Extends {@code IllegalStateException}.
      * @version 1.0
      */
-    public static class OccupiedBox extends Exception {
+    public static class IllegalCardColor extends IllegalArgumentException {
         /**
-         * Default constructor for the {@code OccupiedBox}.
+         * Default constructor for the {@code IllegalCardColor}.
          * @version 1.0
          */
-        public OccupiedBox() {
-            super();
+        public IllegalCardColor() {
+            super("The previous card has an illegal color. ");
         }
 
         /**
-         * Constructor with a custom error message for the {@code OccupiedBox}.
+         * Constructor with a custom error message for the {@code IllegalCardColor}.
          * @param message the custom error message.
          * @version 1.0
          */
-        public OccupiedBox(String message) {
-            super(message);
-        }
-
-        /**
-         * Constructor with a custom error message and cause for the {@code OccupiedBox}.
-         * @param message the custom error message.
-         * @param cause the cause of the exception.
-         * @version 1.0
-         */
-        public OccupiedBox(String message, Throwable cause) {
-            super(message, cause);
-        }
-
-        /**
-         * Constructor with a cause for the {@code OccupiedBox}.
-         * @param cause the cause of the exception.
-         * @version 1.0
-         */
-        public OccupiedBox(Throwable cause) {
-            super(cause);
+        public IllegalCardColor(String message) {
+            super("The previous card has an illegal color. " +message);
         }
     }
 
     /**
-     * Exception for handling attempts to shoot a box that has already been shot.
-     * Extends {@code IndexOutOfBoundsException}.
+     * Exception for handling illegal values in cards.
+     * Extends {@code IllegalStateException}.
      * @version 1.0
      */
-    public static class BoxAlreadyActivated extends IndexOutOfBoundsException {
+    public static class IllegalCardValue extends IllegalArgumentException {
         /**
-         * Default constructor for the {@code BoxAlreadyActivated}.
+         * Default constructor for the {@code IllegalCardValue}.
          * @version 1.0
          */
-        public BoxAlreadyActivated() {
-            super();
+        public IllegalCardValue() {
+            super("The previous card has an illegal value. ");
         }
 
         /**
-         * Constructor with a custom error message for the {@code BoxAlreadyActivated}.
+         * Constructor with a custom error message for the {@code IllegalCardValue}.
          * @param message the custom error message.
          * @version 1.0
          */
-        public BoxAlreadyActivated(String message) {
-            super(message);
+        public IllegalCardValue(String message) {
+            super("The previous card has an illegal value. " +message);
         }
     }
 
     /**
-     * Exception for handling attempts to use a boat that has already been used.
-     * Extends {@code NullPointerException}.
+     * Exception for handling actions when game have ended.
+     * Extends {@code IllegalStateException}.
      * @version 1.0
      */
-    public static class boatAlreadyUsed extends NullPointerException {
+    public static class gameEndedException extends IllegalStateException {
         /**
-         * Default constructor for the {@code boatAlreadyUsed}.
+         * Default constructor for the {@code gameEndedException}.
          * @version 1.0
          */
-        public boatAlreadyUsed() {
-            super();
+        public gameEndedException() {
+            super("The game has already ended. Couldn't perform the action. ");
         }
 
         /**
-         * Constructor with a custom error message for the {@code boatAlreadyUsed}.
+         * Constructor with a custom error message for the {@code gameEndedException}.
          * @param message the custom error message.
          * @version 1.0
          */
-        public boatAlreadyUsed(String message) {
-            super(message);
+        public gameEndedException(String message) {
+            super("The game has already ended. Couldn't perform the action. " +message);
         }
     }
 
-    /**
-     * Exception for handling attempts to access parts of a boat that are inaccessible.
-     * Extends {@code IndexOutOfBoundsException}.
-     * @version 1.0
-     */
-    public static class InaccessiblePartInBoat extends IndexOutOfBoundsException {
-        /**
-         * Default constructor for the {@code InaccessiblePartInBoat}.
-         * @version 1.0
-         */
-        public InaccessiblePartInBoat() {
-            super();
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code InaccessiblePartInBoat}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public InaccessiblePartInBoat(String message) {
-            super(message);
-        }
-    }
-
-    /**
-     * Exception for handling attempts to access a position out of board bounds.
-     * Extends {@code IndexOutOfBoundsException}.
-     * @version 1.0
-     */
-    public static class OutOfBoardPosition extends IndexOutOfBoundsException {
-        /**
-         * Default constructor for the {@code OutOfBoardPosition}.
-         * @version 1.0
-         */
-        public OutOfBoardPosition() {
-            super("Fatal error occurred. You tried to access a box out of the board.");
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code OutOfBoardPosition}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public OutOfBoardPosition(String message) {
-            super("Fatal error occurred. You tried to access a box out of the board. " + message + OutOfBoardPosition.class.getSimpleName());
-        }
-    }
-
-    /**
-     * Exception for handling situations where no board is found.
-     * Extends {@code NullPointerException}.
-     * @version 1.0
-     */
-    public static class NoBoardFound extends NullPointerException {
-        /**
-         * Default constructor for the {@code NoBoardFound}.
-         * @version 1.0
-         */
-        public NoBoardFound() {
-            super("Fatal error occurred about board accessing.");
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code NoBoardFound}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public NoBoardFound(String message) {
-            super("Fatal error occurred about board accessing." + message + NoBoardFound.class.getSimpleName());
-        }
-    }
-
-    /**
-     * Exception for handling failures when saving a profile.
-     * Extends {@code IOException}.
-     * @version 1.0
-     */
-    public static class CantSaveProfile extends IOException {
-        /**
-         * Default constructor for the {@code CantSaveProfile}.
-         * @version 1.0
-         */
-        public CantSaveProfile() {
-            super("Fatal error occurred on saving profile.");
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code CantSaveProfile}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public CantSaveProfile(String message) {
-            super("Fatal error occurred on saving profile. " + message);
-        }
-    }
-
-    /**
-     * Exception for handling situations where profiles do not exist.
-     * Extends {@code NullPointerException}.
-     * @version 1.0
-     */
-    public static class profilesDoesNotExist extends NullPointerException {
-        /**
-         * Default constructor for the {@code profilesDoesNotExist}.
-         * @version 1.0
-         */
-        public profilesDoesNotExist() {
-            super("Fatal error occurred on searching profile.");
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code profilesDoesNotExist}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public profilesDoesNotExist(String message) {
-            super("Fatal error occurred on searching profile. " + message);
-        }
-    }
-
-    /**
-     * Exception for handling failures when loading a profile.
-     * Extends {@code IOException}.
-     * @version 1.0
-     */
-    public static class CantLoadProfile extends IOException {
-        /**
-         * Default constructor for the {@code CantLoadProfile}.
-         * @version 1.0
-         */
-        public CantLoadProfile() {
-            super("Fatal error occurred on loading profile.");
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code CantLoadProfile}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public CantLoadProfile(String message) {
-            super("Fatal error occurred on loading profile. " + message);
-        }
-    }
-
-    /**
-     * Exception for handling failures when deleting a file.
-     * Extends {@code IOException}.
-     * @version 1.0
-     */
-    public static class CantDeleteFile extends IOException {
-        /**
-         * Default constructor for the {@code CantDeleteFile}.
-         * @version 1.0
-         */
-        public CantDeleteFile() {
-            super("Fatal error when deleting serializable file.");
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code CantDeleteFile}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public CantDeleteFile(String message) {
-            super("Fatal error when deleting serializable file. " + message);
-        }
-    }
-
-    /**
-     * Exception for handling failures when loading a match.
-     * Extends {@code NullPointerException}.
-     * @version 1.0
-     */
-    public static class CantLoadMatch extends NullPointerException {
-        /**
-         * Default constructor for the {@code CantLoadMatch}.
-         * @version 1.0
-         */
-        public CantLoadMatch() {
-            super("Fatal error when loading match.");
-        }
-
-        /**
-         * Constructor with a custom error message for the {@code CantLoadMatch}.
-         * @param message the custom error message.
-         * @version 1.0
-         */
-        public CantLoadMatch(String message) {
-            super("Fatal error when loading match. " + message);
-        }
-    }
 }
 
